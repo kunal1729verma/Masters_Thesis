@@ -2,7 +2,7 @@
 \begin{document}
 
 \chapter{Monte Carlo simulations for spin systems}
-The purpose of this chapter is to give a brief introduction to Monte Carlo simulations and their applications in the numerical analysis of phase transitions in statistical physics models. We will start by illustrating the general idea of importance sampling Monte Carlo methods, followed by the different type of update schemes (Metropolis, Wolff-cluster, etc.) to generate non-uniformly sampled distributions efficiently. We will also pay attention to the topic of statistical analysis of the generated data via autocorrelation analysis and statistical error analysis. For illustration purposes, we will primarily focus our attention on the simplest spin model, i.e.,the two-dimensional Ising model (without external field) and discuss the finite-temperature critical phenomena and phase transition. Finally, we will demonstrate the calculation of the critical exponents of the two-dimensional Ising model using finite-size scaling analysis of relevant physical observables. Although we start with a classical statistical model, these ideas can be generalized and are applicable in simulations of quantum-spin systems, where they become the \textit{Quantum Monte Carlo} (QMC) methods. 
+The purpose of this chapter is to give a brief introduction to Monte Carlo simulations and their applications in the numerical analysis of phase transitions in statistical physics models. We will start by illustrating the general idea of importance sampling Monte Carlo methods, followed by the different type of update schemes (Metropolis, Wolff-cluster, etc.) to sample non-uniform distributions efficiently. We will also pay attention to the topic of statistical analysis of the generated data via autocorrelation analysis and statistical error analysis. For illustration purposes, we will primarily focus our attention on the simplest spin model, i.e.,the two-dimensional Ising model (without external field) and discuss the finite-temperature critical phenomena and phase transition. Finally, we will demonstrate the calculation of the critical exponents of the two-dimensional Ising model using finite-size scaling analysis of relevant physical observables. Although we start with a classical statistical model, these ideas can be generalized and are applicable in simulations of quantum-spin systems, where they become the \textit{Quantum Monte Carlo} (QMC) methods. 
 
 \section{Introduction to Monte Carlo methods}
 Monte Carlo simulations are an important and broad class of stochastic methods that utilize randomness to solve deterministic problems efficiently. To show their utility, we will start with a simple and illustrative example. Consider the calculation of a thermal expectation value of an observable $Q(x)$ in statistical physics;
@@ -20,7 +20,7 @@ A more efficient method for performing high-dimensional integrals is known as \t
 \begin{equation}
     \expval{Q} \approx \frac{L}{N} \sum_{i=1}^N \rho(x_i) \: Q(x_i)
 \end{equation} 
-The error in a Monte Carlo estimate goes as $1/\sqrt{N}$ in any number of dimensions, and hence it is more efficient. However, this straightforward unbiased Monte Carlo integration only works well in practice if the integrand isn't sharply peaked in some small region of the integration range.~\\~\\
+The error in a Monte Carlo estimate goes as $1/\sqrt{N}$ in any number of dimensions, and hence it is more efficient for estimating $6 \mathcal{N}$-dimensional integrals characteristic of statistical mechanics of $\mathcal{N}$ particles. However, this straightforward unbiased Monte Carlo integration only works well in practice if the integrand isn't sharply peaked in some small region of the integration range.~\\~\\
 If $\rho(x)$ is sharply peaked in a small region, then uniform sampling of points can result in large statistical fluctuations as only a small fraction of points will fall within the dominant range. Therefore, the next improvement can be performed by sampling the points according to a probability distribution $W(x)$ which is peaked in the same region as $\rho(x)$. This gives the estimate of the expectation value as 
 \begin{equation}
     \expval{Q} \approx \frac{L}{N} \sum_{i=1}^N \frac{\rho(x_i)}{W(x_i)} Q(x_i) \: W(x_i) \approx \frac{1}{N} \sum_{i=1}^N {}^{{}^{(W)}} \frac{\rho(x_i)}{W(x_i)} \: Q(x_i)
@@ -74,9 +74,10 @@ For statistical mechanics, the desired equilibrium distribution is the Boltzmann
 
 \section{Metropolis and the Ising model}
 As discussed in the last section, we can generate samples distributed according to the Boltzmann distribution if we choose the acceptance probability as defined in Eq. \eqref{metropolis} for the Markov chain. These drawn configurations can then be utilized to calculate thermal expectation values via importance sampling.~\\~\\
-We will discuss this simulation method in the context of the 2-dimensional Ising model. The Ising model is the paradigm model for systems exhibiting continuous phase transition from a ferromagnetic to a paramagnetic state at critical temperature $T_c$. In the absence of an external field $(h=0)$ and only nearest-neighbor interactions, the energy of the Ising model is 
+We will discuss this simulation method in the context of the 2-dimensional ferromagnetic Ising model. The Ising model is the paradigmatic model for systems exhibiting continuous phase transition from a ferromagnetic to a paramagnetic phase at a critical temperature $T_c$. In the absence of an external field $(h=0)$ and only nearest-neighbor interactions, the energy of the ferromagnetic Ising model is 
 \begin{equation}
     E = -J \sum_{\expval{i, j}} \sigma_i \sigma_j
+    \label{ising}
 \end{equation}
 where $\expval{i, j}$ indicates nearest-neighbors $i, j$ and the expression for a 2-dimensional square lattice can be more suggestively written as 
 \begin{equation}
@@ -90,6 +91,7 @@ For a Markov chain transition $\sigma_i \to - \sigma_i$, the difference in energ
 This leads to the Metropolis acceptance probability for the Ising model spin flips being given by
 \begin{equation}
     P_\text{accept}(\sigma_i \to -\sigma_i) = \min \qty[e^{-\beta \Delta E}, 1]
+    \label{metropolis_ising}
 \end{equation}
 with $\Delta E$ being defined by Eq. \eqref{dE}. In a nutshell, a \textit{Metropolis Monte Carlo} simulation of the Ising model consists of performing such spin flip proposals by selecting the spin $\sigma_i$ to be flipped at random and generating a Markov chain distributed according to the Boltzmann distribution. A single \textit{Monte Carlo sweep} then consists of $L^2$ such spin flip proposals so that roughly each lattice site gets an equal chance to flip, where $L$ denotes the side length of the square lattice. In algorithmic language, a Monte Carlo sweep is defined as follows:
 \begin{enumerate}
@@ -98,7 +100,7 @@ with $\Delta E$ being defined by Eq. \eqref{dE}. In a nutshell, a \textit{Metrop
     \item Propose the spin flip $\sigma_i \to - \sigma_i$.
     \item Calculate the difference in energy $\Delta E = E_\text{final} - E_\text{initial}$.
     \item Accept the proposed move with a probability of $\min \qty[e^{-\beta \Delta E}, 1]$.
-    \item Steps $1$ to $4$ are then repeated $\mathcal{N}$ times.       
+    \item Steps $1$ to $4$ are then repeated $\mathcal{N} = L^2$ times.       
 \end{enumerate}
 The Boltzmann sampling performed using Markov Chain Monte Carlo (MCMC) can then be utilized in calculating expectation values of observables as simple statistical averages over the sampled points
 \begin{equation}
@@ -107,7 +109,70 @@ The Boltzmann sampling performed using Markov Chain Monte Carlo (MCMC) can then 
 where we have suppressed the superscript ${}^{(\rho)}$ on the sum denoting sampling over the distribution $\rho(\{\sigma\}) = e^{-\beta E(\{\sigma\})}$.~\\~\\
 The Metropolis MCMC method is thus a conceptually simple and quite universally applicable algorithm. Its applications range from simulations of simple Ising chains to highly non-trivial spin systems. However, the Metropolis algorithm comes with its fair share of problems which we will discuss later. In the next section, we will discuss the relevant statistical physics of the Ising model and the measurement of physical observables.
 
-\section{Physical Observables}
+\section{Physical observables and derived quantities}
+To set the scenery for calculating observable expectation values, we will first begin by discussing the relevant physical observables for the Ising model. Since we are dealing with spin systems, a natural quantity of interest is the magnetization, which acts as the \textit{order parameter} of the Ising phase transition at $T_c \neq 0$. The magnetization per site is defined by the observable
+\begin{equation}
+    m \equiv \frac{1}{\mathcal{N}} \sum_{i=1}^{\mathcal{N}} \sigma_i
+\end{equation} 
+where $\mathcal{N}=L^2$ is the total number of lattice sites. One can explicitly check that an operation which rotates all spins $\sigma_i \to -\sigma_i \:\: \forall \: i$ is a symmetry of the Ising Hamiltonian (Eq. \eqref{ising}). Although we are technically not yet dealing with quantum mechanics, this operation can be denoted as $F = \prod_{i=1}^N X_i$ where $X_i$ denotes a flip of spin at site $i$. Since applying this operation twice is equivalent to identity ($F^2 = \mathds{1}$), we often say that the Ising model possesses a global $\mathbb{Z}_2$ symmetry.~\\~\\
+As a result of this global $\mathbb{Z}_2$ symmetry, both negative and positive magnetization are equally probable. However, in the thermodynamic limit $\mathcal{N} \to \infty$ (infinitely large lattice), if the system attains a state with spins predominantly in one direction below $T < T_c$, then it cannot spontaneously (in a finite time) fluctuate through a series of local spin flips into a state with the opposite magnetization. This is known as the \textit{spontaneous symmetry-breaking} of the global $\mathbb{Z}_2$ symmetry in the Ising model, and can be physically thought of as arising from the limit of a very weak external field. However, in a finite system, such fluctuations are possible and it is possible for $\expval{m} = 0$ for all temperatures $T$, making it difficult to study the phase transition which appears in the thermodynamic limit.~\\~\\
+Therefore, in simulations of finite lattice sizes, \textbf{we instead define the order parameter as} ${\expval{|\boldsymbol{m}|}}$\textbf{.} As the system size increases, the $\expval{|m|}$ curve sharpens close to $T_c$ and approaches the thermodynamic limit symmetry-broken $\expval{m(T)}$ curve.~\\~\\
+Similarly, the other relevant physical observable is the energy density which is simply defined as the energy per site
+\begin{equation}
+    e = \frac{E}{\mathcal{N}} = \frac{-J}{\mathcal{N}} \sum_{\expval{i,j}} \sigma_i \sigma_j
+\end{equation}  
+We can also use magnetization and energy density observables to calculate other derived quantities of interest. In the context of magnetization, we can calculate the magnetic susceptibility 
+\begin{equation}
+    \chi \equiv \pdv{\expval{M}}{h}\eval_{h=0}
+\end{equation}
+i.e. the linear response of magnetization in the weak field limit, i.e.,  $\displaystyle E' = \lim_{h \to 0} (E - hM)$. It is easy to show that the expression for susceptibility simplifies to
+\begin{equation}
+    \chi = \frac{1}{T}\qty(\expval{M^2} - \expval{|M|}^2) = \frac{L^2}{T}\qty(\expval{m^2} - \expval{|m|}^2)
+\end{equation}
+where we have replaced the $\expval{m}$ with $\expval{|m|}$ for reasons discussed previously. Similarly, the specific heat capacity is another quantity of interest which is defined as 
+\begin{equation}
+    C_V = \pdv{\expval{E}}{T} = \frac{L^2}{T^2} \qty(\expval{e^2} - \expval{e}^2)
+\end{equation}
+Finally, we are also interested in the derived \textit{Binder cumulant} which is defined as the kurtosis of the order parameter $\expval{|m|}$
+\begin{equation}
+    U_L = 1 - \frac{\expval{m^2}_L}{3\expval{m^2}_L},
+\end{equation} 
+and the intersection of $U_L$ curves for different lattice side $L$ is used to accurately determine the phase transition point.~\\~\\
+Therefore, the measurements of the set of physical observables $\{|m|, m^2, m^4, e, e^2\}$ is sufficient to determine the $Q$ vs. $T$ curves for all the relevant observables $(e, |m|)$  and derived quantities $(\chi, C_V, U_L)$. Using Monte Carlo simulations, we can calculate the expectation values and statistical errors in these quantities, and use the simulation data to extract the critical exponents, which we will discuss in later sections.
 
-
+\section{Autocorrelation functions}
+All MCMC algorithms are based upon the central idea of performing local or cluster updates to arrive at the next configuration (or the next state in a Markov chain). Naturally, it is reasonable to expect that the observable measurements are temporally correlated and these correlations are quite significant near the transition points. The only way to get around this is to perform the measurements of the observables after a few time steps so as to ensure that subsequent measurements are statistically uncorrelated.  The \textit{autocorrelation function} is a quantitative measure of temporal correlations between measurements. For an observable $\mathcal{O}$, the autocorrelation function is defined as
+\begin{equation}
+    A_\mathcal{O}(t) =   \frac{1}{N-t} \sum_{k=0}^{N-t-1}\frac{\qty(\mathcal{O}(k) - \expval{\mathcal{O}})\cdot\qty(\mathcal{O}(k+t) - \expval{\mathcal{O}})}{\expval{\mathcal{O}^2} - \expval{\mathcal{O}}^2}
+    \label{autocorrelationfn}
+\end{equation}  
+where $\mathcal{O}(k)$'s are the measurements performed at each MC sweep, and $N$ is the total number of MC sampling sweeps. Moreover, the averages in \eqref{autocorrelationfn} are calculated only over the first $N-t$ measurements. 
+\begin{equation}
+    \expval{\mathcal{O}^n} = \frac{1}{N-t} \sum_{k=0}^{N-t-1} \qty[\mathcal{O}(k)]^n
+\end{equation}
+The autocorrelation function is suitably normalized to give values $\in [-1,1]$. For an ergodic simulation, we expect $A_\mathcal{O}(t) \to 0$ as $t \to \infty$; infact, $A_\mathcal{O}(t)$ is expected to fall off as an exponential 
+\begin{equation}
+    A_\mathcal{O}(t) \sim e^{-|t|/\tau },
+\end{equation}
+and $\tau $ is called the \textit{autocorrelation time}. The autocorrelation time is roughly the number of MC steps after which the temporal correlations drop to $1/e \approx 0.37$. A general rule of thumb in MCMC simulations is to \textbf{perform measurements of the observables after every $\boldsymbol{2} \boldsymbol{\tau}$ steps.} For an observable $\mathcal{O}$, we define the \textit{integrated autocorrelation time} $\tau_\text{int}$ as a discretized integration sum
+\begin{align}
+    \tau _{\text{int},\mathcal{O}} & = \frac{1}{2} \sum_{t= -\infty}^{\infty} A_\mathcal{O}(t) = \frac{1}{2} + \sum_{t=1}^{\infty} A_\mathcal{O}(t) 
+    \label{autocorsum}
+\end{align}   
+However, this natural estimator isn't \textit{quite} correct because the autocorrelations $A_\mathcal{O}(t)$ for $t \gg \tau_\text{int}$ contain much noise and little signal. To fix this, we implement the \textit{automatic windowing algorithm} by introducing a cutoff $M$ on the sum
+\begin{equation}
+    \tau_{\text{int}, \mathcal{O}} = \frac{1}{2} + \sum_{t=1}^{M} A_\mathcal{O}(t)
+\end{equation} 
+$M$ is chosen as the smallest integer such that $M \geq 6 \tau_{\text{int}, \mathcal{O}}(M)$. The algorithm can be summarized as follows  
+\begin{enumerate}
+    \setlength{\itemsep}{0.1em}
+    \item Start with some small value of $M$, say $M=50$, and evaluate $\tau _{\text{int}, \mathcal{O}}(50)$.
+    \item Check if $50 \geq 6\tau _{\text{int}, \mathcal{O}}(50)$.
+    \item If not, increase the value of $M$ and repeat until you find a $M$ where $M \geq 6 \tau_{\text{int}, \mathcal{O}}(M)$.           
+\end{enumerate}   
+We take the autocorrelation time $\tau_\text{int}$ of a given $(L, T)$ simulation as the maximum of autocorrelation times for all observables except magnetization $m$. This is because the lack of symmetry-breaking in finite lattices causes the time taken to tunnel between positive and negative $m$ states to be very long, leading to extremely high autocorrelations. 
+\begin{equation}
+    \tau _\text{int} = \text{max}\:\{\tau_{\text{int},|m|},\: \tau_{\text{int}, m^2},\: \tau_{\text{int}, m^4},\: \tau_{\text{int}, e},\: \tau_{\text{int}, e^2}\}
+\end{equation}
+The first run of the simulation is only used to calculate the integrated autocorrelation time $\tau_\text{int}$, and is followed by a subsequent simulation where measurements are taken after every $2 \tau_\text{int}$ steps.
 \end{document}
