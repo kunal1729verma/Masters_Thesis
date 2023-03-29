@@ -106,7 +106,7 @@ The Boltzmann sampling performed using Markov Chain Monte Carlo (MCMC) can then 
 \begin{equation}
     \expval{\mathcal{O}} \approx \frac{1}{N} \sum_{\{\sigma\}} \mathcal{O(\sigma)}
 \end{equation}
-where we have suppressed the superscript ${}^{(\rho)}$ on the sum denoting sampling over the distribution $\rho(\{\sigma\}) = e^{-\beta E(\{\sigma\})}$.~\\~\\
+where we have suppressed the superscript ${}^{(\rho)}$ on the sum denoting sampling over the distribution $\rho(\{\sigma\}) = e^{-\beta E(\{\sigma\})}$. Note that such Monte Carlo averages are always supposed to be taken over \textit{equilibrated} configurations in a Monte Carlo simulation. As discussed earlier, the master equation \eqref{master} ensures the equilibration of the Markov chain's probability distribution after a few steps by taking care of appropriate excess or deficiencies during the initial steps. This initial equilibration period where no measurements are performed is known as the \textit{equilibration time} or the \textit{thermalization time}, often denoted by $t_\text{eq}$.~\\~\\
 The Metropolis MCMC method is thus a conceptually simple and quite universally applicable algorithm. Its applications range from simulations of simple Ising chains to highly non-trivial spin systems. However, the Metropolis algorithm comes with its fair share of problems which we will discuss later. In the next section, we will discuss the relevant statistical physics of the Ising model and the measurement of physical observables.
 
 \section{Physical observables and derived quantities}
@@ -146,11 +146,11 @@ All MCMC algorithms are based upon the central idea of performing local or clust
     A_\mathcal{O}(t) =   \frac{1}{N-t} \sum_{k=0}^{N-t-1}\frac{\qty(\mathcal{O}(k) - \expval{\mathcal{O}})\cdot\qty(\mathcal{O}(k+t) - \expval{\mathcal{O}})}{\expval{\mathcal{O}^2} - \expval{\mathcal{O}}^2}
     \label{autocorrelationfn}
 \end{equation}  
-where $\mathcal{O}(k)$'s are the measurements performed at each MC sweep, and $N$ is the total number of MC sampling sweeps. Moreover, the averages in \eqref{autocorrelationfn} are calculated only over the first $N-t$ measurements. 
+where $\mathcal{O}(k)$'s are the measurements performed at each MC sweep, and $N$ is the total number of MC sampling sweeps. Moreover, the averages in Eq. \eqref{autocorrelationfn} are calculated only over the first $N-t$ measurements. 
 \begin{equation}
     \expval{\mathcal{O}^n} = \frac{1}{N-t} \sum_{k=0}^{N-t-1} \qty[\mathcal{O}(k)]^n
 \end{equation}
-The autocorrelation function is suitably normalized to give values $\in [-1,1]$. For an ergodic simulation, we expect $A_\mathcal{O}(t) \to 0$ as $t \to \infty$; infact, $A_\mathcal{O}(t)$ is expected to fall off as an exponential 
+The autocorrelation function is suitably normalized to give values $\in [-1,1]$. For an ergodic simulation, we expect $A_\mathcal{O}(t) \to 0$ as $t \to \infty$; infact, $A_\mathcal{O}(t)$ is expected to fall off as an exponential
 \begin{equation}
     A_\mathcal{O}(t) \sim e^{-|t|/\tau },
 \end{equation}
@@ -174,5 +174,102 @@ We take the autocorrelation time $\tau_\text{int}$ of a given $(L, T)$ simulatio
 \begin{equation}
     \tau _\text{int} = \text{max}\:\{\tau_{\text{int},|m|},\: \tau_{\text{int}, m^2},\: \tau_{\text{int}, m^4},\: \tau_{\text{int}, e},\: \tau_{\text{int}, e^2}\}
 \end{equation}
-The first run of the simulation is only used to calculate the integrated autocorrelation time $\tau_\text{int}$, and is followed by a subsequent simulation where measurements are taken after every $2 \tau_\text{int}$ steps.
+The first run of the simulation is only used to calculate the integrated autocorrelation time $\tau_\text{int}$, followed by a second run where measurements are taken after every $2 \tau_\text{int}$ steps. These statistically independent measurements can then be used to compute the Monte Carlo expectation values and errors.
+%%% FIG %%%
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}[b]{0.55\textwidth}  %keep total sum <1 to show in same line
+        \centering
+        \includegraphics[width=\textwidth]{images/monte_carlo/autocorrfn.pdf}
+    \end{subfigure}
+    \caption{Exponential decay of energy density autocorrelation function.}
+    \label{}
+\end{figure}
+%%% FIG %%%
+\section{Estimation of expectation values and errors}
+Once we have a set of uncorrelated Monte Carlo observable measurements, it is a simple task to calculate the mean and standard deviation of the uncorrelated observable measurement data $(|m|, e)$. However, for quantities that are not measured directly in the simulation but are computed as non-linear combinations of basic observables $(\chi, C_V, U_L)$, deriving a propagated error is a highly non-trivial task. Therefore, we utilize \textit{Jackknife analysis} to create large blocks/bins of the data and perform the required computations.
+
+\subsection{Jackknife binning analysis}
+We begin by binning the $N$ measurements of observable $\mathcal{O}$ into $N_B$ non-overlapping bins of length $k$ such that $N_B k = N$, and construct a shorter time series of bin averages. The bin average for the $j^\text{th}$ bin is defined as
+\begin{equation}
+    \mathcal{O}^{(B)}_j \equiv \frac{1}{k} \sum_{i = 0}^{k-1} \mathcal{O}_{jk+i} 
+\end{equation}
+Below is a visual representation of the binning process 
+\begin{gather*}
+    \{\underbrace{\{\mathcal{O}_0, \mathcal{O}_1 \ldots \mathcal{O}_{k-1}\}}_{\overline{\mathcal{O}}^{(B)}_0}, \underbrace{\{\mathcal{O}_{k}, \mathcal{O}_{k+1} \ldots \mathcal{O}_{2k-1}\}}_{\overline{\mathcal{O}}^{(B)}_1}, \ldots\ldots ,\underbrace{\{\mathcal{O}_{(N_B-1)k}, \mathcal{O}_{(N_B-1)k+1} \ldots \mathcal{O}_{N-1}\}}_{\overline{\mathcal{O}}^{(B)}_{N_B-1}}\} \\
+    \Downarrow \\
+    \{
+        \overline{\mathcal{O}}^{(B)}_0, \overline{\mathcal{O}}^{(B)}_1, \overline{\mathcal{O}}^{(B)}_2 \ldots ,\overline{\mathcal{O}}^{(B)}_{N_B-1} 
+    \}
+\end{gather*}
+Knowing the bin averages for the observables $\mathcal{O} \in \{\abs{m}, m^2, m^4, e, e^2 \}$, the bin estimates of the derived quantities are estimated as
+\begin{equation}
+    \chi^{(B)}_j = \beta \: L^2\:\qty(\overline{m^2}^{(B)}_j - \qty[\overline{|m|}^{(B)}_j]^2)
+\end{equation}
+\begin{equation}
+    {C_V}^{(B)}_j = \beta ^2\: L^2 \:\qty(\overline{e^2}^{(B)}_{\:\:\:j} - \qty[\overline{e}^{(B)}_j]^2)
+\end{equation}
+\begin{equation}
+    {U_L}^{(B)}_{\:\:\:j} = 1 - \frac{\overline{m^4}^{(B)}_j}{3\qty[\overline{m^2}^{(B)}_j]^2}
+\end{equation}
+% \begin{gather}
+%     \chi^{(B)}_j = \beta \: L^2\:\qty(\overline{m^2}^{(B)}_j - \qty[\overline{|m|}^{(B)}_j]^2) \\[4pt] 
+%     {C_V}^{(B)}_j = \beta ^2\: L^2 \:\qty(\overline{e^2}^{(B)}_{\:\:\:j} - \qty[\overline{e}^{(B)}_j]^2) \\
+%     {U_L}^{(B)}_{\:\:\:j} = 1 - \frac{\overline{m^4}^{(B)}_j}{3\qty[\overline{m^2}^{(B)}_j]^2}
+% \end{gather}
+We denote these derived quantities by $\rho $ such that $\rho \in \{\chi , C_V, U_L\}$. The means over the bin averages (for $\mathcal{O}$) and bin estimates (for $\rho $) are also calculated
+\begin{subequations}
+    \begin{gather}
+        \overline{\mathcal{O}} = \overline{\overline{\mathcal{O}}^{(B)}_j} = \frac{1}{N_B} \sum_{i=0}^{N_B-1} \overline{\mathcal{O}}^{(B)}_j \\
+        \overline{\mathcal{\rho }} = \overline{{\rho }^{(B)}_j} = \frac{1}{N_B} \sum_{i=0}^{N_B-1} {\rho }^{(B)}_j
+    \end{gather}       
+    \label{binaverage} 
+\end{subequations}
+\!\!\!For the Jackknife error analysis, we begin by constructing the same number ($N_B$) of Jackknife bins containing all data but the $j^\text{th}$ bin of the previously mentioned binning method. The Jackknife averages for these new bins are defined as 
+\begin{gather}
+    \overline{\mathcal{O}}^{(J)}_j = \frac{N\overline{\mathcal{O}} - k \overline{\mathcal{O}}^{(B)}_j}{N - k} \\
+    \overline{\rho }^{(J)}_j = \frac{N\overline{\rho } - k {\rho}^{(B)}_j}{N - k}
+\end{gather}          
+Since we are using the same data again and again while forming the Jackknife bins, these bins are trivially correlated, and as a result, the Jackknife bin variance is much smaller than is expected. This can be corrected by multiplying the sample variance by another factor of $(N_B-1)^2$ resulting in 
+\begin{subequations}
+    \begin{gather}
+        \delta \overline{\mathcal{O}} = \sqrt{\frac{N_B-1}{N_B} \sum_{j=0}^{N_B-1}\qty(\overline{\mathcal{O}}^{(J)}_j - \overline{\mathcal{O}})^2} \\
+        \delta \rho  = \sqrt{\frac{N_B-1}{N_B} \sum_{j=0}^{N_B-1}\qty(\overline{\rho }^{(J)}_j - \overline{\rho})^2}
+    \end{gather}     
+    \label{jackknifeerror}
+\end{subequations}
+\!\!\!Therefore, using the calculated values from Eq. \eqref{binaverage} and Eq. \eqref{jackknifeerror}, we get our mean and error estimates of the observable expectation values and the derived physical quantities
+\[
+    \text{Estimate of }\expval{\mathcal{O}} \rightarrow \overline{\mathcal{O}} \pm \delta \overline{\mathcal{O}}, \qquad\qquad \text{Estimate of }{\rho } \rightarrow \overline{\rho } \pm \delta {\rho } 
+\]
+
+\section{Critical slowing down near phase transition}
+Phase transitions, in general, are associated with a discontinuity in the first derivative (for first-order phase transitions) or a divergence in the second derivative (for second-order phase transitions). For example, the classical Ising model is characterized by a second-order phase transition at a critical temperature $T_c$. Above this temperature $(T>T_c)$, the spins are randomly aligned and correspond to the \textit{paramagnetic} phase. Below this temperature $(T<T_c)$, the spins majorly align in one of the directions to form the \textit{ferromagnetic} phase of the system.
+%%% FIG %%%
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}  %keep total sum <1 to show in same line
+        \centering
+        \includegraphics[width=\textwidth]{images/monte_carlo/ising_config_128.pdf}
+        \caption{Domain formation near $T_c$ $(T=2.30)$.}
+        \label{domain}
+    \end{subfigure}
+    \hspace{1em}  %\hfill
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/monte_carlo/metropolis_autocorr_time.pdf}
+        \caption{High autocorrelation times near $T_c$ for Metropolis.}
+        \label{autocorr_metropolis}
+    \end{subfigure}
+    \caption{Critical slowing down near the transition point in the Ising model.}
+    \label{}
+\end{figure}
+%%% FIG %%%
+\FloatBarrier \!\!\!\!\!\!\!\!\!
+In the paramagnetic phase, at high temperatures, the spin configuration is random and there are little to no spatial correlations. However, as the temperature decreases, we enter the paramagnetic phase and spins tend to align themselves with their neighbors. As a result, we form large \textit{domains} or \textit{clusters} of spins and we have a high degree of spatial correlation (Fig. \ref{domain}), often measured by the parameter $\xi$, known as the correlation length. As one approaches the critical temperature $T_c$ from the above, the onset of strong correlations results in \textit{domain flips} which cause high fluctuations in magnetization and energy. Since the Metropolis algorithm performs local updates and the spins have a strong spatial correlation, we need to wait for a long autocorrelation time to get independent subsequent measurements (Fig. \ref{autocorr_metropolis}). This is known in literature as \textit{critical slowing down}.~\\~\\
+The phenomena of critical slowing down is primarily dependent on the algorithm used. Since local update (such as Metropolis) take a long time to flip the domains and generate statistically independent configurations, they have a significantly higher computational cost as a tradeoff to their conceptual simplicity.~\\~\\
+Therefore, it should be intuitively clear that some sort of non-local updates should be able to alleviate this problem by flipping entire clusters of spins. This class of algorithms is generally known as \textit{Cluster-update algorithms}. Although the critical slowing down can be significantly reduced with cluster algorithms, they are still far less general applicable than local update algorithms.
+
+\section{Wolff Cluster algorithm}
+
 \end{document}
