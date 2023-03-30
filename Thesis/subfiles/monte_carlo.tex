@@ -2,7 +2,7 @@
 \begin{document}
 
 \chapter{Monte Carlo simulations for spin systems}
-The purpose of this chapter is to give a brief introduction to Monte Carlo simulations and their applications in the numerical analysis of phase transitions in statistical physics models. We will start by illustrating the general idea of importance sampling Monte Carlo methods, followed by the different type of update schemes (Metropolis, Wolff-cluster, etc.) to sample non-uniform distributions efficiently. We will also pay attention to the topic of statistical analysis of the generated data via autocorrelation analysis and statistical error analysis. For illustration purposes, we will primarily focus our attention on the simplest spin model, i.e.,the two-dimensional Ising model (without external field) and discuss the finite-temperature critical phenomena and phase transition. Finally, we will demonstrate the calculation of the critical exponents of the two-dimensional Ising model using finite-size scaling analysis of relevant physical observables. Although we start with a classical statistical model, these ideas can be generalized and are applicable in simulations of quantum-spin systems, where they become the \textit{Quantum Monte Carlo} (QMC) methods. 
+The purpose of this chapter is to give a brief introduction to Monte Carlo simulations and their applications in the numerical analysis of phase transitions in statistical physics models. We will start by illustrating the general idea of importance sampling Monte Carlo methods, followed by the different type of update schemes (Metropolis, Wolff-cluster, etc.) to sample non-uniform distributions efficiently. We will also pay attention to the topic of statistical analysis of the generated data via autocorrelation analysis and statistical error analysis. For illustration purposes, we will primarily focus our attention on the simplest spin model, i.e., the two-dimensional Ising model (without external field) and discuss the finite-temperature critical phenomena and phase transition. Finally, we will demonstrate the calculation of the critical exponents of the two-dimensional Ising model using finite-size scaling analysis of relevant physical observables. Although we start with a classical statistical model, these ideas can be generalized and are applicable in simulations of quantum-spin systems, where they become the \textit{Quantum Monte Carlo} (QMC) methods. 
 
 \section{Introduction to Monte Carlo methods}
 Monte Carlo simulations are an important and broad class of stochastic methods that utilize randomness to solve deterministic problems efficiently. To show their utility, we will start with a simple and illustrative example. Consider the calculation of a thermal expectation value of an observable $Q(x)$ in statistical physics;
@@ -67,14 +67,19 @@ One possible solution of this condition is to satisfy it term-by-term $\forall \
 which can be written as a ratio 
 \begin{equation}
     \frac{P(X_j \to X_i)}{P(X_i \to X_j)} = \frac{\rho(X_i)}{\rho(X_j)},
-\end{equation}
-also known as the \textit{detailed balance condition}. Although here we start with an ensemble distributed according to the probability distribution $\rho$, for practical purposes, neither do we need to start from the same distribution, nor do we require an ensemble of configurations. In practice, the master equation Eq. \eqref{master} takes care of the excess or deficiency and equilibrates after a characteristic \textit{equilibration time} of Markov chain updates.~\\~\\
-The transition probability $P(X_i \to X_j)$ can further be written as a product of the update attempt and the proposal acceptance probabilities. Since the proposal probabilities should be uniform, the detailed balance condition in terms of acceptance probabilities becomes 
-\begin{equation}
-    \frac{P_\text{accept}(X_j \to X_i)}{P_\text{accept} (X_i \to X_j)} = \frac{\rho(X_i)}{\rho(X_j)}
     \label{detailedbalance}
 \end{equation}
-Starting from the detailed balance condition, one can define stochastic algorithms, such as Monte Carlo simulations, which generate configurations according to a desired distribution. One such common algorithm is the \textit{Metropolis algorithm} with the solution to Eq. \eqref{detailedbalance} as 
+also known as the \textit{detailed balance condition}. Although here we start with an ensemble distributed according to the probability distribution $\rho$, for practical purposes, neither do we need to start from the same distribution, nor do we require an ensemble of configurations. In practice, the master equation Eq. \eqref{master} takes care of the excess or deficiency and equilibrates after a characteristic \textit{equilibration time} of Markov chain updates.~\\~\\
+The transition probability $P(X_i \to X_j)$ can further be written as a product of the update proposal and the proposal acceptance probabilities 
+\begin{equation}
+    P(X_i \to X_j) = \underbrace{\mathcal{A}(X_i \to X_j)}_{\text{propose }X_i \to X_j} \cdot \underbrace{P_\text{accept}(X_i \to X_j)}_{\text{accept }X_i \to X_j}
+\end{equation}
+Since the proposal probabilities should be uniform $\mathcal{A}(X_i \to X_j) = \text{constant}$ , the detailed balance condition in terms of acceptance probabilities becomes 
+\begin{equation}
+    \frac{P_\text{accept}(X_j \to X_i)}{P_\text{accept} (X_i \to X_j)} = \frac{\rho(X_i)}{\rho(X_j)}
+    \label{detailedbalance_metropolis}
+\end{equation}
+Starting from the detailed balance condition, one can define stochastic algorithms, such as Monte Carlo simulations, which generate configurations according to a desired distribution. One such common algorithm is the \textit{Metropolis algorithm} with the solution to Eq. \eqref{detailedbalance_metropolis} as 
 \begin{equation}
     P_\text{accept}(X_i \to X_j) = \min \qty[\frac{\rho(X_j)}{\rho(X_i)}, 1]
 \end{equation}
@@ -256,7 +261,7 @@ Since we are using the same data again and again while forming the Jackknife bin
 \]
 
 \section{Critical slowing down near phase transition}
-Phase transitions, in general, are associated with a discontinuity in the first derivative (for first-order phase transitions) or a divergence in the second derivative (for second-order phase transitions). For example, the classical Ising model is characterized by a second-order phase transition at a critical temperature $T_c$. Above this temperature $(T>T_c)$, the spins are randomly aligned and correspond to the \textit{paramagnetic} phase. Below this temperature $(T<T_c)$, the spins majorly align in one of the directions to form the \textit{ferromagnetic} phase of the system.
+Phase transitions, in general, are associated with a discontinuity in the first derivative (for first-order phase transitions) or a divergence in the second derivative (for second-order phase transitions). For example, the classical Ising model is characterized by a second-order phase transition at a critical temperature $T_c$. Above this temperature $(T>T_c)$, the spins are randomly aligned and correspond to the \textit{paramagnetic} phase. Below this temperature $(T<T_c)$, the spins majorly align in one of the directions to form the \textit{ferromagnetic} phase of the system.~\\~\\
 %%% FIG %%%
 \begin{figure}[!htb]
     \centering
@@ -277,11 +282,52 @@ Phase transitions, in general, are associated with a discontinuity in the first 
     \label{}
 \end{figure}
 %%% FIG %%%
-\FloatBarrier \!\!\!\!\!\!\!\!\!\!\!
-In the paramagnetic phase, at high temperatures, the spin configuration is random and there are little to no spatial correlations. However, as the temperature decreases, we enter the paramagnetic phase and spins tend to align themselves with their neighbors. As a result, we form large \textit{domains} or \textit{clusters} of spins and we have a high degree of spatial correlation (Fig. \ref{domain}), often measured by the parameter $\xi$, known as the correlation length. As one approaches the critical temperature $T_c$ from the above, the onset of strong correlations results in \textit{domain flips} which cause high fluctuations in magnetization and energy. Since the Metropolis algorithm performs local updates and the spins have a strong spatial correlation, we need to wait for a long autocorrelation time to get independent subsequent measurements (Fig. \ref{autocorr_metropolis}). This is known in literature as \textit{critical slowing down}.~\\~\\
+% \FloatBarrier \!\!\!\!\!\!\!\!\!\!\!
+\!\!\!In the paramagnetic phase, at high temperatures, the spin configuration is random and there are little to no spatial correlations. However, as the temperature decreases, we enter the paramagnetic phase and spins tend to align themselves with their neighbors. As a result, we form large \textit{domains} or \textit{clusters} of spins and we have a high degree of spatial correlation (Fig. \ref{domain}), often measured by the parameter $\xi$, known as the correlation length. As one approaches the critical temperature $T_c$ from the above, the onset of strong correlations results in \textit{domain flips} which cause high fluctuations in magnetization and energy. Since the Metropolis algorithm performs local updates and the spins have a strong spatial correlation, we need to wait for a long autocorrelation time to get independent subsequent measurements (Fig. \ref{autocorr_metropolis}). This is known in literature as \textit{critical slowing down}.~\\~\\
 The phenomena of critical slowing down is primarily dependent on the algorithm used. Since local update (such as Metropolis) take a long time to flip the domains and generate statistically independent configurations, they have a significantly higher computational cost as a tradeoff to their conceptual simplicity.~\\~\\
 Therefore, it should be intuitively clear that some sort of non-local updates should be able to alleviate this problem by flipping entire clusters of spins. This class of algorithms is generally known as \textit{Cluster-update algorithms}. Although the critical slowing down can be significantly reduced with cluster algorithms, they are still far less general applicable than local update algorithms.
 
 \section{Wolff Cluster algorithm}
+The acceptance probability of local update algorithms is very low around the critical regions making it an inefficient way to probe the critical properties of the system. In this section, we will discuss the \textit{Wolff cluster algorithm}, which is a generalization of the Swendsen-Wang clyster dynamics and is even more efficient. The Wolff cluster algorithm works by identifying domains of identically oriented spins and performing a flip operation on the entire cluster.
+\subsection{Deriving the probabilities for Wolff algorithm}
+We will start by considering the example of two states $a$ and $b$ which differ by flipping of a cluster of identically oriented spins.~\\~\\
+This can be done by starting the construction of a cluster which starts by seeding a random spin and iteratively adding neighboring sites of the same spin with a probability $p$. This means if a spin $i$ is in the cluster, and a neighboring site $j$ is not (and if $\sigma_i = \sigma_j$), then the link $\expval{i,j}$ should be added into the cluster with a probability $p$. Once the construction has stopped, we will still have $n_\text{same}$ identical spin links just outside the cluster boundary which were not added into the cluster. Similarly, we say the number of opposite spin links which have a spin opposite to that of the cluster is $n_\text{opp}$. Also, $n_\text{same} + n_\text{opp} = N$ where $N$ is the total number of links the cluster makes with outside spins.~\\~\\  
+Since the probability of a site not being accepted into the cluster is $(1-p)$, the ``a-priori'' probability of proposing a cluster flip from $a \to b$ is 
+\begin{equation}
+    \mathcal{A}(a \to b) = \mathcal{A}_\text{interior} \cdot (1-p)^{n_\text{same}},
+\end{equation}
+where $\mathcal{A}_\text{interior}$ is just a product of probabilities for links that were accepted into the cluster. In the reverse direction, if we would have started with the state $b$ and tried constructing a cluster and flipping it to go to state $a$, the ``a-priori'' probability to propose a cluster flip from $b \to a$ is 
+\begin{equation}
+    \mathcal{A}(b \to a) = \mathcal{A}_\text{interior} \cdot (1-p)^{n_\text{opp}}
+\end{equation}
+because in state $b$, the unaccepted but identical spins were exactly those which had the opposite spin in state $a$. Therefore, if we invoke the detailed balance condition Eq. \eqref{detailedbalance} for the cluster flips to get
+\begin{equation}
+    \frac{\mathcal{A}(a \to b) \cdot P_\text{accept}(a \to b)}{\mathcal{A}(b \to a) \cdot P_\text{accept}(b \to a)} = e^{-\beta(E_b - E_a)}
+\end{equation}
+Now the energies of states $a$ and $b$ can be computed as nearest neighbor interaction \textit{inside the cluster} and the interaction \textit{outside the cluster}. Since $a$ and $b$ only differ by a cluster flip, the only difference appears in the interaction at the cluster boundary
+\begin{subequations}
+    \begin{gather}
+        E_a = E_\text{interior} + E_\text{exterior} - n_\text{same}J + n_\text{opp} J, \\
+        E_b = E_\text{interior} + E_\text{exterior} - n_\text{opp}J + n_\text{same} J \\ 
+        \implies E_b - E_a = 2J(n_\text{same} - n_\text{opp})
+    \end{gather}
+\end{subequations}
+Therefore, putting in the expressions into the detailed balance condition, we get
+\begin{subequations}
+    \begin{gather}
+        \frac{P_\text{accept}(b \to a)}{P_\text{accept}(a \to b)} = e^{-2\beta J(n_\text{same} - n_\text{opp})} (1-p)^{n_\text{opp} - n_\text{same}} \\
+        \implies \frac{P_\text{accept}(b \to a)}{P_\text{accept}(a \to b)} = \qty(\frac{e^{-2\beta J}}{1-p})^{n_\text{same} - n_\text{opp}}
+    \end{gather}
+\end{subequations}
+Thus, given a value of $p$ (which can be a function of $\beta$ and $J$), we can get the corresponding acceptance probability for the cluster algorithm. An interesting coincidence occurs when 
+\begin{equation}
+    p = 1 - \exp(-2\beta J).
+\end{equation}
+This special choice of probability function yields a \textit{rejection-free} algorithm whose acceptance probability is always 1. 
+\begin{equation}
+    \eval{\frac{P_\text{accept}(b \to a)}{P_\text{accept}(a \to b)}}_{p = 1 - \exp(-2\beta J)} = \qty(\frac{e^{-2\beta J}}{e^{-2\beta J}})^{n_\text{same} - n_\text{opp}} = 1
+\end{equation}
+Thus, any proposed cluster construction and flipping is an always accepted move in the cluster algorithm. The cluster algorithm with the particular choice of $p = 1 - e^{-2\beta J}$ is known as the Wolff cluster algorithm. 
 
+\subsection{Implementation of the Wolff algorithm}
 \end{document}
