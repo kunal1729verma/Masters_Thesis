@@ -2,7 +2,7 @@
 \begin{document}
 
 \chapter{Monte Carlo simulations for spin systems}
-The purpose of this chapter is to give a brief introduction to Monte Carlo simulations and their applications in the numerical analysis of phase transitions in statistical physics models. We will start by illustrating the general idea of importance sampling Monte Carlo methods, followed by the different type of update schemes (Metropolis, Wolff-cluster, etc.) to sample non-uniform distributions efficiently. We will also pay attention to the topic of statistical analysis of the generated data via autocorrelation analysis and statistical error analysis. For illustration purposes, we will primarily focus our attention on the simplest spin model, i.e., the two-dimensional Ising model (without external field) and discuss the finite-temperature critical phenomena and phase transition. Finally, we will demonstrate the calculation of the critical exponents of the two-dimensional Ising model using finite-size scaling analysis of relevant physical observables. Although we start with a classical statistical model, these ideas can be generalized and are applicable in simulations of quantum-spin systems, where they become the \textit{Quantum Monte Carlo} (QMC) methods. 
+The purpose of this chapter is to give a brief introduction to Monte Carlo simulations and their applications in the numerical analysis of phase transitions in statistical physics models. We will start by illustrating the general idea of importance sampling Monte Carlo methods, followed by the different type of update schemes (Metropolis, Wolff-cluster, etc.) to sample non-uniform distributions efficiently. We will also pay attention to the topic of statistical analysis of the generated data via autocorrelation analysis and statistical error analysis. For illustration purposes, we will primarily focus our attention on the simplest spin model, i.e., the two-dimensional Ising model (without external field) and discuss the finite-temperature critical phenomena and phase transition. Finally, we will demonstrate the calculation of the critical exponents of the two-dimensional Ising model using finite-size scaling analysis of relevant physical observables. Although we start with a classical statistical model, these ideas can be generalized and are applicable in simulations of quantum-spin systems, where they become the \textit{Quantum Monte Carlo} (QMC) methods [Janke, Sandvik]. 
 
 \section{Introduction to Monte Carlo methods}
 Monte Carlo simulations are an important and broad class of stochastic methods that utilize randomness to solve deterministic problems efficiently. To show their utility, we will start with a simple and illustrative example. Consider the calculation of a thermal expectation value of an observable $Q(x)$ in statistical physics;
@@ -110,7 +110,7 @@ This leads to the Metropolis acceptance probability for the Ising model spin fli
     P_\text{accept}(\sigma_i \to -\sigma_i) = \min \qty[e^{-\beta \Delta E}, 1]
     \label{metropolis_ising}
 \end{equation}
-with $\Delta E$ being defined by Eq. \eqref{dE}. In a nutshell, a \textit{Metropolis Monte Carlo} simulation of the Ising model consists of performing such spin flip proposals by selecting the spin $\sigma_i$ to be flipped at random and generating a Markov chain distributed according to the Boltzmann distribution. A single \textit{Monte Carlo sweep} then consists of $L^2$ such spin flip proposals so that roughly each lattice site gets an equal chance to flip, where $L$ denotes the side length of the square lattice. In algorithmic language, a Monte Carlo sweep is defined as follows:
+with $\Delta E$ being defined by Eq. \eqref{dE}. In a nutshell, a \textit{Metropolis Monte Carlo} simulation of the Ising model consists of performing such spin flip proposals by selecting the spin $\sigma_i$ to be flipped at random and generating a Markov chain distributed according to the Boltzmann distribution. A single \textit{Monte Carlo sweep} then consists of $L^2$ such spin flip proposals so that roughly each lattice site gets an equal chance to flip, where $L$ denotes the side length of the square lattice. As a step-by-step procedure, a Monte Carlo sweep is defined as follows:
 \begin{enumerate}
     \setlength\itemsep{0.3em}
     \item Randomly choose a spin $\sigma_i$ on the lattice.
@@ -176,7 +176,7 @@ and $\tau $ is called the \textit{autocorrelation time}. The autocorrelation tim
     \tau _{\text{int},\mathcal{O}} & = \frac{1}{2} \sum_{t= -\infty}^{\infty} A_\mathcal{O}(t) = \frac{1}{2} + \sum_{t=1}^{\infty} A_\mathcal{O}(t) 
     \label{autocorsum}
 \end{align}   
-However, this natural estimator isn't \textit{quite} correct because the autocorrelations $A_\mathcal{O}(t)$ for $t \gg \tau_\text{int}$ contain much noise and little signal. To fix this, we implement the \textit{automatic windowing algorithm} by introducing a cutoff $M$ on the sum
+However, this natural estimator isn't \textit{quite} correct because the autocorrelations $A_\mathcal{O}(t)$ for $t \gg \tau_\text{int}$ contain much noise and little signal. To fix this, we implement the \textit{automatic windowing algorithm} [Sokal] by introducing a cutoff $M$ on the sum
 \begin{equation}
     \tau_{\text{int}, \mathcal{O}} = \frac{1}{2} + \sum_{t=1}^{M} A_\mathcal{O}(t)
 \end{equation} 
@@ -288,7 +288,7 @@ The phenomena of critical slowing down is primarily dependent on the algorithm u
 Therefore, it should be intuitively clear that some sort of non-local updates should be able to alleviate this problem by flipping entire clusters of spins. This class of algorithms is generally known as \textit{Cluster-update algorithms}. Although the critical slowing down can be significantly reduced with cluster algorithms, they are still far less general applicable than local update algorithms.
 
 \section{Wolff Cluster algorithm}
-The acceptance probability of local update algorithms is very low around the critical regions making it an inefficient way to probe the critical properties of the system. In this section, we will discuss the \textit{Wolff cluster algorithm}, which is a generalization of the Swendsen-Wang clyster dynamics and is even more efficient. The Wolff cluster algorithm works by identifying domains of identically oriented spins and performing a flip operation on the entire cluster.
+The acceptance probability of local update algorithms is very low around the critical regions making it an inefficient way to probe the critical properties of the system. In this section, we will discuss the \textit{Wolff cluster algorithm}, which is a generalization of the Swendsen-Wang clyster dynamics and is even more efficient. The Wolff cluster algorithm works by identifying domains of identically oriented spins and performing a flip operation on the entire cluster [Krauth].
 \subsection{Deriving the probabilities for Wolff algorithm}
 We will start by considering the example of two states $a$ and $b$ which differ by flipping of a cluster of identically oriented spins.~\\~\\
 This can be done by starting the construction of a cluster which starts by seeding a random spin and iteratively adding neighboring sites of the same spin with a probability $p$. This means if a spin $i$ is in the cluster, and a neighboring site $j$ is not (and if $\sigma_i = \sigma_j$), then the link $\expval{i,j}$ should be added into the cluster with a probability $p$. Once the construction has stopped, we will still have $n_\text{same}$ identical spin links just outside the cluster boundary which were not added into the cluster. Similarly, we say the number of opposite spin links which have a spin opposite to that of the cluster is $n_\text{opp}$. Also, $n_\text{same} + n_\text{opp} = N$ where $N$ is the total number of links the cluster makes with outside spins.~\\~\\  
@@ -330,4 +330,288 @@ This special choice of probability function yields a \textit{rejection-free} alg
 Thus, any proposed cluster construction and flipping is an always accepted move in the cluster algorithm. The cluster algorithm with the particular choice of $p = 1 - e^{-2\beta J}$ is known as the Wolff cluster algorithm. 
 
 \subsection{Implementation of the Wolff algorithm}
+In this subsection, we will try to discuss an algorithmic implementation of Wolff clusters so that it can be easily coded into a Monte Carlo program.~\\~\\
+Before starting, we will assume we are working with a 2-dimensional spin configuration and we aim to generate configurations distributed according to the Boltzmann distribution using Monte Carlo evolution with transition probabilities given by the Wolff scheme, which is the fastest currently known simulation method for the Ising model. One Wolff algorithm step is then defined in the following step-by-step procedure,
+\begin{enumerate}
+    \setlength\itemsep{0.3em}
+    \item Randomly choose a site $i$ on the lattice with the spin $\sigma_i$.
+    \item Label the neighbors of $i$ as $j$. Add them to a temporary set. Call this set $N_\text{temp}$. 
+    \item If $\sigma_i = \sigma_j$, add the neighbor $j$ from set $N_\text{temp}$ to the cluster $\mathcal{C}$  with a probability of $p = 1 - e^{-2\beta J}$.
+    \item Repeat step 2 for all the neighbors in set $N_\text{temp}$.
+    \item For sites that are \textit{newly added} to the cluster, check for neighboring identical spins and add them to the cluster $\mathcal{C}$ by repeating steps 2 to 4.
+    \item Keep repeating till no more spins are added to the cluster $\mathcal{C}$.
+    \item Once the cluster is constructed, flip all the spins, i.e., $\forall \:j \: \in \mathcal{C} \: | \: \sigma_j \to - \sigma_j$.
+\end{enumerate}
+More concisely, a single sweep of the Monte Carlo Wolff algorithm in \texttt{psuedocode language} is given below from [Krauth]. The sets $\mathcal{F}_\text{old}$ and $\mathcal{F}_\text{new}$ denote the frontier of the cluster at $(n-1)^\text{th}$ and $n^\text{th}$ steps, respectively. The set $\mathcal{C}$ contains the sites belonging to the cluster.~\\~\\
+\begin{algorithm}{wolff-cluster}
+    \> $i:=\text{random site}$; \\
+    \> $\mathcal{C}:=\{ i \}$; \\
+    \> $\mathcal{F}_{\text{old}}:=\{i \};$\\
+    \>{\bf while} $\mathcal{F}_{\text{old}} \neq \{ \}$ {\bf do}\\
+    \>{\bf begin}\\
+    \>\> $\mathcal{F}_{\text{new}}:=\{ \};$\\
+    \>\>{\bf for} $\forall\ i\ \in\ \mathcal{F}_{\text{old}}$ {\bf do}\\
+    \>\>{\bf begin}\\
+    \>\>\>{\bf for} $\forall\ j\ \text{neighbor of $i$ with $\sigma_i=\sigma_j$},\ j
+     \not \in \mathcal{C} $ {\bf do}\\
+    \>\>\>{\bf begin}\\
+    \>\>\>\>{\bf if} $\text{ran}[0,1] < p$ {\bf then}\\
+    \>\>\>\>{\bf begin}\\
+    \>\>\>\>\>$\mathcal{F}_{\text{new}}:= \mathcal{F}_{\text{new}}\cup \{j\};$\\
+    \>\>\>\>\>$\mathcal{C}:= \mathcal{C} \cup \{j\};$\\
+    \>\>\>\>{\bf end}\\
+    \>\>\>{\bf end}\\
+    \>\>{\bf end}\\
+    \>\>$\mathcal{F}_{\text{old}}:= \mathcal{F}_{\text{new}};$\\
+    \>{\bf end}\\
+    \>{\bf for} $\forall\ i\ \in\ \mathcal{C}$ {\bf do}\\
+    \>$\sigma_i:= -\sigma_i;$\\
+\end{algorithm}
+The resulting dynamics is ergodic and obeys detailed balance.
+\section{Results}
+We have now setup our complete machinery for calculating physical observable expectation values (and errors) using Monte Carlo Wolff algorithm simulations. The workflow of the Monte Carlo code is summarized in the following section.
+
+\subsection{Structure of the code}
+The \texttt{ising} executable program calculates the expectation values of various observables and physical quantities derived from them, along with error bars. Each iteration of the program runs for a single $(L, T)$ pair. The program is structured into four parts
+\begin{itemize}[label={}]
+    \item \textbf{Part 1} \:\:\: A preliminary Monte Carlo run to collect autocorrelated observable measurements after the system equilibrates.
+    \item \textbf{Part 2} \:\:\: Calculation of the integrated autocorrelation time $\tau_\text{int}$ using the autocorrelated measurements. 
+    \item \textbf{Part 3} \:\:\: The main Monte Carlo run with observable measurements being taken after every $2\tau_\text{int}$ MC sweeps to ensure collection of uncorrelated measurements.
+    \item \textbf{Part 4} \:\:\: Calculating observable expectation values and derived physical quantities with error bars using jackknife binning method.  
+\end{itemize} 
+After obtaining the results of expectation values and derived physical quantities (with error bars) for a range of temperatures, we perform finite-size scaling analysis on the data to extract the critical exponents of the 2D Ising Model. The \texttt{ising-2d} source code is written in \texttt{C++} and the files can be accessed on the following link - \href{https://github.com/kunal1729verma/ising-2d}{\texttt{ising-2d} on GitHub}.
+
+\subsection{Simulation results}
+The following parameters were used in the 2D Ising model simulations for lattice sizes of $L = 8, 16, 32, 64, 128$. Here, we have used the Wolff scheme to simulate the Markov chain Monte Carlo procedure instead of the Metropolis algorithm for reasons discussed in earlier sections. As a short remark on units, we are using the natural units where $k_B = 1$, so our units of temperature and energy are identical. We have also set the coupling paramater as unity \texttt{J = 1.0}.
+\begin{itemize}[label={}]    
+    \setlength{\itemsep}{0.1em}
+    \item \textbf{For preliminary Monte Carlo (Part 1)}
+    \begin{itemize}[label={}] 
+        \setlength{\itemsep}{0.1em}   
+        \item \texttt{no of equilibration sweeps = 1.0e3}
+        \item \texttt{no of sampling sweeps = 1.0e4}
+        \item \texttt{sampling step size = 1.0e0}
+    \end{itemize} 
+    \item \textbf{For the main Monte Carlo run (Part 3)}
+    \begin{itemize}[label={}]    
+        \setlength{\itemsep}{0.1em}
+        \item \texttt{no of equilibration sweeps = 1.0e3}
+        \item \texttt{no of sampling sweeps = 2$\tau \: \cdot$ 2.0e4}
+        \item \texttt{sampling step size = 2$\tau $ }
+    \end{itemize} 
+\end{itemize}
+%%% FIG %%%
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}  %keep total sum <1 to show in same line
+        \centering
+        \includegraphics[width=\textwidth]{images/monte_carlo/wolff_cluster/abs(mag).pdf}
+        \caption{$\expval{\abs{m}} \text{ vs } T$}
+        \label{magnetization}
+    \end{subfigure}
+    % \hspace{1em}  %\hfill
+    % \vspace{1em}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/monte_carlo/wolff_cluster/edens.pdf}
+        \caption{$\expval{e} \text{ vs } T$}
+    \end{subfigure}
+\end{figure}
+%%% FIG %%%
+%%% FIG %%%
+\begin{figure}[!htb]\ContinuedFloat
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/monte_carlo/wolff_cluster/C_v.pdf}
+        \caption{$C_V \text{ vs } T$}
+        \label{specificheat}
+    \end{subfigure}
+    % \hspace{1em}  %\hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/monte_carlo/wolff_cluster/chi.pdf}
+        \caption{$\chi \text{ vs } T$}
+        \label{susceptibility}
+    \end{subfigure}
+\end{figure}
+%%% FIG %%%
+%%% FIG %%%
+\begin{figure}[!htb]\ContinuedFloat
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/monte_carlo/wolff_cluster/U_L.pdf}
+        \caption{$U_L \text{ vs } T$}
+        \label{bindercumulant}
+    \end{subfigure}
+    % \hspace{1em}  %\hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/monte_carlo/wolff_cluster/autocorr times.pdf}
+        \caption{$\tau_\text{int} \text{ vs } T$}
+        \label{autocorrelationtime}
+    \end{subfigure}
+    \caption{Variation of physical quantities with $T$ for different lattice sizes $L$.}
+    \label{expvalvsT}
+\end{figure}
+%%% FIG %%%
+\FloatBarrier \!\!\!\!\!\!\!\!\!\!\!\!
+The Figure \ref{expvalvsT} above shows plots of expectation values of relevant observables, derived physical quantities and the autocorrelation times (scaled by $\expval{C}/L^2$) as they vary with $T$ for different lattice sizes $L$. These plots summarize the entire critical structure of Ising model tansition.~\\~\\
+The average (absolute) magnetization curve as a function of temperature (Fig. \ref{magnetization}) is one of the most interesting results of the Ising model. The average (absolute) magnetization is the order parameter for the Ising model which distinguishes the paramagnetic and ferromagnetic phases of the model. As we go to higher and higher lattice sizes, the transition points becomes progressively sharper and shows a clear transition from ferromagnetism $(\expval{|m|} \approx 1)$ to paramagnetism $(\expval{|m|} \approx 0)$ after a certain transition temperature $T_c$ at $L = 128$.~\\~\\
+Another interesting feature of the Ising phase transitions are the specific heat $C_V$ (Fig. \ref{specificheat}) and magnetic susceptibility $\chi$ (Fig. \ref{susceptibility}) curves. They show an approximate divergence at the critical temperature $T_c$, which becomes exact in the thermodynamic limit $L \to \infty$. Hence, our numerical studies confirm that the Ising phase transition is second-order in nature.~\\~\\
+The way to numerically estimate the critical temperature $T_c$ of the phase transition was given by Binder [Binder 1981]. According to Binder, the transition temperature $T_c$ is the temperature at which different $U_L$ curves (corresponding to different lattice sizes $L$) cross in the thermodynamic limit (Fig. \ref{bindercumulant}). In our studies, we estimated the critical temperature $T_c \approx 2.269$, which is very close to the exact value of $2/\ln\qty(1+\sqrt{2}) \approx 2.26918$.~\\~\\
+Finally, a short note on autocorrelation times. As one can see in Fig. \ref{autocorrelationtime}, we have scaled the $\tau_\text{cluster}$ by $\expval{C}/L^2$, where $\expval{C}$ is the average cluster size. We claim that this is the correct autocorrelation time to compare with the Metropolis autocorrelation times [Tamayo et al]. This is because $N$ Metropolis sweeps are fundamentally different than $N$ Wolff sweeps. If we go through $N$ sweeps, 
+\begin{gather*}
+    \text{For Metropolis } \longrightarrow N \cdot L^2 \text{ spin flips} \\
+    \text{For Wolff cluster } \longrightarrow N \cdot \expval{C} \text{ spin flips}
+\end{gather*}
+So if we were to define an equivalent unit of time as $(\text{\# of spin flips})/L^2$, then for $N$ sweeps
+\begin{gather*}
+    T_\text{Metro} = \frac{N \cdot L^2}{L^2} = N \\
+    T_\text{Wolff} = N \frac{\expval{C}}{L^2}
+\end{gather*}     
+Hence, we also scale our Wolff autocorrelation time $\tau_\text{cluster}$ by a factor of $\expval{C}/L^2$, and we can see in Fig. \ref{autocorrelationtime} that it's much more efficient compared to the Metropolis algorithm (Fig. \ref{autocorr_metropolis}). Further, the autocorrelation times are observed to scale with system size as a power law 
+\[
+    \tau_\text{int} \sim L^z
+\]
+where $z$ is the dynamical critical exponent, and can be used to quantify the efficiency of the algorithm. We will, however, not go in that direction and instead focus on the remaining critical exponents which characterize the Ising phase transition. 
+
+\section{Critical phenomena and Finite-size scaling}
+We will now give a brief review of critical phenomena and the finite-size scaling properties that can be quantitatively used to study critical properties of the problem using Monte Carlo simulations. In general, phase transitions only happen in the thermodynamic limit $(L  \infty)$. However, since we only possess finite computational memory and processing time, it is not possible to numerically simulate arbitrarily large system sizes to study the critical properties of a system. Therefore, we use the theory of \textit{finite-size scaling analysis} which uses the results for finite system sizes to deduce conclusions for the thermodynamic limit. 
+\subsection{Critical Exponents}
+The critical phenomena are generally scaling forms that occur near the critical point. For the classical Ising model, we obtain scaling relations for observable expectations near the classical critical point, i.e., the critical temperature $T_c$. As mentioned earlier, we can use the data from finite-size studies to estimate the critical exponents using the \textit{data-collapse method}. However, this analysis is only possible for second-order phase transitions and it fails for first-order transitions. ~\\~\\
+The most fundamental concept underlying the theory of critical phenomena is that of a \textit{correlation length}, denoted by $\xi$. It roughly denotes the typical size of ordered domains in the lattice. Close to the critical point $T_c$, the correlation length diverges according to a power law
+\begin{equation}
+    \xi \sim t^{-\nu},
+\end{equation}
+where $t$ is defined as the reduced temperature 
+\begin{equation}
+    t \equiv \frac{|T-T_c|}{T_c},
+\end{equation}
+and $\nu$ is one of the critical exponents, and is the same whether we approach $T_c$ from above or below. Similarly, the critical exponent corresponding to the onset of magnetic order is given by $\beta$. The order parameter $\expval{|m|}$ is zero above $T_c$, and below $T_c$ it scales as
+\begin{equation}
+    \expval{|m|} \sim t^\beta \quad (\sim \xi^{-\beta/\nu})
+\end{equation}
+The susceptibility, as noted previously, diverges at $T_c$ in the thermodynamic limit and scales as 
+\begin{equation}
+    \chi \sim t^{-\gamma} \quad (\sim \xi^{\gamma/\nu})
+\end{equation} 
+The specific heat is also diverges from both above and below as it approaches $T_c$ 
+\begin{equation}
+    C_V \sim t^{-\alpha} \quad (\sim \xi^{\alpha/\nu})
+\end{equation}
+It is, however, to be noted that the above scaling relations near the critical point hold true in the infinite size limit $(L \to \infty)$. Systems belonging to the same \textit{universality class} have the same set of critical exponents $\{ \nu, \beta, \gamma, \delta, \alpha \}$. The universality class does not depend on the microscopic details but instead on the behavior of the system near the critical point.
+
+\subsection{Finite-size scaling hypothesis}
+How would the scaling relations modify if the lattice sizes $L$ are finite? The order parameter $\expval{|m|}$ does not exactly vanish for $T \geq T_c$, and the divergent quantities (like $\chi$ and $C_V$) saturate to a finite value.~\\~\\
+One possible way is to perform finite-size simulations for higher and higher $L$ until the results converge, and extract the critical exponents by estimating the exponent in the power law. However, a much more systematic way is to perform a \textit{finite-size scaling} (FSS) study which uses the regularity in the deviations to extract the critical exponents.~\\~\\
+Consider the susceptibility in an infinite size limit which scales as 
+\[
+   \chi \sim \xi^{\gamma/\nu}
+\]
+Then the \textit{finite-size scaling hypothesis} (which can be proven via renormalization group theory) states that observables close to $T_c$ scale with an additional non-divergent function of $\xi/L$ to account for the deviations in critical behavior at finite sizes
+\begin{equation}
+    \chi(\xi, L) = \xi^{\gamma/\nu} \: f(\xi/L)
+\end{equation}
+where $f(x) \to $ const. as $x \to 0$ ($L \to \infty$). Since the deviations from the $L \to \infty$ critical behavior occurs when the correlation length $\xi$ is comparable to the system size $L$, and the fact that $\xi \sim t^{-\nu}$, we obtain the much more familiar expression of the FSS hypothesis 
+\begin{equation}
+    \chi(t, L) = L^{\gamma/\nu} \: g(t L^{1/\nu})
+\end{equation}
+where $g$ is another scaling function. More generally, for any observable (or derived quantity) $Q$, the quantity scales as
+\begin{equation}
+    Q(t, L) = L^{\zeta/\nu} \: g_Q(t L^{1/\nu})
+\end{equation}
+where $\zeta$ is the critical exponent corresponding to the scaling of the quantity $Q$.  
+\begin{gather}
+    \text{\textbf{Finite-size scaling relations for 2D Ising model} } \\
+    U_L =\:\:\: \: g_U(t L^{1/\nu}) \nonumber \\ 
+    |m| = L^{-\beta/\nu} \: g_{m}(t L^{1/\nu}) \nonumber \\
+    \chi = L^{\gamma/\nu} \: g_\chi(t L^{1/\nu}) \nonumber \\
+    C_V = \ln(L) \: g_C(t L^{1/\nu}) \nonumber
+\end{gather}
+In the case of the 2D Ising model, $\alpha = 0$, and hence the power law scaling doesn't hold. Instead, we have a logarithmic scaling as indicated in the scaling of $C_V$ as shown above.
+
+\subsection{Data collapse method}
+Since the master curve $g_Q(x)$ for a quantity $Q$ is an unknown function, one can plot $Q(t, L) \:L^{-\zeta/\nu}$ versus $x = tL^{1/\nu}$ for different sizes to extract the master curve. If the finite-size scaling hypothesis is correct, data for all the different lattice sizes should \textit{collapse} onto each other. However, this would require inputting the correct value of the critical exponents $\zeta$ and $\nu$.~\\~\\
+Therefore, the problem of \textit{estimating the critical exponents} can be rephrased as a data collapse problem of the observable data ($Q(t, L) \:L^{-\zeta/\nu}$ versus $x = tL^{1/\nu}$) by fine-tuning the exponents $\zeta$ and $\nu$. We use the following cost function $P_b$ to as a measure of the collapse, which is essentially a normalized sum of residues, which we get by slightly modifying the cost function given in \cite{Bhattacharjee_2001}.
+\begin{equation}
+    P_b = \frac{1}{N_\text{over}} \sum_p \sum_{j \neq p} \sum_i \frac{\qty|L_j^{-\zeta/\nu}Q_{ij} - \varepsilon_p\qty(L_j^{1/\nu} t_{ij})|}{L_j^{-\zeta/\nu}Q_{ij} + \varepsilon_p\qty(L_j^{1/\nu} t_{ij})}
+\end{equation}    
+\begin{itemize}[label={\textbf{--}}]
+    \setlength{\itemsep}{0.1em}
+    \item $p$ indexes the data-set associated to length $L_p$. 
+    \item $j$ also indexes the data-set associated to length $L_j$, but doesn't include the set $p$.      
+    \item $i$ indexes the data-points inside the set associated to $L_j$.   
+    \item $N_\text{over}$ is the number of terms we sum over. 
+    \item $\varepsilon_p$ is the interpolating function based on the values of set $p$ bracketing the argument in question. 
+\end{itemize} 
+The critical exponents are obtained by minimizing the cost funtion $P_b$ with respect to $\beta, \gamma, \nu$
+\begin{itemize}[label={\textbf{--}}]
+    \setlength{\itemsep}{0.1em}
+    \item $Q = U_L$, minimize $P_b(0, \nu)$ with respect to $\nu$. $\:\:\quad\quad\quad\longrightarrow \nu_0$
+    \item $Q = \expval{|m|}$, minimize $P_b(-\beta, \nu_0)$ with respect to $\beta$. $\quad\longrightarrow \beta_0$
+    \item $Q = \chi$, minimize $P_b(\gamma, \nu_0)$ with respect to $\gamma$. $\:\:\quad\quad\quad\longrightarrow \gamma_0$   
+\end{itemize}
+The data collapse of the quantities obtained from the Monte Carlo studies is shown in Fig. \ref{datacollapse}. The appropriate fine-tuning of the critical exponents results in an almost perfect collapse of the data near the critical point $t = 0$.
+%%% FIG %%%
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}  %keep total sum <1 to show in same line
+        \centering
+        \includegraphics[width=\textwidth]{images/data collapse/U_L data collapse.pdf}
+        \caption{Data collapse for $U_L$.}
+        \label{U_L collapse}
+    \end{subfigure}
+    % \hspace{1em}  %\hfill
+    % \vspace{1em}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/data collapse/abs(mag) data collapse.pdf}
+        \caption{Data collapse for $\expval{\abs{m}.}$}
+    \end{subfigure}
+\end{figure}
+%%% FIG %%%
+%%% FIG %%%
+\begin{figure}[!htb]\ContinuedFloat
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/data collapse/chi data collapse.pdf}
+        \caption{Data collapse for $\chi$.}
+        \label{chi collapse}
+    \end{subfigure}
+    % \hspace{1em}  %\hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/data collapse/C_v data collapse.pdf}
+        \caption{Data collapse for $C_V$.}
+        \label{C_V collapse}
+    \end{subfigure}
+    \caption{Data-collapse to extract the critical exponents.}
+    \label{datacollapse}
+\end{figure}
+%%% FIG %%%
+\FloatBarrier \!\!\!\!\!\!\!\!\!\!\!
+The following table (Table \ref{critical}) summarizes the results of the critical exponents computed from a finite-size scaling study of the data obtained from Monte Carlo simulations compared to the exact values.
+%%% TABLE %%%
+\begin{table}[h!]
+    \begin{center}
+    \begin{tabular}{||c c c c||}
+    \hline
+    Physical Quantity & Exponent & FSS estimate  & Exact Value \\ \hline\hline
+    Specific Heat ($C_V$) & $\alpha$ & \textbf{--} & 0 \\ \hline
+    Order Parameter ($\expval{|m|}$) & $\beta$ & 0.1204 & 1/8 \\ \hline
+    Magnetic Susceptibility ($\chi$) & $\gamma$ & 1.7301 & 7/4 \\ \hline
+    Correlation Length ($\xi$) & $\nu$ & 0.9765 & 1 \\ \hline
+    Critical Temperature & $T_c$ & 2.269  & $2/\ln(1+\sqrt{2})$ \\
+    \hline
+    \end{tabular}
+    \caption{Summary of critical exponents for the 2D Ising model.}
+    \label{critical}
+    \end{center}   
+\end{table}
+%%% TABLE %%%
+\section{What now?}
+In this chapter, we provided a comprehensive introduction for implementing Monte Carlo simulations to classical spin system models. We explicitly discussed the example of the 2D Ising model, constructed both local and cluster update algorithm to compute expectation values of the observables, and described the framework of extracting the critical exponents via finite-size scaling analysis. This methodology can further be extended to other spin models for computing the critical properties near second-order phase transitions. Moreover, in the upcoming chapters, we'll discuss a scheme to generalize this approach to quantum spin models and use \textit{Quantum Monte Carlo} methods to explore the critical properties of the quantum phase transition. 
 \end{document}
