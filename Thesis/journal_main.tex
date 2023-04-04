@@ -55,9 +55,10 @@
 \cfoot{–\:\thepage\:–}
 \setcounter{section}{0}
 
-\numberwithin{equation}{section}
+\numberwithin{equation}{section}  
 % Very complicated preamble. Don't touch.
 
+\setcounter{tocdepth}{1}  % only display part,chapters,sections.
 
 \def\nn{\nonumber}
 \def\bec{\begin{center}}
@@ -122,7 +123,7 @@
 
 % \newpage
 \subfile{subfiles/monte_carlo.tex}\newpage
-% \subfile{subfiles/classical_ising.tex}\newpage
+\subfile{subfiles/j1j2.tex}\newpage
 \subfile{subfiles/singlet_constraint.tex}\newpage
 
 

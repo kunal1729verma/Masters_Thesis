@@ -1,10 +1,10 @@
 \documentclass[../journal_main.tex]{subfiles}
 \begin{document}
 
-\chapter{Monte Carlo simulations for spin systems}
+\chapter{Monte Carlo simulations}
 The purpose of this chapter is to give a brief introduction to Monte Carlo simulations and their applications in the numerical analysis of phase transitions in statistical physics models. We will start by illustrating the general idea of importance sampling Monte Carlo methods, followed by the different type of update schemes (Metropolis, Wolff-cluster, etc.) to sample non-uniform distributions efficiently. We will also pay attention to the topic of statistical analysis of the generated data via autocorrelation analysis and statistical error analysis. For illustration purposes, we will primarily focus our attention on the simplest spin model, i.e., the two-dimensional Ising model (without external field) and discuss the finite-temperature critical phenomena and phase transition. Finally, we will demonstrate the calculation of the critical exponents of the two-dimensional Ising model using finite-size scaling analysis of relevant physical observables. Although we start with a classical statistical model, these ideas can be generalized and are applicable in simulations of quantum-spin systems, where they become the \textit{Quantum Monte Carlo} (QMC) methods [Janke, Sandvik]. 
 
-\section{Introduction to Monte Carlo methods}
+\section{Introduction to Monte Carlo}
 Monte Carlo simulations are an important and broad class of stochastic methods that utilize randomness to solve deterministic problems efficiently. To show their utility, we will start with a simple and illustrative example. Consider the calculation of a thermal expectation value of an observable $Q(x)$ in statistical physics;
 \begin{equation}
     \expval{Q} = \int_0^L \dd x \: \rho(x) Q(x), \qquad \qquad \int_0^L \dd x \: \rho(x) = 1,
@@ -44,7 +44,7 @@ where $\sum {}^{(W)}$ denotes points being sampled from the distribution $W(x)$,
 This technique is known as the \textit{Monte Carlo Importance Sampling} method since we are only sampling the points lying in the ``important'' region of the probability distribution $\rho(x)$.~\\~\\
 In statistical mechanics, the probability distribution is generally the Boltzmann distribution $\rho(\vec{x}, \vec{p}) = e^{-\beta H (\vec{x},\vec{p})}$, and we can use Monte Carlo importance sampling to calculate expectation values of physical observables. However, in the above discussion, we have ignored the problem of sampling points according to a given probability distribution. We discuss this in the following subsection.
 
-\subsection{Markov Chains and Detailed Balance condition}
+\subsection{Detailed Balance condition}
 In order to calculate integrals via the method of importance sampling, we need a way to sample points according to the probability distribution $\rho(x)$. The theory of Markov Chains provides us with the necessary tools to generate a Markov Chain process which evolves towards a desired equilibrium distribution.~\\~\\
 In physicists' language, a Markov chain is a discrete chain of events $C_1 \to C_2 \to C_3 \to \ldots \to C_N$ that evolves stochastically and satisfies the Markovian property, i.e., the probability of $C_{i-1} \to C_i$ transition is independent of its history. Put together, this implies the probability of obtaining the above sequence is
 \begin{equation}
@@ -126,7 +126,7 @@ The Boltzmann sampling performed using Markov Chain Monte Carlo (MCMC) can then 
 where we have suppressed the superscript ${}^{(\rho)}$ on the sum denoting sampling over the distribution $\rho(\{\sigma\}) = e^{-\beta E(\{\sigma\})}$. Note that such Monte Carlo averages are always supposed to be taken over \textit{equilibrated} configurations in a Monte Carlo simulation. As discussed earlier, the master equation \eqref{master} ensures the equilibration of the Markov chain's probability distribution after a few steps by taking care of appropriate excess or deficiencies during the initial steps. This initial equilibration period where no measurements are performed is known as the \textit{equilibration time} or the \textit{thermalization time}, often denoted by $t_\text{eq}$.~\\~\\
 The Metropolis MCMC method is thus a conceptually simple and quite universally applicable algorithm. Its applications range from simulations of simple Ising chains to highly non-trivial spin systems. However, the Metropolis algorithm comes with its fair share of problems which we will discuss later. In the next section, we will discuss the relevant statistical physics of the Ising model and the measurement of physical observables.
 
-\section{Physical observables and derived quantities}
+\section{Physical quantities}
 To set the scenery for calculating observable expectation values, we will first begin by discussing the relevant physical observables for the Ising model. Since we are dealing with spin systems, a natural quantity of interest is the magnetization, which acts as the \textit{order parameter} of the Ising phase transition at $T_c \neq 0$. The magnetization per site is defined by the observable
 \begin{equation}
     m \equiv \frac{1}{\mathcal{N}} \sum_{i=1}^{\mathcal{N}} \sigma_i
@@ -203,7 +203,7 @@ The first run of the simulation is only used to calculate the integrated autocor
     \label{}
 \end{figure}
 %%% FIG %%%
-\section{Estimation of expectation values and errors}
+\section{Expectation values and errors}
 Once we have a set of uncorrelated Monte Carlo observable measurements, it is a simple task to calculate the mean and standard deviation of the uncorrelated observable measurement data $(|m|, e)$. However, for quantities that are not measured directly in the simulation but are computed as non-linear combinations of basic observables $(\chi, C_V, U_L)$, deriving a propagated error is a highly non-trivial task. Therefore, we utilize \textit{Jackknife analysis} to create large blocks/bins of the data and perform the required computations.
 
 \subsection{Jackknife binning analysis}
@@ -260,7 +260,7 @@ Since we are using the same data again and again while forming the Jackknife bin
     \text{Estimate of }\expval{\mathcal{O}} \rightarrow \overline{\mathcal{O}} \pm \delta \overline{\mathcal{O}}, \qquad\qquad \text{Estimate of }{\rho } \rightarrow \overline{\rho } \pm \delta {\rho } 
 \]
 
-\section{Critical slowing down near phase transition}
+\section{Critical slowing down}
 Phase transitions, in general, are associated with a discontinuity in the first derivative (for first-order phase transitions) or a divergence in the second derivative (for second-order phase transitions). For example, the classical Ising model is characterized by a second-order phase transition at a critical temperature $T_c$. Above this temperature $(T>T_c)$, the spins are randomly aligned and correspond to the \textit{paramagnetic} phase. Below this temperature $(T<T_c)$, the spins majorly align in one of the directions to form the \textit{ferromagnetic} phase of the system.~\\~\\
 %%% FIG %%%
 \begin{figure}[!htb]
@@ -289,7 +289,7 @@ Therefore, it should be intuitively clear that some sort of non-local updates sh
 
 \section{Wolff Cluster algorithm}
 The acceptance probability of local update algorithms is very low around the critical regions making it an inefficient way to probe the critical properties of the system. In this section, we will discuss the \textit{Wolff cluster algorithm}, which is a generalization of the Swendsen-Wang clyster dynamics and is even more efficient. The Wolff cluster algorithm works by identifying domains of identically oriented spins and performing a flip operation on the entire cluster [Krauth].
-\subsection{Deriving the probabilities for Wolff algorithm}
+\subsection{Deriving the probabilities}
 We will start by considering the example of two states $a$ and $b$ which differ by flipping of a cluster of identically oriented spins.~\\~\\
 This can be done by starting the construction of a cluster which starts by seeding a random spin and iteratively adding neighboring sites of the same spin with a probability $p$. This means if a spin $i$ is in the cluster, and a neighboring site $j$ is not (and if $\sigma_i = \sigma_j$), then the link $\expval{i,j}$ should be added into the cluster with a probability $p$. Once the construction has stopped, we will still have $n_\text{same}$ identical spin links just outside the cluster boundary which were not added into the cluster. Similarly, we say the number of opposite spin links which have a spin opposite to that of the cluster is $n_\text{opp}$. Also, $n_\text{same} + n_\text{opp} = N$ where $N$ is the total number of links the cluster makes with outside spins.~\\~\\  
 Since the probability of a site not being accepted into the cluster is $(1-p)$, the ``a-priori'' probability of proposing a cluster flip from $a \to b$ is 
@@ -329,7 +329,7 @@ This special choice of probability function yields a \textit{rejection-free} alg
 \end{equation}
 Thus, any proposed cluster construction and flipping is an always accepted move in the cluster algorithm. The cluster algorithm with the particular choice of $p = 1 - e^{-2\beta J}$ is known as the Wolff cluster algorithm. 
 
-\subsection{Implementation of the Wolff algorithm}
+\subsection{Implementation}
 In this subsection, we will try to discuss an algorithmic implementation of Wolff clusters so that it can be easily coded into a Monte Carlo program.~\\~\\
 Before starting, we will assume we are working with a 2-dimensional spin configuration and we aim to generate configurations distributed according to the Boltzmann distribution using Monte Carlo evolution with transition probabilities given by the Wolff scheme, which is the fastest currently known simulation method for the Ising model. One Wolff algorithm step is then defined in the following step-by-step procedure,
 \begin{enumerate}

@@ -1,0 +1,91 @@
+\documentclass[../journal_main.tex]{subfiles}
+\begin{document}
+\chapter{Semi-classical treatment of the $J_1 - J_2$ Heisenberg model}
+The $J_1 - J_2$ Heisenberg model with nearest $(J_1)$ and next-nearest neighbor $(J_2)$ interactions is an archetypal example of a strongly correlated and frustrated spin model. Although the model is conceptually simple and easy to write down, it exhibits rich and interesting physics owing to the interplay between frustration and quantum fluctuations. The model is known to exhibit two phases with quasi-classical long range antiferromagnetic (AFM) order at $T = 0$, namely, a Néel-ordered phase ($(\pi,\pi)$ AFM) for $J_2/J_1 \lesssim 0.4$, and a stripe-ordered phase ($(\pi, 0)$ or $(0, \pi)$ AFM) for $J_2/J_1 \gtrsim 0.6$. These two AFM states are separated by an intermediate quantum paramagnetic state ($0.4 \lesssim J_2/J_1 \lesssim 0.6$), also known as the \textit{spin liquid} phase \cite{Li_2014}. These phase transitions can be readily studied using state-of-the-art Quantum Monte Carlo or Exact Diagonalization calculations, but these methods require large amounts of computational resources. In this chapter, we will present a semi-classical approach to study the spin-$1/2$ $J_1-J_2$ Heisenberg model where we treat a part of the Hamiltonian as a source of \textit{quantum fluctuations} and encode them in a semi-classical manner in combination with classical Monte Carlo simulations, thereby reducing the computational cost required.
+
+\section{The Hamiltonian}
+With the nearest and the next-nearest neighbor coupling constants being $J_1$ and $J_2$, respectively, the Hamiltonian for the quantum spin-$1/2$ $J_1 - J_2$ Heisenberg model is given by
+\begin{equation}
+    \hat{H} = J_1 \sum_{\expval{i, j}} \hat{\vec{S_i}} \cdot \hat{\vec{S_j}} + J_2 \sum_{\expval{\expval{i, j}}} \hat{\vec{S_i}} \cdot \hat{\vec{S_j}}
+\end{equation} 
+%Include a figure of the lattice.
+where $\expval{i, j}$ denotes a nearest neighbor links and $\expval{\expval{i,j}}$ denotes the next-nearest neighbor links. Further, the spin-$1/2$ operators are defined as $\hat{\vec{S}} = (\hbar/2) \vec{\sigma}$, and we'll set $\hbar = 1$ for our purposes.
+\begin{equation}
+    \hat{\vec{S}} = \frac{1}{2} \vec{\sigma}
+\end{equation}
+Therefore, in terms of Pauli operators, the Hamiltonian can be written as 
+\begin{equation}
+    \hat{H} = \frac{J_1}{4} \sum_{\expval{i,j}} \vec{\sigma_i} \cdot \vec{\sigma_j} + \frac{J_2}{4} \sum_{\expval{\expval{i, j}}} \vec{\sigma_i} \cdot \vec{\sigma_j}
+\end{equation}
+Since the Hamiltonian contains $\sigma^x$ (or $\hat{X}$), $\sigma^y$ (or $\hat{Y}$), as well as $\sigma^z$ (or $\hat{Z}$) terms, the energy eigenstates of the Hamiltonian (consequently, the ground state) will never be an eigenstate of either $\hat{X}, \hat{Y}$ or $\hat{Z}$. Let us look at this statement from another perspective -- consider the interaction term 
+\begin{equation}
+    \vec{\sigma_i} \cdot \vec{\sigma}_j = \hat{X}_i \hat{X}_j + \hat{Y}_i \hat{Y}_j + \hat{Z}_i \hat{Z}_j
+\end{equation}
+Let's start by considering the $\hat{Z}$ eigenstates $\{\ket{\uparrow}, \ket{\downarrow}\}$. In this basis, the $\hat{Z}_i \hat{Z}_j$ term measures the alignment between sites $i$ and $j$. On the other hand, the action of the $\hat{X}_i \hat{X}_j$ and $\hat{Y}_i \hat{Y}_j$ is to flip the states (with additional phase factors), hence acting like a \textit{quantum fluctuation}. Therefore, we propose that if we can model an \textit{effective semi-classical} process to simulate the quantum fluctuations in this system, then we can write the interaction term as 
+\begin{equation}
+    \vec{\sigma}_i \cdot \vec{\sigma}_j = \hat{Z}_i \hat{Z}_j + \mathcal{E}(Q)_{ij}
+\end{equation}
+where $\mathcal{E}(Q)_{ij}$ is our notation for effective quantum fluctuations between site $i$ and $j$. We can write our Hamiltonian in a similar fashion
+\begin{equation}
+    \hat{H} = \frac{J_1}{4} \sum_{\expval{i,j}} \qty[\hat{Z}_i \hat{Z}_j + \mathcal{E}(Q)_{ij}] + \frac{J_2}{4} \sum_{\expval{\expval{i,j}}} \qty[\hat{Z}_i \hat{Z}_j + \mathcal{E}(Q)_{ij}]
+    \label{abc}
+\end{equation}
+Since we are treating the quantum fluctuations $\mathcal{E}(Q)_{ij}$ in a semi-classical manner, the Hamiltonian \eqref{abc} is now diagonal in the $\{\ket{\uparrow}, \ket{\downarrow} \}$ basis just like a classical Ising model. Hence, we can replace $\hat{Z}$ with a classical Ising spin $s_i \in \{\pm 1\}$  
+\begin{equation}
+    E = \frac{J_1}{4} \sum_{\expval{i,j}} \qty[s_i s_j + \mathcal{E}(Q)_{ij}] + \frac{J_2}{4} \sum_{\expval{\expval{i,j}}} \qty[s_i s_j + \mathcal{E}(Q)_{ij}]
+    \label{j1-j2_ising}
+\end{equation}
+Therefore, in an effective limit, we propose to simplify the $J_1 - J_2$ Heisenberg model to a $\boldsymbol{J_1 - J_2}$ \textbf{classical Ising model with quantum fluctuations} (Eq. \eqref{j1-j2_ising}). If modelled correctly, these quantum fluctuations should give rise to the same phase diagram as obtained through a thorough Quantum Monte Carlo treatment.
+
+\section{Quantum fluctuations}
+To analyze the source of quantum fluctuations in the $J_1-J_2$ Heisenberg model, we'll start with a simple two-site interaction Hamiltonian. Let's say our two-site Hamiltonian $\hat{h}$ is given by 
+\begin{equation}
+    \hat{h} = J \hat{\vec{S}}_i \cdot \hat{\vec{S}}_j
+\end{equation}
+where $i$ and $j$ denote the only two neighboring sites. One can view this as the interaction term appearing in an \textit{addition of angular momentum} problem where $\hat{\vec{M}} = \hat{\vec{S_i}} + \hat{\vec{S_j}}$. Then the interaction term looks like
+\begin{equation}
+    \hat{\vec{S}}_i \cdot \hat{\vec{S}}_j = \frac{\qty(\hat{\vec{M}}^2 -  \hat{\vec{S}}_i^2 - \hat{\vec{S}}_j^2)}{2}
+\end{equation}
+As can be shown using the Clebsch-Gordan coefficients calculation, the eigenstates of the $\hat{\vec{M}}^2$ and the $\hat{M_z}$ operator are the singlet and triplet states
+\begin{subequations}
+    \begin{align}
+        \begin{rcases*}
+            \ket{s = 1; \: m_s = +1} = \ket{\uparrow \uparrow} \\
+            \ket{s = 1; \: m_s = -1} = \ket{\downarrow \downarrow} \\
+            \ket{s = 1; \: m_s = 0} = (\ket{\uparrow \downarrow} + \ket{\downarrow \uparrow})/\sqrt{2}
+            \end{rcases*} s=1\text{ (triplet)} \\
+        \begin{rcases*}
+            \\
+            \ket{s = 0; \: m_s = 0} = (\ket{\uparrow \downarrow} - \ket{\downarrow \uparrow})/\sqrt{2}
+            \\ 
+            \end{rcases*} s=0\text{ (singlet)}
+    \end{align}    
+\end{subequations}
+The energy eigenvalues of the singlet and triplet states are accordingly given by
+\begin{subequations}
+\begin{gather}
+    \hat{h} \: \ket{s = 1} = \frac{+J}{4} \ket{s = 1} \quad \rightarrow \text{ triplet} \\
+    \hat{h} \: \ket{s = 0} = \frac{-3J}{4} \ket{s = 0} \quad \rightarrow \text{ singlet}
+\end{gather}
+\end{subequations}
+At $T=0$, the two-site \textit{dimer} state is simply the entangled singlet state $\ket{s = 0; \: m_s = 0}$ with an energy of $-3J/4$. Since entangled singlet dimer states are a purely quantum phenomena, we propose them to be the source of quantum fluctuations at $T = 0$.~\\~\\
+However, at finite temperatures $T \neq 0$, the mixed state of the system is described through the thermal density matrix 
+\begin{equation}
+    \hat{\rho} = \frac{e^{-\beta \hat{h}}}{\text{Tr} (e^{-\beta \hat{h}})}
+\end{equation}
+Using $\hat{\rho}$, we can compute the thermal expectation value of the energy 
+\begin{equation}
+    \expval{E} = \frac{\sum_i e^{-\beta E_i} E_i}{\sum_i e^{-\beta E_i}} = \frac{3J}{4}\qty(\frac{e^{-\beta J} - 1}{3e^{-\beta J} + 1})
+\end{equation}
+Similarly, we can also compute the expectation value of the net magnetization which corresponds to the operator $\hat{\vec{M}} = \hat{\vec{S_i}} + \hat{\vec{S_j}}$, and it is a straightforward exercise to show that
+\begin{equation}
+    \langle\vec{M}\rangle = 0 
+\end{equation}
+which means that the two-site interaction acts like a \textit{zero magnetization} dimer.~\\~\\
+Since the entangled mixed-state (combination of singlet and triplet states) in the two-site Hamiltonian is a purely quantum effect, we can attribute the \textit{quantum fluctuations} in our model to the \textit{dimers}. Therefore, we propose to model the quantum fluctuations between site $i$ and $j$ as a \textit{classical analog} of dimers 
+\[
+    \text{ \textbf{Classical dimer }} \boldsymbol{\langle i,j\rangle \rightarrow} \quad M(T)=0, \quad E(T) = \frac{3J}{4}\qty(\frac{e^{-J/T} - 1}{3e^{-J/T} + 1}). \qquad
+\]
+Hence, in addition to the classical Ising spin flip dynamics in our effective model, we have also introduced \textit{dimer} degrees of freedom which can be created or destroyed to minimize the free energy $F$ of the system.  
+
+\end{document}
