@@ -1,0 +1,355 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amscd, amsthm, amsfonts,subcaption,physics,mathtools}
+\usepackage{graphicx}
+\usepackage{svg}
+\usepackage{soul} % For using underline \ul
+\usepackage{biblatex} 
+\usepackage[labelfont=bf]{caption}
+\usepackage{wrapfig} %For wrapping figures
+\usepackage{setspace} %For setting line spacing.
+\usepackage{dsfont} %For double stroke font 
+\usepackage{geometry} %For margin geometry.
+\usepackage[most]{tcolorbox} %For colored boxes.
+\tcbuselibrary{breakable} %For breaking tcolorboxes.
+\usepackage{xcolor}  %For defining new colors
+\usepackage{sectsty}  %For changing section heading style
+\usepackage{cancel}   %For cancel/goes to 0 type text in math.
+\usepackage{enumitem} %For editing itemize labels.
+\usepackage{subfiles} %For subfile environment.
+\usepackage{placeins} % for FloatBarrier
+\usepackage{bm}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{standalone}
+\allsectionsfont{\sffamily}
+\setstretch{1.1}
+\definecolor{linkpurple}{RGB}{152,71,155}
+\definecolor{urlblue}{RGB}{20, 86, 128}
+\geometry{
+  top=25mm,
+  tmargin=25mm,  
+  bottom=30mm,
+  bmargin=30mm,
+  left=25mm,
+  lmargin=25mm, 
+  inner=25mm,
+  right=25mm, 
+  rmargin=25mm,
+  outer=25mm
+} 
+\usepackage{hyperref}
+\hypersetup
+{
+   colorlinks=true,
+    linkcolor=linkpurple,
+    filecolor=magenta,      
+    urlcolor=urlblue,
+    citecolor=urlblue
+}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\addtolength{\headheight}{\baselineskip}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\renewcommand{\subsectionmark}[1]{\markright{#1}}
+\fancyhead[R]{\leftmark}
+\cfoot{–\:\thepage\:–}
+\setcounter{section}{0}
+
+\numberwithin{equation}{section}  
+% Very complicated preamble. Don't touch.
+
+% Chapter heading start
+\definecolor{chapnumberbg}{RGB}{26,40,105}
+\definecolor{chapname}{RGB}{100,117,158}
+
+% \usepackage[dutch]{babel}
+\usepackage[explicit]{titlesec}
+\usepackage{tikz}
+\usepackage{lmodern}% to have a large font size for the chapter numbers
+\usepackage{lipsum}% just to generate text for the example
+
+\titleformat{\chapter}[display]
+  {\normalfont}
+  {}
+  {0pt}
+  {%
+    \begin{tikzpicture}
+    \node[
+      draw=chapname,
+      rounded corners,
+      outer sep=0pt,
+      inner sep=6pt,
+      rotate=90,
+      line width=1pt,
+      font=\large\color{chapnumberbg}\bfseries
+      ]
+      (chapname) 
+      {\chaptertitlename};
+    \node[
+      fill=chapnumberbg,
+      minimum width=2cm,
+      minimum height=2.3cm,
+      rounded corners,
+      anchor=west,
+      font=\color{white}\fontsize{40}{48}\selectfont\bfseries
+      ]
+      at ([xshift=6pt]chapname.south)
+      (chapnumber)
+      {\thechapter};
+    \node[
+      anchor=west,
+      text width=\textwidth-4cm,
+      font=\bfseries\LARGE
+      ] 
+      at ([xshift=10pt]chapnumber.east)
+      {#1};
+    \fill[
+      overlay,
+      draw=none,
+      line width=0pt,
+      rounded corners=1pt,
+      left color=chapnumberbg,
+      right color=chapnumberbg!10
+      ]
+      ([yshift=-3pt]chapname.north west) rectangle ++(\textwidth,-3pt);  
+    \end{tikzpicture}%
+  }
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont}
+  {}
+  {0pt}
+  {%
+    \begin{tikzpicture}
+    \node[
+      anchor=west,
+      inner sep=0pt,
+      outer sep=0pt,
+      text width=\textwidth,
+      font=\bfseries\LARGE
+      ]
+      (chaptitle) 
+      {#1};
+    \fill[
+      overlay,
+      draw=none,
+      line width=0pt,
+      rounded corners=1pt,
+      left color=chapnumberbg,
+      right color=chapnumberbg!10
+      ]
+      ([yshift=-3pt]chaptitle.south west) rectangle ++(\textwidth,-3pt);  
+    \end{tikzpicture}%
+  }
+
+
+% Chapter heading end
+
+\setcounter{tocdepth}{1}  % only display part,chapters,sections.
+
+\def\nn{\nonumber}
+\def\bec{\begin{center}}
+\def\eec{\end{center}}
+\def\beq{\begin{equation}}
+\def\eeq{\end{equation}}
+\def\bea{\begin{eqnarray}}
+\def\eea{\end{eqnarray}}
+
+\newcommand{\VBS}[1]{\textcolor{red}{{\bf VBS: #1}}}
+\newcommand{\KV}[1]{\textcolor{blue}{{\bf KV: #1}}}
+
+
+\newenvironment{algorithm}[1]
+{
+\begin{tabbing} xx \= xx \= xx \= xx \= xx \= xx \= xx \= xxxxx \kill
+ {\bf algorithm} #1\\
+ {\bf begin}\\
+}
+{
+ {\bf end}\\
+ \end{tabbing}
+}
+% bib file
+\addbibresource{references.bib}
+
+% Need to set up subfiles for this. 
+\begin{document}
+
+
+% % TITLE PAGE
+% \begin{titlepage}
+%     \vspace*{3cm}
+%     \begin{center}
+%     \Huge {\textbf{\textsf{Master's Thesis Updates}}} 
+%     \end{center}
+%     \vspace{1cm}
+%     \begin{center}
+%     \huge {\textbf{{Monte Carlo Simulations of Ising Model}}}
+%     \end{center}
+%     \vspace{2cm} 
+%     \begin{center} 
+%     \Large {\textbf{Kunal Vema}} \\[3pt]  
+%     \text{{5th Year BS-MS Physics Major}} \\ [2cm] 
+%     \text{{Under the supervision of}} \\ [3pt]
+%     \text{\textbf{Prof. Sanjeev Kumar}} \\
+%     \text{\textbf{Prof. Vijay B. Shenoy}} \\ [1cm] 
+%     {\today}
+%     \end{center}
+   
+%     \end{titlepage}
+%     \setcounter{page}{2}
+%     \clearpage
+% % TITLE PAGE END
+
+\begin{titlepage}
+  \begin{center}
+      \textrm{\LARGE \textbf{Monte Carlo studies of quantum phase transitions}} \\
+  \end{center}
+  \vspace{0.5cm}
+  \begin{center}\textsf{\Large 
+  Kunal Verma (MS18148)} \\
+  \end{center}
+  \vspace{0.5cm}
+  \begin{center}\textsf{\Large 
+  Master's Dissertation} \\
+  \end{center}
+  \vspace{0.5cm}
+
+  %%%% FIG %%%%
+  \begin{center}
+  \begin{figure}[!htb]
+      \centering
+      \begin{subfigure}[b]{0.7\textwidth}  %keep total sum <1 to show in same line
+          \centering
+          \includegraphics[width=4cm]{images/logo.png}
+      \end{subfigure}
+  \end{figure}
+  \vspace{0.2cm}
+  \textsf{\Large {Department of Physical Sciences}} \\
+  \vspace{0.2cm}
+  \textsf{\Large {Indian Institute of Science Education and Research}}\\
+  \vspace{0.1cm}
+  \textsf{\Large {(IISER) Mohali}}\\
+  \vspace{1.5cm}
+  \textsf{\Large{First Draft: 10th April 2023}}
+  \end{center}
+  %%%% FIG %%%%
+
+  \vspace{1cm}
+  
+  \begin{center}
+  \textsf{\large {Supervisor: Prof. Sanjeev Kumar \hfill Co-supervisor: Prof. Vijay B. Shenoy}}
+  \end{center}
+
+  \end{titlepage}
+\setcounter{page}{2}
+
+% Use Roman Page Numbering for first few pages.
+\pagenumbering{Roman}
+
+
+% Certificate of Examination.
+\begin{center}
+    \textbf{\Large Certificate of Examination}
+\end{center}
+
+This is to certify that the dissertation titled \textbf{Monte Carlo studies of quantum phase transitions} submitted by \textbf{Kunal Verma} (Reg. No. MS18148) for the partial fulfillment of BS- MS Dual Degree programme of the institute, has been examined by the thesis committee duly appointed by the institute. The committee finds the work done by the candidate satisfactory and recommends that the report be accepted.
+
+\vspace{4cm}
+
+Prof. Sanjeev Kumar \hspace{1.5cm} Dr. Abhishek Chaudhari \hspace{1.5cm}  Dr. Yogesh Singh
+
+\vspace{4cm}
+
+\begin{flushright}
+    Prof. Sanjeev Kumar
+    \\
+    (Supervisor)
+    \\
+    \vspace{4cm}
+    Dated: 10th April 2023
+\end{flushright}
+
+\cleardoublepage
+
+% Declaration.
+\begin{center}
+    \textbf{\Large Declaration}
+\end{center}
+The work presented in this dissertation has been carried out by me under the guidance of Prof. Sanjeev Kumar at the Indian Institute of Science Education and Research, Mohali.
+
+\vspace{0.4cm}
+
+This work has not been submitted in part or in full for a degree, a diploma, or a fellowship to any other university or institute. Whenever contributions of others are involved, every effort is made to indicate this clearly, with due acknowledgement of collaborative research and discussions. This thesis is a bonafide record of original work done by me and all sources listed within have been detailed in the bibliography.
+
+\vspace{2cm}
+
+\begin{flushright}
+Kunal Verma
+\\
+(Candidate)
+\\
+Dated: 10th April 2023
+\end{flushright}
+
+In my capacity as the supervisor of the candidates project work, I certify that the above statements by the candidate are true to the best of my knowledge.
+
+\vspace{2cm}
+
+\begin{flushright}
+Prof. Sanjeev Kumar
+\\
+(Supervisor)
+\\
+Dated: 10th April 2023
+\end{flushright}
+
+\cleardoublepage
+
+% Acknowledgements.
+\begin{center}
+\textbf{\Large Acknowledgements}
+\end{center}
+
+Use this section to acknowledge the help/contribution of others.
+
+
+\newpage
+% Abstract of the Thesis
+\addcontentsline{toc}{chapter}{\textbf{Abstract}}
+\begin{center}
+    \textbf{\Large Abstract}
+\end{center}
+
+Use this section to include an abstract of the thesis.
+
+\newpage
+\restoregeometry
+
+% Creates a List of All Figures.
+\addcontentsline{toc}{chapter}{\textbf{List of Figures}}
+\listoffigures
+
+\newpage
+
+
+\tableofcontents
+\pagenumbering{arabic} 
+\newpage
+
+%%%%%%
+% \section{Introduction}
+%%%%%%
+
+% \newpage
+\subfile{subfiles/monte_carlo.tex}\newpage
+\subfile{subfiles/j1j2.tex}\newpage
+\subfile{subfiles/z2_lgt.tex}\newpage
+
+
+
+\newpage
+\printbibliography
+\end{document}

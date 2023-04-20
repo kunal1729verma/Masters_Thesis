@@ -2361,9 +2361,13 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">references.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1" intorder="1">Li_2014</bcf:citekey>
-    <bcf:citekey order="2" intorder="1">Ren_2014</bcf:citekey>
-    <bcf:citekey order="3" intorder="1">Ren_2014</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">Bhattacharjee_2001</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">Li_2014</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">Ren_2014</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">Ren_2014</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">Sergej</bcf:citekey>
+    <bcf:citekey order="6" intorder="2">Mathur_et_al</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">wegner2014duality</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
@@ -2395,4 +2399,13 @@
     </bcf:sort>
   </bcf:sortingtemplate>
   <!-- DATALISTS -->
+  <bcf:datalist section="0"
+                name="nty/global//global/global"
+                type="entry"
+                sortingtemplatename="nty"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global">
+  </bcf:datalist>
 </bcf:controlfile>
