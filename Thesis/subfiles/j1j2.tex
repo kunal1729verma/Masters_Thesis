@@ -1,7 +1,7 @@
 \documentclass[../thesis_main.tex]{subfiles}
 \begin{document}
 \chapter{Semi-classical treatment of the $J_1 - J_2$ Heisenberg model}
-The 2-dimensional $J_1 - J_2$ Heisenberg model with nearest $(J_1)$ and next-nearest neighbor $(J_2)$ interactions on a square lattice is an archetypal example of a strongly correlated and frustrated spin model. Although the model is conceptually simple and easy to write down, it exhibits rich and interesting physics owing to the interplay between frustration and quantum fluctuations. The model is known to exhibit two phases with quasi-classical long range antiferromagnetic (AFM) order at $T = 0$ (Fig. \ref{AFM}), namely, a Néel-ordered phase ($(\pi,\pi)$ AFM) for $J_2/J_1 \lesssim 0.4$, and a stripe-ordered phase ($(\pi, 0)$ or $(0, \pi)$ AFM) for $J_2/J_1 \gtrsim 0.6$. These two AFM states are separated by an intermediate quantum paramagnetic state ($0.4 \lesssim J_2/J_1 \lesssim 0.6$), also known as the \textit{spin liquid} phase \cite{Li_2014}. These phase transitions can be readily studied using state-of-the-art Quantum Monte Carlo or Exact Diagonalization calculations, but these methods require large amounts of computational resources. In this chapter, we will present a semi-classical approach to study the spin-$1/2$ $J_1-J_2$ Heisenberg model where we treat a part of the Hamiltonian as a source of \textit{quantum fluctuations} and encode them in a semi-classical manner in combination with classical Monte Carlo simulations, thereby reducing the required computational cost.
+The 2-dimensional $J_1 - J_2$ Heisenberg model with nearest $(J_1)$ and next-nearest neighbor $(J_2)$ interactions on a square lattice is an archetypal example of a strongly correlated and frustrated spin model. Although the model is conceptually simple and easy to write down, it exhibits rich and interesting physics owing to the interplay between frustration and quantum fluctuations. The model is known to exhibit two phases with quasi-classical long range antiferromagnetic (AFM) order at $T = 0$ (Fig. \ref{AFM}), namely, a Néel-ordered phase ($(\pi,\pi)$ AFM) for $J_2/J_1 \lesssim 0.4$, and a stripe-ordered phase ($(\pi, 0)$ or $(0, \pi)$ AFM) for $J_2/J_1 \gtrsim 0.6$. These two AFM states are separated by an intermediate quantum paramagnetic phase ($0.4 \lesssim J_2/J_1 \lesssim 0.6$), also known as the \textit{spin liquid} phase \cite{Li_2014}. These phase transitions can be readily studied using state-of-the-art Quantum Monte Carlo or Exact Diagonalization calculations, but these methods require large amounts of computational resources. In this chapter, we will present a semi-classical approach to study the spin-$1/2$ $J_1-J_2$ Heisenberg model where we treat a part of the Hamiltonian as a source of \textit{quantum fluctuations} and encode them in a semi-classical manner in combination with classical Monte Carlo simulations, thereby reducing the required computational cost.
 
 \section{The Hamiltonian}
 With the nearest and the next-nearest neighbor coupling constants being $J_1$ and $J_2$, respectively, the Hamiltonian for the quantum spin-$1/2$ $J_1 - J_2$ Heisenberg model is given by
@@ -95,7 +95,8 @@ The energy eigenvalues of the singlet and triplet states are accordingly given b
     \hat{h} \: \ket{s = 0} = \frac{-3J}{4} \ket{s = 0} \quad \rightarrow \text{ singlet}
 \end{gather}
 \end{subequations}
-At $T=0$, the two-site \textit{dimer} state is simply the entangled singlet state $\ket{s = 0; \: m_s = 0}$ with an energy of $-3J/4$. Since entangled singlet dimer states are a purely quantum phenomena, we propose them to be the source of quantum fluctuations at $T = 0$.~\\~\\
+At $T=0$, the two-site \textit{dimer} state is simply the entangled singlet state $\ket{s = 0; \: m_s = 0}$ with an energy of $-3J/4$. Since entangled singlet dimer states are a purely quantum phenomena, we propose them to be the source of quantum fluctuations at $T = 0$.
+
 However, at finite temperatures $T \neq 0$, the mixed state of the system is described through the thermal density matrix 
 \begin{equation}
     \hat{\rho} = \frac{e^{-\beta \hat{h}}}{\text{Tr} (e^{-\beta \hat{h}})}
@@ -108,7 +109,8 @@ Similarly, we can also compute the expectation value of the net magnetization wh
 \begin{equation}
     \langle\vec{M}\rangle = 0 
 \end{equation}
-which means that the two-site interaction acts like a \textit{zero magnetization} dimer.~\\~\\
+which means that the two-site interaction acts like a \textit{zero magnetization} dimer.
+
 Since the entangled mixed-state (combination of singlet and triplet states) in the two-site Hamiltonian is a purely quantum effect, we can attribute the \textit{quantum fluctuations} in our model to these \textit{dimers}. Further, we propose to model the quantum fluctuations between site $i$ and $j$ as a \textit{semi-classical analog} of dimers 
 \begin{equation}
     \text{ \textbf{Semi-classical dimer }} \boldsymbol{\langle i,j\rangle \rightarrow} \quad M(T)=0, \quad E_J(T) = \frac{3J}{4}\qty(\frac{e^{-J/T} - 1}{3e^{-J/T} + 1}).
@@ -118,7 +120,8 @@ Hence, in addition to the classical Ising spin flip dynamics in our effective mo
 \section{Analytical results for $T=0$} \label{t=0}
 Before moving to numerical Monte Carlo simulations to aid our calculations, it is helpful to develop a first-order intuition of the change in physics which occurs by the introduction of semi-classical dimers.
 %MAKEFIGURE. make a figure of the calculation of energy in (pi, pi), (0, pi) or (pi, 0), and the SL all dimer state.
-Let us consider the $T = 0$ ground state situation. We expect three different type of orders in our system $-$ the Néel-ordered $(\pi, \pi)$ AFM phase, the $(\pi, 0)$ or $(0, \pi)$ AFM phase, and the spin liquid phase (all dimer state). At $T = 0$, the system attains the minimum energy state. Therefore, we can compare the energies (per site) of the three phases to find regions of stability.~\\~\\
+Let us consider the $T = 0$ ground state situation. We expect three different type of orders in our system $-$ the Néel-ordered $(\pi, \pi)$ AFM phase, the $(\pi, 0)$ or $(0, \pi)$ AFM phase, and the spin liquid phase (all dimer state). At $T = 0$, the system attains the minimum energy state. Therefore, we can compare the energies (per site) of the three phases to find regions of stability.
+
 For the Néel-ordered $(\pi, \pi)$ AFM phase, we have a staggered magnetization along both the axes, and $S_i S_j = - 1$ for all the bonds. Therefore, the energy per site is given by
 \begin{equation}
     E_{(\pi, \pi)} = \frac{J_1}{2} \qty(\frac{J_2}{J_1} - 1)
@@ -183,8 +186,9 @@ To \textit{incorporate} the semi-classical dimers with the $J_1-J_2$ Ising model
 The probability $p$ is changed so as to tune the ratio of random spin-flip dynamics with dimer-formation dynamics. We will discuss the specifics of these parameters in the upcoming sections.
 
 \section{Dimer dynamics in Monte Carlo} % Dimer creation and formation. MAKEFIGURE.
-In this section, we will outline the idea behind the physics of creation and annihilation of dimers. The Monte Carlo dynamics is controlled by the change in energies. Hence, it is helpful to calculate the relevant expressions.~\\~\\
-Since the semi-classical dimer is a zero magnetization unit, it implies that the contribution of the neighbor interaction $S_i S_j = 0$ if $i$ or $j$ are part of a dimer. This can be encoded by \textbf{setting} $\boldsymbol{S_i = 0}$ \textbf{if site} $\boldsymbol{i}$ \textbf{is making a dimer with one of its neighbors}.~\\~\\
+In this section, we will outline the idea behind the physics of creation and annihilation of dimers. The Monte Carlo dynamics is controlled by the change in energies. Hence, it is helpful to calculate the relevant expressions. 
+
+Since the semi-classical dimer is a zero magnetization unit, it implies that the contribution of the neighbor interaction $S_i S_j = 0$ if $i$ or $j$ are part of a dimer. This can be encoded by \textbf{setting} $\boldsymbol{S_i = 0}$ \textbf{if site} $\boldsymbol{i}$ \textbf{is making a dimer with one of its neighbors}.
 %%% FIG %%%
 \begin{figure}[t!]
     \centering
@@ -202,7 +206,8 @@ On the basis of this setup, we can calculate the changes in energy in a dimer cr
     \Delta E_\text{c} =  & + E_J(T) -\frac{J_1}{4} \qty[S_{(i_x, i_y)} \!\!\!\!\!\!\!\! \sum_{\vec{\delta} \in \{(0,\pm 1), (\pm 1, 0) \}} \!\!\!\!\!\!\!\! S_{(i_x, i_y) + \vec{\delta}} \quad + S_{(j_x, j_y)} \!\!\!\!\!\!\!\! \sum_{\vec{\delta} \in \{(0,\pm 1), (\pm 1, 0) \}} \!\!\!\!\!\!\!\! S_{(j_x, j_y) + \vec{\delta}}] \\
     & -\frac{J_2}{4} \qty[S_{(i_x, i_y)} \!\!\!\!\!\!\!\! \sum_{\vec{\delta} \in \{(1,\pm 1), (-1,\pm 1) \}} \!\!\!\!\!\!\!\! S_{(i_x, i_y) + \vec{\delta}} \quad + S_{(j_x, j_y)} \!\!\!\!\!\!\!\! \sum_{\vec{\delta} \in \{(1,\pm 1), (-1,\pm 1) \}} \!\!\!\!\!\!\!\! S_{(j_x, j_y) + \vec{\delta}}] + \frac{J}{4} S_{(i_x, i_y)} S_{(j_x, j_y)}
 \end{align*}
-where $J$ is equal to $J_1$ or $J_2$ depending on whether the dimer is formed with the nearest or next-nearest neighbor, respectively, and the Ising spin configuration $\{S_{(x,y)}\}$ is the set of values before the dimer is formed. ~\\~\\
+where $J$ is equal to $J_1$ or $J_2$ depending on whether the dimer is formed with the nearest or next-nearest neighbor, respectively, and the Ising spin configuration $\{S_{(x,y)}\}$ is the set of values before the dimer is formed.
+
 Similarly, the change in energy due to annihilation of the dimer between sites $i$ and $j$ and creation of two free spins is given by
 \begin{align*}
     \Delta E_\text{a} =  & -E_J(T) +\frac{J_1}{4} \qty[S'_{(i_x, i_y)} \!\!\!\!\!\!\!\! \sum_{\vec{\delta} \in \{(0,\pm 1), (\pm 1, 0) \}} \!\!\!\!\!\!\!\! S'_{(i_x, i_y) + \vec{\delta}} \quad + S'_{(j_x, j_y)} \!\!\!\!\!\!\!\! \sum_{\vec{\delta} \in \{(0,\pm 1), (\pm 1, 0) \}} \!\!\!\!\!\!\!\! S'_{(j_x, j_y) + \vec{\delta}}] \\
@@ -210,7 +215,8 @@ Similarly, the change in energy due to annihilation of the dimer between sites $
 \end{align*}
 where again $J$ is equal to $J_1$ or $J_2$ depending on whether it was a nearest or next-nearest neighbor dimer, respectively, and the spin configuration $\{S'_{(x,y)}\}$ is the set of values after the two new random spins are formed in place of the dimer.
 \section{Simulations and results}
-Now that we have our machinery ready, we implement the Metropolis Monte Carlo algorithm as discussed in Sec. \ref{SCMC} with a combination of spin flips and dimer creation/annihilation steps.~\\~\\
+Now that we have our machinery ready, we implement the Metropolis Monte Carlo algorithm as discussed in Sec. \ref{SCMC} with a combination of spin flips and dimer creation/annihilation steps.
+
 We use the following simulation parameters for the semi-classical Monte Carlo simulations of the $J_1-J_2$ Heisenberg model.
 \begin{itemize}[label={}] 
     \setlength{\itemsep}{0.1em}   

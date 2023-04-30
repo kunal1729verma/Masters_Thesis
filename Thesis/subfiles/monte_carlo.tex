@@ -1,7 +1,7 @@
 \documentclass[../thesis_main.tex]{subfiles}
 \begin{document}
 
-\chapter{Monte Carlo simulations}
+\chapter{Monte Carlo simulations}\label{chap:1}
 The purpose of this chapter is to give a brief introduction to Monte Carlo simulations and their applications in the numerical analysis of phase transitions in statistical physics models. We will start by illustrating the general idea of importance sampling Monte Carlo methods, followed by the different type of update schemes (Metropolis, Wolff-cluster, etc.) to sample non-uniform distributions efficiently. We will also pay attention to the topic of statistical analysis of the generated data via autocorrelation analysis and statistical error analysis. For illustration purposes, we will primarily focus our attention on the simplest spin model, i.e., the two-dimensional Ising model (without external field) and discuss the finite-temperature critical phenomena and phase transition. Finally, we will demonstrate the calculation of the critical exponents of the two-dimensional Ising model using finite-size scaling analysis of relevant physical observables. Although we start with a classical statistical model, these ideas can be generalized and are applicable in simulations of quantum-spin systems, where they become the \textit{Quantum Monte Carlo} (QMC) methods [Janke, Sandvik]. 
 
 \section{Introduction to Monte Carlo}
@@ -10,12 +10,14 @@ Monte Carlo simulations are an important and broad class of stochastic methods t
     \expval{Q} = \int_0^L \dd x \: \rho(x) Q(x), \qquad \qquad \int_0^L \dd x \: \rho(x) = 1,
     \label{sample_integral}
 \end{equation} 
-where $\rho(x)$ is the underlying probability distribution.~\\~\\
+where $\rho(x)$ is the underlying probability distribution.
+
 The most naive way to estimate this integral numerically is to use \textit{Euler's method}  to discretize the integration range into $N$ pieces and perform a discretized sum
 \begin{equation}
     \expval{Q} \approx \Delta x \sum_{j=1}^N \rho(x_0 + j \Delta x) \: Q(x_0 + j\Delta x)
 \end{equation} 
-where $\Delta x = L/N$. Such grid-based methods are very accurate for low-dimensional integrals, but as we go to higher-dimensional integrals, both the error-scaling and computational costs grow significantly.~\\~\\
+where $\Delta x = L/N$. Such grid-based methods are very accurate for low-dimensional integrals, but as we go to higher-dimensional integrals, both the error-scaling and computational costs grow significantly.
+
 A more efficient method for performing high-dimensional integrals is known as \textit{Monte Carlo integration} where the points are uniformly sampled across the integration range instead of a grid. If the uniformly sampled random points are denoted by the set $\{x_1, x_2, x_3, \ldots, x_N \}$, then the integral in Eq. \eqref{sample_integral} can be estimated as 
 \begin{equation}
     \expval{Q} \approx \frac{L}{N} \sum_{i=1}^N \rho(x_i) \: Q(x_i)
@@ -41,16 +43,19 @@ where $\sum {}^{(W)}$ denotes points being sampled from the distribution $W(x)$,
 \begin{equation}
     \expval{Q} \approx \frac{1}{N} \sum_{i=1}^N {}^{{}^{(\rho)}} Q(x_i)
 \end{equation}
-This technique is known as the \textit{Monte Carlo Importance Sampling} method since we are only sampling the points lying in the ``important'' region of the probability distribution $\rho(x)$.~\\~\\
+This technique is known as the \textit{Monte Carlo Importance Sampling} method since we are only sampling the points lying in the ``important'' region of the probability distribution $\rho(x)$.
+
 In statistical mechanics, the probability distribution is generally the Boltzmann distribution $\rho(\vec{x}, \vec{p}) = e^{-\beta H (\vec{x},\vec{p})}$, and we can use Monte Carlo importance sampling to calculate expectation values of physical observables. However, in the above discussion, we have ignored the problem of sampling points according to a given probability distribution. We discuss this in the following subsection.
 
 \subsection{Detailed Balance condition}
-In order to calculate integrals via the method of importance sampling, we need a way to sample points according to the probability distribution $\rho(x)$. The theory of Markov Chains provides us with the necessary tools to generate a Markov Chain process which evolves towards a desired equilibrium distribution.~\\~\\
+In order to calculate integrals via the method of importance sampling, we need a way to sample points according to the probability distribution $\rho(x)$. The theory of Markov Chains provides us with the necessary tools to generate a Markov Chain process which evolves towards a desired equilibrium distribution.
+
 In physicists' language, a Markov chain is a discrete chain of events $C_1 \to C_2 \to C_3 \to \ldots \to C_N$ that evolves stochastically and satisfies the Markovian property, i.e., the probability of $C_{i-1} \to C_i$ transition is independent of its history. Put together, this implies the probability of obtaining the above sequence is
 \begin{equation}
     P(C_1 \to C_2 \to\ldots \to C_N) = P(C_1)\cdot P(C_2 | C_1) \cdot P(C_3 | C_2) \ldots P(C_N | C_{N-1})
 \end{equation}
-Roughly speaking, if the Markov chain doesn't repeat itself and can reach \textit{any}  configuration starting from \textit{any other}  configuration, then it is \textit{ergodic} and settles onto a stationary distribution. By designing an appropriate Markov chain, it is possible to obtain any desired stationary distribution $\rho(C)$ .~\\~\\
+Roughly speaking, if the Markov chain doesn't repeat itself and can reach \textit{any}  configuration starting from \textit{any other}  configuration, then it is \textit{ergodic} and settles onto a stationary distribution. By designing an appropriate Markov chain, it is possible to obtain any desired stationary distribution $\rho(C)$.
+
 Let us now assume we have a set of all possible configurations $\{X\} = \{X_1, X_2, \ldots, X_n\}$ in the configuration space. Assume we start with some configuration $X_{i(0)}$ and stochastically generate a Markov chain $X_{i(1)}, X_{i(2)}, X_{i(3)}, \ldots, X_{i(M)}$. We can do the same for an ensemble of configurations initially distributed according to $\rho(X)$. At the update $0$ , the number of configurations $X_i$ in the initial ensemble is $N_0(X_i) \: \propto \: \rho(X_i) \Rightarrow N_0 (X_i) = \mathcal{N} \rho(X_i)$. The given Markov chain must have an update scheme which stochastically evolves the ensemble to the next set of states. The number of configurations after the update $1$ is
 \begin{equation}
     N_1(X_i) = N_0(X_i) + \sum_{j\neq i} \qty[N_0(X_j) \: P(X_j \to X_i) - N_0(C_i) \: P(X_i \to X_j)]
@@ -69,7 +74,8 @@ which can be written as a ratio
     \frac{P(X_j \to X_i)}{P(X_i \to X_j)} = \frac{\rho(X_i)}{\rho(X_j)},
     \label{detailedbalance}
 \end{equation}
-also known as the \textit{detailed balance condition}. Although here we start with an ensemble distributed according to the probability distribution $\rho$, for practical purposes, neither do we need to start from the same distribution, nor do we require an ensemble of configurations. In practice, the master equation Eq. \eqref{master} takes care of the excess or deficiency and equilibrates after a characteristic \textit{equilibration time} of Markov chain updates.~\\~\\
+also known as the \textit{detailed balance condition}. Although here we start with an ensemble distributed according to the probability distribution $\rho$, for practical purposes, neither do we need to start from the same distribution, nor do we require an ensemble of configurations. In practice, the master equation Eq. \eqref{master} takes care of the excess or deficiency and equilibrates after a characteristic \textit{equilibration time} of Markov chain updates.
+
 The transition probability $P(X_i \to X_j)$ can further be written as a product of the update proposal and the proposal acceptance probabilities 
 \begin{equation}
     P(X_i \to X_j) = \underbrace{\mathcal{A}(X_i \to X_j)}_{\text{propose }X_i \to X_j} \cdot \underbrace{P_\text{accept}(X_i \to X_j)}_{\text{accept }X_i \to X_j}
@@ -90,7 +96,8 @@ For statistical mechanics, the desired equilibrium distribution is the Boltzmann
 \end{equation}
 
 \section{Metropolis and the Ising model}
-As discussed in the last section, we can generate samples distributed according to the Boltzmann distribution if we choose the acceptance probability as defined in Eq. \eqref{metropolis} for the Markov chain. These drawn configurations can then be utilized to calculate thermal expectation values via importance sampling.~\\~\\
+As discussed in the last section, we can generate samples distributed according to the Boltzmann distribution if we choose the acceptance probability as defined in Eq. \eqref{metropolis} for the Markov chain. These drawn configurations can then be utilized to calculate thermal expectation values via importance sampling.
+
 We will discuss this simulation method in the context of the 2-dimensional ferromagnetic Ising model. The Ising model is the paradigmatic model for systems exhibiting continuous phase transition from a ferromagnetic to a paramagnetic phase at a critical temperature $T_c$. In the absence of an external field $(h=0)$ and only nearest-neighbor interactions, the energy of the ferromagnetic Ising model is 
 \begin{equation}
     E = -J \sum_{\expval{i, j}} \sigma_i \sigma_j
@@ -123,7 +130,8 @@ The Boltzmann sampling performed using Markov Chain Monte Carlo (MCMC) can then 
 \begin{equation}
     \expval{\mathcal{O}} \approx \frac{1}{N} \sum_{\{\sigma\}} \mathcal{O(\sigma)}
 \end{equation}
-where we have suppressed the superscript ${}^{(\rho)}$ on the sum denoting sampling over the distribution $\rho(\{\sigma\}) = e^{-\beta E(\{\sigma\})}$. Note that such Monte Carlo averages are always supposed to be taken over \textit{equilibrated} configurations in a Monte Carlo simulation. As discussed earlier, the master equation \eqref{master} ensures the equilibration of the Markov chain's probability distribution after a few steps by taking care of appropriate excess or deficiencies during the initial steps. This initial equilibration period where no measurements are performed is known as the \textit{equilibration time} or the \textit{thermalization time}, often denoted by $t_\text{eq}$.~\\~\\
+where we have suppressed the superscript ${}^{(\rho)}$ on the sum denoting sampling over the distribution $\rho(\{\sigma\}) = e^{-\beta E(\{\sigma\})}$. Note that such Monte Carlo averages are always supposed to be taken over \textit{equilibrated} configurations in a Monte Carlo simulation. As discussed earlier, the master equation \eqref{master} ensures the equilibration of the Markov chain's probability distribution after a few steps by taking care of appropriate excess or deficiencies during the initial steps. This initial equilibration period where no measurements are performed is known as the \textit{equilibration time} or the \textit{thermalization time}, often denoted by $t_\text{eq}$.
+
 The Metropolis MCMC method is thus a conceptually simple and quite universally applicable algorithm. Its applications range from simulations of simple Ising chains to highly non-trivial spin systems. However, the Metropolis algorithm comes with its fair share of problems which we will discuss later. In the next section, we will discuss the relevant statistical physics of the Ising model and the measurement of physical observables.
 
 \section{Physical quantities}
@@ -131,9 +139,12 @@ To set the scenery for calculating observable expectation values, we will first 
 \begin{equation}
     m \equiv \frac{1}{\mathcal{N}} \sum_{i=1}^{\mathcal{N}} \sigma_i
 \end{equation} 
-where $\mathcal{N}=L^2$ is the total number of lattice sites. One can explicitly check that an operation which rotates all spins $\sigma_i \to -\sigma_i \:\: \forall \: i$ is a symmetry of the Ising Hamiltonian (Eq. \eqref{ising}). Although we are technically not yet dealing with quantum mechanics, this operation can be denoted as $F = \prod_{i=1}^N X_i$ where $X_i$ denotes a flip of spin at site $i$. Since applying this operation twice is equivalent to identity ($F^2 = \mathds{1}$), we often say that the Ising model possesses a global $\mathbb{Z}_2$ symmetry.~\\~\\
-As a result of this global $\mathbb{Z}_2$ symmetry, both negative and positive magnetization are equally probable. However, in the thermodynamic limit $\mathcal{N} \to \infty$ (infinitely large lattice), if the system attains a state with spins predominantly in one direction below $T < T_c$, then it cannot spontaneously (in a finite time) fluctuate through a series of local spin flips into a state with the opposite magnetization. This is known as the \textit{spontaneous symmetry-breaking} of the global $\mathbb{Z}_2$ symmetry in the Ising model, and can be physically thought of as arising from the limit of a very weak external field. However, in a finite system, such fluctuations are possible and it is possible for $\expval{m} = 0$ for all temperatures $T$, making it difficult to study the phase transition which appears in the thermodynamic limit.~\\~\\
-Therefore, in simulations of finite lattice sizes, \textbf{we instead define the order parameter as} ${\expval{|\boldsymbol{m}|}}$\textbf{.} As the system size increases, the $\expval{|m|}$ curve sharpens close to $T_c$ and approaches the thermodynamic limit symmetry-broken $\expval{m(T)}$ curve.~\\~\\
+where $\mathcal{N}=L^2$ is the total number of lattice sites. One can explicitly check that an operation which rotates all spins $\sigma_i \to -\sigma_i \:\: \forall \: i$ is a symmetry of the Ising Hamiltonian (Eq. \eqref{ising}). Although we are technically not yet dealing with quantum mechanics, this operation can be denoted as $F = \prod_{i=1}^N X_i$ where $X_i$ denotes a flip of spin at site $i$. Since applying this operation twice is equivalent to identity ($F^2 = \mathds{1}$), we often say that the Ising model possesses a global $\mathbb{Z}_2$ symmetry.
+
+As a result of this global $\mathbb{Z}_2$ symmetry, both negative and positive magnetization are equally probable. However, in the thermodynamic limit $\mathcal{N} \to \infty$ (infinitely large lattice), if the system attains a state with spins predominantly in one direction below $T < T_c$, then it cannot spontaneously (in a finite time) fluctuate through a series of local spin flips into a state with the opposite magnetization. This is known as the \textit{spontaneous symmetry-breaking} of the global $\mathbb{Z}_2$ symmetry in the Ising model, and can be physically thought of as arising from the limit of a very weak external field. However, in a finite system, such fluctuations are possible and it is possible for $\expval{m} = 0$ for all temperatures $T$, making it difficult to study the phase transition which appears in the thermodynamic limit.
+
+Therefore, in simulations of finite lattice sizes, \textbf{we instead define the order parameter as} ${\expval{|\boldsymbol{m}|}}$\textbf{.} As the system size increases, the $\expval{|m|}$ curve sharpens close to $T_c$ and approaches the thermodynamic limit symmetry-broken $\expval{m(T)}$ curve.
+
 Similarly, the other relevant physical observable is the energy density which is simply defined as the energy per site
 \begin{equation}
     e = \frac{E}{\mathcal{N}} = \frac{-J}{\mathcal{N}} \sum_{\expval{i,j}} \sigma_i \sigma_j
@@ -154,7 +165,8 @@ Finally, we are also interested in the derived \textit{Binder cumulant} which is
 \begin{equation}
     U_L = 1 - \frac{\expval{m^2}_L}{3\expval{m^2}_L},
 \end{equation} 
-and the intersection of $U_L$ curves for different lattice side $L$ is used to accurately determine the phase transition point.~\\~\\
+and the intersection of $U_L$ curves for different lattice side $L$ is used to accurately determine the phase transition point.
+
 Therefore, the measurements of the set of physical observables $\{|m|, m^2, m^4, e, e^2\}$ is sufficient to determine the $Q$ vs. $T$ curves for all the relevant observables $(e, |m|)$  and derived quantities $(\chi, C_V, U_L)$. Using Monte Carlo simulations, we can calculate the expectation values and statistical errors in these quantities, and use the simulation data to extract the critical exponents, which we will discuss in later sections.
 
 \section{Autocorrelation functions}
@@ -261,7 +273,7 @@ Since we are using the same data again and again while forming the Jackknife bin
 \]
 
 \section{Critical slowing down}
-Phase transitions, in general, are associated with a discontinuity in the first derivative (for first-order phase transitions) or a divergence in the second derivative (for second-order phase transitions). For example, the classical Ising model is characterized by a second-order phase transition at a critical temperature $T_c$. Above this temperature $(T>T_c)$, the spins are randomly aligned and correspond to the \textit{paramagnetic} phase. Below this temperature $(T<T_c)$, the spins majorly align in one of the directions to form the \textit{ferromagnetic} phase of the system.~\\~\\
+Phase transitions, in general, are associated with a discontinuity in the first derivative (for first-order phase transitions) or a divergence in the second derivative (for second-order phase transitions). For example, the classical Ising model is characterized by a second-order phase transition at a critical temperature $T_c$. Above this temperature $(T>T_c)$, the spins are randomly aligned and correspond to the \textit{paramagnetic} phase. Below this temperature $(T<T_c)$, the spins majorly align in one of the directions to form the \textit{ferromagnetic} phase of the system.
 %%% FIG %%%
 \begin{figure}[!htb]
     \centering
@@ -283,15 +295,19 @@ Phase transitions, in general, are associated with a discontinuity in the first 
 \end{figure}
 %%% FIG %%%
 % \FloatBarrier \!\!\!\!\!\!\!\!\!\!\!
-\!\!\!In the paramagnetic phase, at high temperatures, the spin configuration is random and there are little to no spatial correlations. However, as the temperature decreases, we enter the paramagnetic phase and spins tend to align themselves with their neighbors. As a result, we form large \textit{domains} or \textit{clusters} of spins and we have a high degree of spatial correlation (Fig. \ref{domain}), often measured by the parameter $\xi$, known as the correlation length. As one approaches the critical temperature $T_c$ from the above, the onset of strong correlations results in \textit{domain flips} which cause high fluctuations in magnetization and energy. Since the Metropolis algorithm performs local updates and the spins have a strong spatial correlation, we need to wait for a long autocorrelation time to get independent subsequent measurements (Fig. \ref{autocorr_metropolis}). This is known in literature as \textit{critical slowing down}.~\\~\\
-The phenomena of critical slowing down is primarily dependent on the algorithm used. Since local update (such as Metropolis) take a long time to flip the domains and generate statistically independent configurations, they have a significantly higher computational cost as a tradeoff to their conceptual simplicity.~\\~\\
+\!\!\!In the paramagnetic phase, at high temperatures, the spin configuration is random and there are little to no spatial correlations. However, as the temperature decreases, we enter the paramagnetic phase and spins tend to align themselves with their neighbors. As a result, we form large \textit{domains} or \textit{clusters} of spins and we have a high degree of spatial correlation (Fig. \ref{domain}), often measured by the parameter $\xi$, known as the correlation length. As one approaches the critical temperature $T_c$ from the above, the onset of strong correlations results in \textit{domain flips} which cause high fluctuations in magnetization and energy. Since the Metropolis algorithm performs local updates and the spins have a strong spatial correlation, we need to wait for a long autocorrelation time to get independent subsequent measurements (Fig. \ref{autocorr_metropolis}). This is known in literature as \textit{critical slowing down}.
+
+The phenomena of critical slowing down is primarily dependent on the algorithm used. Since local update (such as Metropolis) take a long time to flip the domains and generate statistically independent configurations, they have a significantly higher computational cost as a tradeoff to their conceptual simplicity.
+
 Therefore, it should be intuitively clear that some sort of non-local updates should be able to alleviate this problem by flipping entire clusters of spins. This class of algorithms is generally known as \textit{Cluster-update algorithms}. Although the critical slowing down can be significantly reduced with cluster algorithms, they are still far less general applicable than local update algorithms.
 
 \section{Wolff Cluster algorithm}
 The acceptance probability of local update algorithms is very low around the critical regions making it an inefficient way to probe the critical properties of the system. In this section, we will discuss the \textit{Wolff cluster algorithm}, which is a generalization of the Swendsen-Wang clyster dynamics and is even more efficient. The Wolff cluster algorithm works by identifying domains of identically oriented spins and performing a flip operation on the entire cluster [Krauth].
 \subsection{Deriving the probabilities}
-We will start by considering the example of two states $a$ and $b$ which differ by flipping of a cluster of identically oriented spins.~\\~\\
-This can be done by starting the construction of a cluster which starts by seeding a random spin and iteratively adding neighboring sites of the same spin with a probability $p$. This means if a spin $i$ is in the cluster, and a neighboring site $j$ is not (and if $\sigma_i = \sigma_j$), then the link $\expval{i,j}$ should be added into the cluster with a probability $p$. Once the construction has stopped, we will still have $n_\text{same}$ identical spin links just outside the cluster boundary which were not added into the cluster. Similarly, we say the number of opposite spin links which have a spin opposite to that of the cluster is $n_\text{opp}$. Also, $n_\text{same} + n_\text{opp} = N$ where $N$ is the total number of links the cluster makes with outside spins.~\\~\\  
+We will start by considering the example of two states $a$ and $b$ which differ by flipping of a cluster of identically oriented spins.
+
+This can be done by starting the construction of a cluster which starts by seeding a random spin and iteratively adding neighboring sites of the same spin with a probability $p$. This means if a spin $i$ is in the cluster, and a neighboring site $j$ is not (and if $\sigma_i = \sigma_j$), then the link $\expval{i,j}$ should be added into the cluster with a probability $p$. Once the construction has stopped, we will still have $n_\text{same}$ identical spin links just outside the cluster boundary which were not added into the cluster. Similarly, we say the number of opposite spin links which have a spin opposite to that of the cluster is $n_\text{opp}$. Also, $n_\text{same} + n_\text{opp} = N$ where $N$ is the total number of links the cluster makes with outside spins.
+
 Since the probability of a site not being accepted into the cluster is $(1-p)$, the ``a-priori'' probability of proposing a cluster flip from $a \to b$ is 
 \begin{equation}
     \mathcal{A}(a \to b) = \mathcal{A}_\text{interior} \cdot (1-p)^{n_\text{same}},
@@ -330,7 +346,8 @@ This special choice of probability function yields a \textit{rejection-free} alg
 Thus, any proposed cluster construction and flipping is an always accepted move in the cluster algorithm. The cluster algorithm with the particular choice of $p = 1 - e^{-2\beta J}$ is known as the Wolff cluster algorithm. 
 
 \subsection{Implementation}
-In this subsection, we will try to discuss an algorithmic implementation of Wolff clusters so that it can be easily coded into a Monte Carlo program.~\\~\\
+In this subsection, we will try to discuss an algorithmic implementation of Wolff clusters so that it can be easily coded into a Monte Carlo program.
+
 Before starting, we will assume we are working with a 2-dimensional spin configuration and we aim to generate configurations distributed according to the Boltzmann distribution using Monte Carlo evolution with transition probabilities given by the Wolff scheme, which is the fastest currently known simulation method for the Ising model. One Wolff algorithm step is then defined in the following step-by-step procedure,
 \begin{enumerate}
     \setlength\itemsep{0.3em}
@@ -342,7 +359,7 @@ Before starting, we will assume we are working with a 2-dimensional spin configu
     \item Keep repeating till no more spins are added to the cluster $\mathcal{C}$.
     \item Once the cluster is constructed, flip all the spins, i.e., $\forall \:j \: \in \mathcal{C} \: | \: \sigma_j \to - \sigma_j$.
 \end{enumerate}
-More concisely, a single sweep of the Monte Carlo Wolff algorithm in \texttt{psuedocode language} is given below from [Krauth]. The sets $\mathcal{F}_\text{old}$ and $\mathcal{F}_\text{new}$ denote the frontier of the cluster at $(n-1)^\text{th}$ and $n^\text{th}$ steps, respectively. The set $\mathcal{C}$ contains the sites belonging to the cluster.~\\~\\
+More concisely, a single sweep of the Monte Carlo Wolff algorithm in \texttt{psuedocode language} is given below from [Krauth]. The sets $\mathcal{F}_\text{old}$ and $\mathcal{F}_\text{new}$ denote the frontier of the cluster at $(n-1)^\text{th}$ and $n^\text{th}$ steps, respectively. The set $\mathcal{C}$ contains the sites belonging to the cluster.
 \begin{algorithm}{wolff-cluster}
     \> $i:=\text{random site}$; \\
     \> $\mathcal{C}:=\{ i \}$; \\
@@ -365,7 +382,7 @@ More concisely, a single sweep of the Monte Carlo Wolff algorithm in \texttt{psu
     \>\>$\mathcal{F}_{\text{old}}:= \mathcal{F}_{\text{new}};$\\
     \>{\bf end}\\
     \>{\bf for} $\forall\ i\ \in\ \mathcal{C}$ {\bf do}\\
-    \>$\sigma_i:= -\sigma_i;$\\
+    \>$\sigma_i:= -\sigma_i;$
 \end{algorithm}
 The resulting dynamics is ergodic and obeys detailed balance.
 \section{Results}
@@ -401,6 +418,7 @@ The following parameters were used in the 2D Ising model simulations for lattice
     \end{itemize} 
 \end{itemize}
 %%% FIG %%%
+~\\~\\
 \begin{figure}[!htb]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}  %keep total sum <1 to show in same line
@@ -457,11 +475,16 @@ The following parameters were used in the 2D Ising model simulations for lattice
 \end{figure}
 %%% FIG %%%
 \FloatBarrier \!\!\!\!\!\!\!\!\!\!\!\!
-The Figure \ref{expvalvsT} above shows plots of expectation values of relevant observables, derived physical quantities and the autocorrelation times (scaled by $\expval{C}/L^2$) as they vary with $T$ for different lattice sizes $L$. These plots summarize the entire critical structure of Ising model tansition.~\\~\\
-The average (absolute) magnetization curve as a function of temperature (Fig. \ref{magnetization}) is one of the most interesting results of the Ising model. The average (absolute) magnetization is the order parameter for the Ising model which distinguishes the paramagnetic and ferromagnetic phases of the model. As we go to higher and higher lattice sizes, the transition points becomes progressively sharper and shows a clear transition from ferromagnetism $(\expval{|m|} \approx 1)$ to paramagnetism $(\expval{|m|} \approx 0)$ after a certain transition temperature $T_c$ at $L = 128$.~\\~\\
-Another interesting feature of the Ising phase transitions are the specific heat $C_V$ (Fig. \ref{specificheat}) and magnetic susceptibility $\chi$ (Fig. \ref{susceptibility}) curves. They show an approximate divergence at the critical temperature $T_c$, which becomes exact in the thermodynamic limit $L \to \infty$. Hence, our numerical studies confirm that the Ising phase transition is second-order in nature.~\\~\\
-The way to numerically estimate the critical temperature $T_c$ of the phase transition was given by Binder [Binder 1981]. According to Binder, the transition temperature $T_c$ is the temperature at which different $U_L$ curves (corresponding to different lattice sizes $L$) cross in the thermodynamic limit (Fig. \ref{bindercumulant}). In our studies, we estimated the critical temperature $T_c \approx 2.269$, which is very close to the exact value of $2/\ln\qty(1+\sqrt{2}) \approx 2.26918$.~\\~\\
+The Figure \ref{expvalvsT} above shows plots of expectation values of relevant observables, derived physical quantities and the autocorrelation times (scaled by $\expval{C}/L^2$) as they vary with $T$ for different lattice sizes $L$. These plots summarize the entire critical structure of Ising model tansition.
+
+The average (absolute) magnetization curve as a function of temperature (Fig. \ref{magnetization}) is one of the most interesting results of the Ising model. The average (absolute) magnetization is the order parameter for the Ising model which distinguishes the paramagnetic and ferromagnetic phases of the model. As we go to higher and higher lattice sizes, the transition points becomes progressively sharper and shows a clear transition from ferromagnetism $(\expval{|m|} \approx 1)$ to paramagnetism $(\expval{|m|} \approx 0)$ after a certain transition temperature $T_c$ at $L = 128$.
+
+Another interesting feature of the Ising phase transitions are the specific heat $C_V$ (Fig. \ref{specificheat}) and magnetic susceptibility $\chi$ (Fig. \ref{susceptibility}) curves. They show an approximate divergence at the critical temperature $T_c$, which becomes exact in the thermodynamic limit $L \to \infty$. Hence, our numerical studies confirm that the Ising phase transition is second-order in nature.
+
+The way to numerically estimate the critical temperature $T_c$ of the phase transition was given by Binder [Binder 1981]. According to Binder, the transition temperature $T_c$ is the temperature at which different $U_L$ curves (corresponding to different lattice sizes $L$) cross in the thermodynamic limit (Fig. \ref{bindercumulant}). In our studies, we estimated the critical temperature $T_c \approx 2.269$, which is very close to the exact value of $2/\ln\qty(1+\sqrt{2}) \approx 2.26918$.
+
 Finally, a short note on autocorrelation times. As one can see in Fig. \ref{autocorrelationtime}, we have scaled the $\tau_\text{cluster}$ by $\expval{C}/L^2$, where $\expval{C}$ is the average cluster size. We claim that this is the correct autocorrelation time to compare with the Metropolis autocorrelation times [Tamayo et al]. This is because $N$ Metropolis sweeps are fundamentally different than $N$ Wolff sweeps. If we go through $N$ sweeps, 
+\vspace{-1em}
 \begin{gather*}
     \text{For Metropolis } \longrightarrow N \cdot L^2 \text{ spin flips} \\
     \text{For Wolff cluster } \longrightarrow N \cdot \expval{C} \text{ spin flips}
@@ -480,7 +503,8 @@ where $z$ is the dynamical critical exponent, and can be used to quantify the ef
 \section{Critical phenomena and Finite-size scaling}
 We will now give a brief review of critical phenomena and the finite-size scaling properties that can be quantitatively used to study critical properties of the problem using Monte Carlo simulations. In general, phase transitions only happen in the thermodynamic limit $(L  \infty)$. However, since we only possess finite computational memory and processing time, it is not possible to numerically simulate arbitrarily large system sizes to study the critical properties of a system. Therefore, we use the theory of \textit{finite-size scaling analysis} which uses the results for finite system sizes to deduce conclusions for the thermodynamic limit. 
 \subsection{Critical Exponents}
-The critical phenomena are generally scaling forms that occur near the critical point. For the classical Ising model, we obtain scaling relations for observable expectations near the classical critical point, i.e., the critical temperature $T_c$. As mentioned earlier, we can use the data from finite-size studies to estimate the critical exponents using the \textit{data-collapse method}. However, this analysis is only possible for second-order phase transitions and it fails for first-order transitions. ~\\~\\
+The critical phenomena are generally scaling forms that occur near the critical point. For the classical Ising model, we obtain scaling relations for observable expectations near the classical critical point, i.e., the critical temperature $T_c$. As mentioned earlier, we can use the data from finite-size studies to estimate the critical exponents using the \textit{data-collapse method}. However, this analysis is only possible for second-order phase transitions and it fails for first-order transitions.
+
 The most fundamental concept underlying the theory of critical phenomena is that of a \textit{correlation length}, denoted by $\xi$. It roughly denotes the typical size of ordered domains in the lattice. Close to the critical point $T_c$, the correlation length diverges according to a power law
 \begin{equation}
     \xi \sim t^{-\nu},
@@ -504,8 +528,10 @@ The specific heat is also diverges from both above and below as it approaches $T
 It is, however, to be noted that the above scaling relations near the critical point hold true in the infinite size limit $(L \to \infty)$. Systems belonging to the same \textit{universality class} have the same set of critical exponents $\{ \nu, \beta, \gamma, \delta, \alpha \}$. The universality class does not depend on the microscopic details but instead on the behavior of the system near the critical point.
 
 \subsection{Finite-size scaling hypothesis}
-How would the scaling relations modify if the lattice sizes $L$ are finite? The order parameter $\expval{|m|}$ does not exactly vanish for $T \geq T_c$, and the divergent quantities (like $\chi$ and $C_V$) saturate to a finite value.~\\~\\
-One possible way is to perform finite-size simulations for higher and higher $L$ until the results converge, and extract the critical exponents by estimating the exponent in the power law. However, a much more systematic way is to perform a \textit{finite-size scaling} (FSS) study which uses the regularity in the deviations to extract the critical exponents.~\\~\\
+How would the scaling relations modify if the lattice sizes $L$ are finite? The order parameter $\expval{|m|}$ does not exactly vanish for $T \geq T_c$, and the divergent quantities (like $\chi$ and $C_V$) saturate to a finite value.
+
+One possible way is to perform finite-size simulations for higher and higher $L$ until the results converge, and extract the critical exponents by estimating the exponent in the power law. However, a much more systematic way is to perform a \textit{finite-size scaling} (FSS) study which uses the regularity in the deviations to extract the critical exponents.
+
 Consider the susceptibility in an infinite size limit which scales as 
 \[
    \chi \sim \xi^{\gamma/\nu}
@@ -533,7 +559,8 @@ where $\zeta$ is the critical exponent corresponding to the scaling of the quant
 In the case of the 2D Ising model, $\alpha = 0$, and hence the power law scaling doesn't hold. Instead, we have a logarithmic scaling as indicated in the scaling of $C_V$ as shown above.
 
 \subsection{Data collapse method}
-Since the master curve $g_Q(x)$ for a quantity $Q$ is an unknown function, one can plot $Q(t, L) \:L^{-\zeta/\nu}$ versus $x = tL^{1/\nu}$ for different sizes to extract the master curve. If the finite-size scaling hypothesis is correct, data for all the different lattice sizes should \textit{collapse} onto each other. However, this would require inputting the correct value of the critical exponents $\zeta$ and $\nu$.~\\~\\
+Since the master curve $g_Q(x)$ for a quantity $Q$ is an unknown function, one can plot $Q(t, L) \:L^{-\zeta/\nu}$ versus $x = tL^{1/\nu}$ for different sizes to extract the master curve. If the finite-size scaling hypothesis is correct, data for all the different lattice sizes should \textit{collapse} onto each other. However, this would require inputting the correct value of the critical exponents $\zeta$ and $\nu$.
+
 Therefore, the problem of \textit{estimating the critical exponents} can be rephrased as a data collapse problem of the observable data ($Q(t, L) \:L^{-\zeta/\nu}$ versus $x = tL^{1/\nu}$) by fine-tuning the exponents $\zeta$ and $\nu$. We use the following cost function $P_b$ to as a measure of the collapse, which is essentially a normalized sum of residues, which we get by slightly modifying the cost function given in \cite{Bhattacharjee_2001}.
 \begin{equation}
     P_b = \frac{1}{N_\text{over}} \sum_p \sum_{j \neq p} \sum_i \frac{\qty|L_j^{-\zeta/\nu}Q_{ij} - \varepsilon_p\qty(L_j^{1/\nu} t_{ij})|}{L_j^{-\zeta/\nu}Q_{ij} + \varepsilon_p\qty(L_j^{1/\nu} t_{ij})}

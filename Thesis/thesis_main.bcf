@@ -2368,6 +2368,7 @@
     <bcf:citekey order="6" intorder="1">Sergej</bcf:citekey>
     <bcf:citekey order="6" intorder="2">Mathur_et_al</bcf:citekey>
     <bcf:citekey order="7" intorder="1">wegner2014duality</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">suzuki</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

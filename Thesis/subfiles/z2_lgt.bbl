@@ -1,0 +1,190 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{Sergej}{article}{}
+      \name{author}{4}{}{%
+        {{hash=86a8b9271078894947cfc5b3f73f431a}{%
+           family={Borla},
+           familyi={B\bibinitperiod},
+           given={Umberto},
+           giveni={U\bibinitperiod}}}%
+        {{hash=6b6810c891c745a4c47ace1f5d5336fa}{%
+           family={Jeevanesan},
+           familyi={J\bibinitperiod},
+           given={Bhilahari},
+           giveni={B\bibinitperiod}}}%
+        {{hash=fb4c86c0948ce1f16f8d42001263c071}{%
+           family={Pollmann},
+           familyi={P\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod}}}%
+        {{hash=fd469b24d7e73ea3e15c02f3605953e3}{%
+           family={Moroz},
+           familyi={M\bibinitperiod},
+           given={Sergej},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{d1fa33c5ed1a959cace4d0f660822b92}
+      \strng{fullhash}{b593dd4f8a1ac96c74bf92325089a028}
+      \strng{bibnamehash}{d1fa33c5ed1a959cace4d0f660822b92}
+      \strng{authorbibnamehash}{d1fa33c5ed1a959cace4d0f660822b92}
+      \strng{authornamehash}{d1fa33c5ed1a959cace4d0f660822b92}
+      \strng{authorfullhash}{b593dd4f8a1ac96c74bf92325089a028}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{7}
+      \field{journaltitle}{Phys. Rev. B}
+      \field{month}{2}
+      \field{title}{Quantum phases of two-dimensional ${\mathbb{Z}}_{2}$ gauge theory coupled to single-component fermion matter}
+      \field{volume}{105}
+      \field{year}{2022}
+      \field{pages}{075132}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevB.105.075132
+      \endverb
+      \verb{urlraw}
+      \verb https://link.aps.org/doi/10.1103/PhysRevB.105.075132
+      \endverb
+      \verb{url}
+      \verb https://link.aps.org/doi/10.1103/PhysRevB.105.075132
+      \endverb
+    \endentry
+    \entry{Mathur_et_al}{article}{}
+      \name{author}{2}{}{%
+        {{hash=dc6558813a9e01062389be3c772864bc}{%
+           family={Mathur},
+           familyi={M\bibinitperiod},
+           given={Manu},
+           giveni={M\bibinitperiod}}}%
+        {{hash=63c62fbcf0cb9e6209c47f4c2543c983}{%
+           family={Sreeraj},
+           familyi={S\bibinitperiod},
+           given={T.\bibnamedelimi P.},
+           giveni={T\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{703302fd8206ac84c92f10e7e548d91a}
+      \strng{fullhash}{703302fd8206ac84c92f10e7e548d91a}
+      \strng{bibnamehash}{703302fd8206ac84c92f10e7e548d91a}
+      \strng{authorbibnamehash}{703302fd8206ac84c92f10e7e548d91a}
+      \strng{authornamehash}{703302fd8206ac84c92f10e7e548d91a}
+      \strng{authorfullhash}{703302fd8206ac84c92f10e7e548d91a}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{8}
+      \field{journaltitle}{Phys. Rev. D}
+      \field{month}{10}
+      \field{title}{Lattice gauge theories and spin models}
+      \field{volume}{94}
+      \field{year}{2016}
+      \field{pages}{085029}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.94.085029
+      \endverb
+      \verb{urlraw}
+      \verb https://link.aps.org/doi/10.1103/PhysRevD.94.085029
+      \endverb
+      \verb{url}
+      \verb https://link.aps.org/doi/10.1103/PhysRevD.94.085029
+      \endverb
+    \endentry
+    \entry{suzuki}{article}{}
+      \name{author}{1}{}{%
+        {{hash=69cc1e3c555789f39f023984cb106915}{%
+           family={Suzuki},
+           familyi={S\bibinitperiod},
+           given={Masuo},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{69cc1e3c555789f39f023984cb106915}
+      \strng{fullhash}{69cc1e3c555789f39f023984cb106915}
+      \strng{bibnamehash}{69cc1e3c555789f39f023984cb106915}
+      \strng{authorbibnamehash}{69cc1e3c555789f39f023984cb106915}
+      \strng{authornamehash}{69cc1e3c555789f39f023984cb106915}
+      \strng{authorfullhash}{69cc1e3c555789f39f023984cb106915}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{{The partition function of a quantal spin system is expressed by that of the Ising model, on the basis of the generalized Trotter formula. Thereby the ground state of the d-dimensional Ising model with a transverse field is proven to be equivalent to the (d+1)-dimensional Ising model at finite temperatures. A general relationship is established between the two partition functions of a general quantal spin system and the corresponding Ising model with many-spin interactions, which yields some rigorous results on quantum systems. Some applications are given.}}
+      \field{issn}{0033-068X}
+      \field{journaltitle}{Progress of Theoretical Physics}
+      \field{month}{11}
+      \field{number}{5}
+      \field{title}{{Relationship between d-Dimensional Quantal Spin Systems and (d+1)-Dimensional Ising Systems: Equivalence, Critical Exponents and Systematic Approximants of the Partition Function and Spin Correlations}}
+      \field{volume}{56}
+      \field{year}{1976}
+      \field{pages}{1454\bibrangedash 1469}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1143/PTP.56.1454
+      \endverb
+      \verb{eprint}
+      \verb https://academic.oup.com/ptp/article-pdf/56/5/1454/5264429/56-5-1454.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1143/PTP.56.1454
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1143/PTP.56.1454
+      \endverb
+    \endentry
+    \entry{wegner2014duality}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=068649ef5b0b9a4bfc324c64cbfb6723}{%
+           family={Wegner},
+           familyi={W\bibinitperiod},
+           given={Franz\bibnamedelima J.},
+           giveni={F\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \strng{fullhash}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \strng{bibnamehash}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \strng{authorbibnamehash}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \strng{authornamehash}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \strng{authorfullhash}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{hep-lat}
+      \field{eprinttype}{arXiv}
+      \field{title}{Duality in generalized Ising models}
+      \field{year}{2014}
+      \verb{eprint}
+      \verb 1411.5815
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
