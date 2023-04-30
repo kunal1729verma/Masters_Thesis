@@ -1,0 +1,120 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{Li_2014}{article}{}
+      \name{author}{3}{}{%
+        {{hash=db0342e37abe2052f1aa3a9a75d424eb}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={P\bibnamedelima H\bibnamedelima Y},
+           giveni={P\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+        {{hash=3a64d80d2d674c889f2b2360c93e9eb5}{%
+           family={Bishop},
+           familyi={B\bibinitperiod},
+           given={R\bibnamedelima F},
+           giveni={R\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=c0534eec713053e35c1a2458000b5327}{%
+           family={Campbell},
+           familyi={C\bibinitperiod},
+           given={C\bibnamedelima E},
+           giveni={C\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{effe337bfae44baa8432ef74940a2905}
+      \strng{fullhash}{effe337bfae44baa8432ef74940a2905}
+      \strng{bibnamehash}{effe337bfae44baa8432ef74940a2905}
+      \strng{authorbibnamehash}{effe337bfae44baa8432ef74940a2905}
+      \strng{authornamehash}{effe337bfae44baa8432ef74940a2905}
+      \strng{authorfullhash}{effe337bfae44baa8432ef74940a2905}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Physics: Conference Series}
+      \field{month}{8}
+      \field{number}{1}
+      \field{title}{A frustrated spin-1 $J_1-J_2$ Heisenberg antiferromagnet: An anisotropic planar pyrochlore model}
+      \field{volume}{529}
+      \field{year}{2014}
+      \field{pages}{012008}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1742-6596/529/1/012008
+      \endverb
+      \verb{urlraw}
+      \verb https://dx.doi.org/10.1088/1742-6596/529/1/012008
+      \endverb
+      \verb{url}
+      \verb https://dx.doi.org/10.1088/1742-6596/529/1/012008
+      \endverb
+    \endentry
+    \entry{Ren_2014}{article}{}
+      \name{author}{3}{}{%
+        {{hash=734640b171ff38778cee7381fc539d60}{%
+           family={Ren},
+           familyi={R\bibinitperiod},
+           given={Yong-Zhi},
+           giveni={Y\bibinithyphendelim Z\bibinitperiod}}}%
+        {{hash=e4945b8486a79010c06d9507355975de}{%
+           family={Tong},
+           familyi={T\bibinitperiod},
+           given={Ning-Hua},
+           giveni={N\bibinithyphendelim H\bibinitperiod}}}%
+        {{hash=d3a450e512337c1b85392cf411d452f1}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={Xin-Cheng},
+           giveni={X\bibinithyphendelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{7a5951df585288c6f476dc444016f522}
+      \strng{fullhash}{7a5951df585288c6f476dc444016f522}
+      \strng{bibnamehash}{7a5951df585288c6f476dc444016f522}
+      \strng{authorbibnamehash}{7a5951df585288c6f476dc444016f522}
+      \strng{authornamehash}{7a5951df585288c6f476dc444016f522}
+      \strng{authorfullhash}{7a5951df585288c6f476dc444016f522}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Physics: Condensed Matter}
+      \field{month}{3}
+      \field{number}{11}
+      \field{title}{Cluster mean-field theory study of J1-J2 Heisenberg model on a square lattice}
+      \field{volume}{26}
+      \field{year}{2014}
+      \field{pages}{115601}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/0953-8984/26/11/115601
+      \endverb
+      \verb{urlraw}
+      \verb https://dx.doi.org/10.1088/0953-8984/26/11/115601
+      \endverb
+      \verb{url}
+      \verb https://dx.doi.org/10.1088/0953-8984/26/11/115601
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

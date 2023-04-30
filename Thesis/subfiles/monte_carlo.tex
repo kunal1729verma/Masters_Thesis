@@ -155,15 +155,16 @@ We can also use magnetization and energy density observables to calculate other 
 \end{equation}
 i.e. the linear response of magnetization in the weak field limit, i.e.,  $\displaystyle E' = \lim_{h \to 0} (E - hM)$. It is easy to show that the expression for susceptibility simplifies to
 \begin{equation}
-    \chi = \frac{1}{T}\qty(\expval{M^2} - \expval{|M|}^2) = \frac{L^2}{T}\qty(\expval{m^2} - \expval{|m|}^2)
+    \chi = \frac{1}{T}\qty(\expval{M^2} - \expval{|M|}^2) = \frac{L^2}{T}\qty(\langle m^2 \rangle - \expval{|m|}^2)
 \end{equation}
 where we have replaced the $\expval{m}$ with $\expval{|m|}$ for reasons discussed previously. Similarly, the specific heat capacity is another quantity of interest which is defined as 
 \begin{equation}
-    C_V = \pdv{\expval{E}}{T} = \frac{L^2}{T^2} \qty(\expval{e^2} - \expval{e}^2)
+    C_V = \pdv{\expval{E}}{T} = \frac{L^2}{T^2} \qty(\langle e^2 \rangle - \expval{e}^2)
 \end{equation}
 Finally, we are also interested in the derived \textit{Binder cumulant} which is defined as the kurtosis of the order parameter $\expval{|m|}$
 \begin{equation}
-    U_L = 1 - \frac{\expval{m^2}_L}{3\expval{m^2}_L},
+    U_L = 1 - \frac{\expval{m^4}_L}{3\expval{m^2}^2_L},
+    \label{binder}
 \end{equation} 
 and the intersection of $U_L$ curves for different lattice side $L$ is used to accurately determine the phase transition point.
 
@@ -639,6 +640,6 @@ The following table (Table \ref{critical}) summarizes the results of the critica
     \end{center}   
 \end{table}
 %%% TABLE %%%
-\section{What now?}
-In this chapter, we provided a comprehensive introduction for implementing Monte Carlo simulations to classical spin system models. We explicitly discussed the example of the 2D Ising model, constructed both local and cluster update algorithm to compute expectation values of the observables, and described the framework of extracting the critical exponents via finite-size scaling analysis. This methodology can further be extended to other spin models for computing the critical properties near second-order phase transitions. Moreover, in the upcoming chapters, we'll discuss a scheme to generalize this approach to quantum spin models and use \textit{Quantum Monte Carlo} methods to explore the critical properties of the quantum phase transition. 
+\section{Summary}
+In this chapter, we provided a comprehensive introduction for implementing Monte Carlo simulations to classical spin system models. We explicitly discussed the example of the 2D Ising model, constructed both local and cluster update algorithm to compute expectation values of the observables, and described the framework of extracting the critical exponents via finite-size scaling analysis. This methodology can further be extended to other spin models for computing the critical properties near second-order phase transitions. Moreover, in the upcoming chapters, we'll discuss a scheme to generalize this approach to quantum spin models and use \textit{quantum Monte Carlo} methods to explore the critical properties of the quantum phase transition. 
 \end{document}

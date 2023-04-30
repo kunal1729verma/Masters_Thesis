@@ -101,7 +101,7 @@ which is a constraint on the Hilbert space of the dual model, and is known as th
 \section{Quantum to classical correspondence}
 The Ising model is one of the simplest spin models studied extensively in condensed matter physics. However, in the presence of a transverse field Eq. \eqref{tfim} (represented by the $X_p$ operator), the Hamiltonian is not trivially diagonalizable in the $Z$ basis $\{\ket{\uparrow}, \ket{\downarrow} \}$ anymore. Solving this quantum problem directly is somewhat difficult. Therefore, we invoke of the principle of quantum to classical correspondence, which connects the partition functions of the a $d$-dimensional quantum system to a $d+1$-dimensional classical statistical mechanical system via a path integral approach~\cite{suzuki}. The Path Integral Monte Carlo (PIMC) method then uses classical Monte Carlo simulations to calculate the physically relevant quantities of the quantum system.
 \subsection{Imposing the singlet constraint ``exactly''}
-As noted in the previous section, the $\mathbb{Z}_2$ gauge theory with periodic boundary conditions is dual to the singlet-Ising model with nearest neighbor interactions,
+As noted in the previous section, the $\mathbb{Z}_2$ gauge theory with periodic boundary conditions is dual to the singlet Ising model with nearest neighbor interactions,
 
 \begin{equation}
     \hat{H} = \underbrace{-J \sum_i X_i}_{H_T} - \underbrace{h \sum_{\expval{i, \:j}} Z_{i} Z_{j}}_{H_I}, \qquad \prod_i X_i = \mathds{1}
@@ -115,7 +115,7 @@ Thus, we can define the projection operator on the singlet subspace as
 \begin{equation}
     \hat{P} = \frac{1}{2}(\mathds{1} + \hat{F}) = \frac{1}{2} \sum_{\mu' \: \in \: \{0, 1\}} \hat{F}^{\mu'}
 \end{equation}
-The partition function of the singlet-Ising model can thus be written as a trace over the singlet-basis states $\{\hat{P} \ket{\{\sigma\}} \}$ where $\ket{\{\sigma\}} = \ket{\sigma_1 \: \sigma_2 \: \ldots \sigma_{N_x}}$ are the $Z$-basis product states $\sigma_i \: \in \: \{\pm 1\}$.
+The partition function of the singlet Ising model can thus be written as a trace over the singlet-basis states $\{\hat{P} \ket{\{\sigma\}} \}$ where $\ket{\{\sigma\}} = \ket{\sigma_1 \: \sigma_2 \: \ldots \sigma_{N_x}}$ are the $Z$-basis product states $\sigma_i \: \in \: \{\pm 1\}$.
 \begin{equation}
     \mathcal{Z} = \tr e^{-\beta \hat{H}} = \sum_{\{\sigma\}} \mel{\{\sigma\}}{\hat{P} \: e^{-\beta \hat{H}} \: \hat{P}}{\{\sigma\}}
 \end{equation}
@@ -261,7 +261,7 @@ where the effective classical action (with the singlet constraint imposed) is gi
     \label{}
 \end{figure}
 %%% FIG %%%
-If we start with a $d$-dimensional quantum Ising model, the quantum to classical correspondence maps it to a $d+1$-dimensional generalized classical Ising model, where the spatial interactions contains standard pairwise terms $\sim \sigma_l(i) \: \sigma_l(i)$, but the layer interactions are governed by a $\sim \ln \cosh (\sigma_{l+1}(i) \: \sigma_{l}(i))$. This classical model can then be simulated using the classical Metropolis Monte Carlo algorithm. For the purposes of this thesis, we will be studying the classical analog of the singlet-Ising model (Eq. \eqref{classicalaction}) in $(1 + 1)$-dimensions and the relevant physical observables using Monte Carlo simulations.
+If we start with a $d$-dimensional quantum Ising model, the quantum to classical correspondence maps it to a $d+1$-dimensional generalized classical Ising model, where the spatial interactions contains standard pairwise terms $\sim \sigma_l(i) \: \sigma_l(i)$, but the layer interactions are governed by a $\sim \ln \cosh (\sigma_{l+1}(i) \: \sigma_{l}(i))$. This classical model can then be simulated using the classical Metropolis Monte Carlo algorithm. For the purposes of this thesis, we will be studying the classical analog of the singlet Ising model (Eq. \eqref{classicalaction}) in $(1 + 1)d$ and the relevant physical observables using Monte Carlo simulations.
 
 \subsection{Alignment observable and the subsystem symmetry}\label{alignmentsection}
 Let us begin by looking at a particularly interesting local observable which appears inside the $\ln \cosh$ term in the classical action Eq. \eqref{classicalaction}. We call this observable as the alignment observable 
@@ -348,7 +348,7 @@ For the simulations, we use the following parameters
 \end{figure}
 %%% FIG %%%
 \subsection{Subsystem symmetry breaking}
-As seen in Fig.~\ref{SSB}, the results show weak dependence on the number of Monte Carlo sweeps as the system always explores the same region of the configuration space, independent of the number of sweeps. However, above a certain lattice size, i.e., $N_\tau \sim 8$, the expectation value of the alignment observable gets frozen to $\pm 1$. This effect is independent of the layer chosen as all layers are identical to each other, and is also verified in Fig.~\ref{differentlayer_sameMCsweeps} by plotting the results for two different layers.
+As seen in Fig.~\ref{SSB}, the results show weak dependence on the number of Monte Carlo sweeps as the system always explores the same region of the configuration space, independent of the number of sweeps. However, above a certain lattice size, i.e., $N_x \sim 10$, the expectation value of the alignment observable gets frozen to $\pm 1$. This effect is independent of the layer chosen as all layers are identical to each other, and is also verified in Fig.~\ref{differentlayer_sameMCsweeps} by plotting the results for two different layers.
 %%% FIG %%%
 \begin{figure}[!htb]
     \centering
@@ -446,7 +446,7 @@ We will now discuss an algorithmic implementation by including both random align
     \>\>\>\> $\sigma[i_0, l_0] = (-1)\cdot \sigma[i_0, l_0];$\\
     \>\>\>{\bf end}\\
     \\
-    \>\>\> \texttt{// Random alignment Flip moves} \\
+    \>\>\> \texttt{// Random alignment flip moves} \\
     \>\>\> {\bf if} $m$ \texttt{\%} $f N_x \texttt{==0}$  \\
     \>\>\> {\bf begin} \\
     \>\>\>\> \text{choose random layer } $:= \: l$ \\
@@ -551,7 +551,7 @@ where $\hat{P} = (\mathds{1} + \hat{F})/2$ is the singlet projection operator. T
 \begin{equation}
     \hat{F} \: \hat{\mathcal{O}} \: \hat{F} = \sum_{ij} c_{ij} \: \underbrace{\hat{F}\hat{P}}_{ = \hat{P}} \: \ket{\{\sigma\}}_i \bra{\{\sigma '\}}_j \:\underbrace{\hat{P} \hat{F}}_{ = \hat{P}} = \sum_{i,j} c_{ij} \hat{P}\ket{\{\sigma\}}_i \bra{\{\sigma '\}}_j \hat{P} = \hat{\mathcal{O}}
 \end{equation}
-Thus any operator on the singlet sector $\hat{\mathcal{O}}: \mathcal{H}_s \to \mathcal{H}_s$ must satisfy  \eqref{operator}. The two most elementary observables which satisfy this condition are $\hat{X}_i$ and $\hat{Z}_i \hat{Z}_j$.   Such singlet-compatible quantum operators can then be mapped to their corresponding classical analogs.  
+Thus any operator on the singlet sector $\hat{\mathcal{O}}: \mathcal{H}_s \to \mathcal{H}_s$ must satisfy  Eq.~\eqref{operator}. The two most elementary observables which satisfy this condition are $\hat{X}_i$ and $\hat{Z}_i \hat{Z}_j$.   Such singlet-compatible quantum operators can then be mapped to their corresponding classical analogs.  
 
 \subsection{Mapping quantum operators to classical observables}
 As always, the Hamiltonian with the singlet constraint is
@@ -694,67 +694,77 @@ The central idea surrounding the benchmarking of the quantum Monte Carlo simulat
 
 % \KV{Extremely sorry for the goof up. You are right, I made an error in the indices with the $2K$ term. It should have had the $i$ index instead of $j$. I have fixed it now.}
 
-\subsection{The two site problem}
-As a first check for our algorithm, we start by verifying the results for the $2$ site problem i.e. $N_x = 2$. For the $2$ site problem, we can calculate the Monte Carlo expectation values of $O_{Z_i Z_j}$ and $O_{X_i}$, and compare it with the analytical expressions for the expectation values of $\hat{Z}_i \hat{Z}_j$ and $\hat{X}_i$ by diagonalizing the $2 \times 2$ Hamiltonian in the singlet basis.
+\section{The two site problem}
+The two site problem for the singlet Ising model serves as the simplest non-trivial problem. The two site quantum chain with $N_x = 2$ displays the simplest quantum features of the problem while also being analytically tractable. As the most elementary exercise, it is vital to verify that analytical results for the quantum expectation values of $\hat{X}_i$ and $\hat{Z}_i \hat{Z}_j$ match with the Monte Carlo averages performed for the classical observables $O_{X_i}$ and $O_{Z_i Z_j}$.
 
-\subsection{2 site problem in the quantum realm}
-For $2$ spin sites, the Hilbert space can be defined to be spanned by the singlet basis
-\[
+\subsection{Quantum expectation values}
+For two spin sites, the Hilbert space can be defined to be spanned by the singlet basis
+\begin{equation}
     \mathcal{H}_s = \text{span} \left\{\frac{\ket{\uparrow \uparrow} + \ket{\downarrow\downarrow}}{\sqrt{2}}, \frac{\ket{\uparrow\downarrow} + \ket{\downarrow\uparrow}}{\sqrt{2}} \right\}
-\]   
-We label the above states as 
-\[ \ket{a} = \frac{\ket{\uparrow \uparrow} + \ket{\downarrow\downarrow}}{\sqrt{2}}, \qquad \ket{b} = \frac{\ket{\uparrow\downarrow} + \ket{\downarrow\uparrow}}{\sqrt{2}}\]
+\end{equation}
+The above states are labelled as
+\begin{equation} 
+    \ket{a} = \frac{\ket{\uparrow \uparrow} + \ket{\downarrow\downarrow}}{\sqrt{2}}, \qquad \ket{b} = \frac{\ket{\uparrow\downarrow} + \ket{\downarrow\uparrow}}{\sqrt{2}}
+\end{equation}
 The expression for the expectation value of an operator is given by 
-\[
+\begin{equation}
     \langle{\hat{O}}\rangle = \Tr(e^{-\beta \hat{H}} \hat{O}) = \frac{e^{-\beta E_0}\mel{w_0}{\hat{O}}{w_0} + e^{-\beta E_1}\mel{w_1}{\hat{O}}{w_1}}{e^{-\beta  E_0} + e^{-\beta E_1}}
-\]
-where we have evaluated the trace in the yet-unknown energy eigenbasis. To now calculate the energy eigenvalues $E_i$ and the eigenvectors $\ket{w_i}$, we can diagonalize the Hamiltonian in the singlet basis representation.
-\[
+\end{equation}
+where we have evaluated the trace in the yet-unknown energy eigenbasis. The energy eigenvalues $E_i$ and the eigenvectors $\ket{w_i}$ can be calculated by diagonalizing the Hamiltonian in the singlet basis representation.
+\begin{equation}
     H := \left(\begin{array}{cc}
     \mel{a}{\hat{H}}{a} & \mel{a}{\hat{H}}{b} \\ 
     \mel{b}{\hat{H}}{a} & \mel{a}{\hat{H}}{b}
     \end{array}\right)
-\]  
-For $N_x = 2$, the quantum Hamiltonian with periodic boundary conditions just becomes
-\[
+\end{equation}
+For $N_x = 2$, the quantum Hamiltonian with periodic boundary conditions simplifies to
+\begin{equation}
     \hat{H} = - 2h \hat{Z}_0 \hat{Z}_1 - J(\hat{X}_0 + \hat{X}_1)
-\] 
+\end{equation}
 and after a bit of algebra, the matrix representation in the singlet basis comes out to be
-\[
+\begin{equation}
     H:= \left(\begin{array}{cc}
     -2h & -2J \\ 
     -2J & 2h
     \end{array}\right)
-\]
-This results in the eigenvalues of $\hat{H}$ as 
-\[
+\end{equation}
+Thus, the energy eigenvalues obtained on solving the secular equation gives the following
+\begin{equation}
     \lambda_\pm = \pm 2 \sqrt{h^2 + J^2}
-\]
-If we now define $\boxed{h = B \cos \theta}$ and $\boxed{J = B \sin \theta}$, then $\lambda_\pm = \pm 2B$, and the $\hat{H}$ matrix becomes
-\[
+\end{equation}
+Let us define 
+\begin{equation}
+    h = B \cos \theta, \qquad \qquad J = B \sin \theta
+\end{equation}
+Then $\lambda_\pm = \pm 2B$, and the $\hat{H}$ matrix becomes
+\begin{equation}
     H := 2B \left(\begin{array}{cc}
     -\cos \theta  & -\sin \theta  \\ 
     -\sin \theta  & \cos \theta 
     \end{array}\right)
-\]   
-Now to find the eigenvectors, say that one of them is given by 
-\[
+\end{equation}
+To find the eigenvectors, we claim that one of them is given by 
+\begin{equation}
     \ket{w_0} = u \ket{a} + v \ket{b}
-\] 
+\end{equation}
 This implies that the other eigenvector must be of the form
-\[
+\begin{equation}
     \ket{w_1} = -v \ket{a} + u \ket{b}
-\]
-with $u$ and $v$ $\in \mathbb{R}$. So, for the eigenvector $\ket{w_0}$  with the eigenvalue $E_0 = -2B$, the matrix equation looks like
-\begin{align*}
+\end{equation}
+with $u$ and $v$ $\in \mathbb{R}$ to satisfy the orthonormality relations. 
+
+For the eigenvector $\ket{w_0}$  with the eigenvalue $E_0 = -2B$, the matrix equation can be written as follows
+\begingroup
+\allowdisplaybreaks
+\begin{align}
     & 2B \left(\begin{array}{cc}
     -\cos \theta  & -\sin \theta  \\ 
-    -sin \theta  & \cos \theta 
+    -\sin \theta  & \cos \theta 
     \end{array}\right) = -2B 
     \left(\begin{array}{c}
     u \\ 
     v
-    \end{array}\right) \\
+    \end{array}\right) \nonumber\\
     & 2B \left(\begin{array}{cc}
     -\cos \theta +1 & -\sin \theta  \\ 
     - \sin \theta  & \cos \theta + 1
@@ -766,7 +776,7 @@ with $u$ and $v$ $\in \mathbb{R}$. So, for the eigenvector $\ket{w_0}$  with the
     \left(\begin{array}{c}
     0 \\ 
     0
-    \end{array}\right) \\
+    \end{array}\right) \nonumber\\ 
     & 2B \left(\begin{array}{cc}
     2 \sin^2(\theta/2) & -2\sin(\theta /2) \cos(\theta /2) \\ 
     -2 \sin(\theta /2) \cos(\theta /2) & 2 \cos^2(\theta /2)
@@ -779,63 +789,63 @@ with $u$ and $v$ $\in \mathbb{R}$. So, for the eigenvector $\ket{w_0}$  with the
     0 \\ 
     0
     \end{array}\right)
-\end{align*}
+\end{align}
+\endgroup
 Solving for $u$ and $v$, we obtain the relation 
-\[
-    \sin (\theta /2) u = \cos (\theta /2) v
-\]   
-so we choose 
-\[
-    \boxed{u = \cos(\theta /2), \qquad v = \sin (\theta /2)}
-\]
-to make sure the eigenvectors normalize to $1$.
-
-Now, let's calculate the matrix elements $\mel{w_i}{\hat{O}}{w_i}$ for $\hat{O} = \hat{X}_i$, which we'll finally use to calculate the thermal expectation value of $\hat{X}_i$.
-\begin{align*}
-    \mel{w_0}{\hat{X}_0}{w_0} & = (\bra{a} u + \bra{b} v) \hat{X}_i (u \ket{a} + v \ket{b}) \\
-    & = u^2 \bra{a}\underbrace{{\hat{X}_0}\ket{a}}_{\ket{b}} +  uv \bra{a}\underbrace{{\hat{X}_0}\ket{b}}_{\ket{a}} + uv \bra{b}\underbrace{{\hat{X}_0}\ket{a}}_{\ket{b}} + v^2 \bra{b}\underbrace{{\hat{X}_0}\ket{b}}_{\ket{a}} \\ 
-    & = u^2 \braket{a}{b} + uv \braket{a}{a} + uv \braket{b}{b} + v^2\braket{b}{a} \\
+\begin{gather}
+    \sin (\theta /2) u = \cos (\theta /2) v \nonumber \\
+    \implies u = \cos(\theta /2), \qquad v = \sin (\theta /2) \qquad
+\end{gather}
+Let us now calculate the matrix elements $\mel{w_i}{\hat{O}}{w_i}$ for $\hat{O} = \hat{X}_i$, which are used in the evaluation of the thermal expectation value of $\hat{X}_i$.
+\begingroup
+\allowdisplaybreaks
+\begin{align}
+    \mel{w_0}{\hat{X}_0}{w_0} & = (\bra{a} u + \bra{b} v) \hat{X}_i (u \ket{a} + v \ket{b}) \nonumber\\
+    & = u^2 \bra{a}\underbrace{{\hat{X}_0}\ket{a}}_{\ket{b}} +  uv \bra{a}\underbrace{{\hat{X}_0}\ket{b}}_{\ket{a}} + uv \bra{b}\underbrace{{\hat{X}_0}\ket{a}}_{\ket{b}} + v^2 \bra{b}\underbrace{{\hat{X}_0}\ket{b}}_{\ket{a}} \nonumber\\ 
+    & = u^2 \braket{a}{b} + uv \braket{a}{a} + uv \braket{b}{b} + v^2\braket{b}{a} \nonumber\\
     & = 2uv
-\end{align*} 
-\begin{align*}
-    \mel{w_1}{\hat{X}_0}{w_1} & = (-\bra{a}v + \bra{b} u) \hat{X}_i (-v \ket{a} + u \ket{b}) \\
-    & = v^2 \bra{a}\underbrace{{\hat{X}_0}\ket{a}}_{\ket{b}} -  uv \bra{a}\underbrace{{\hat{X}_0}\ket{b}}_{\ket{a}} - uv \bra{b}\underbrace{{\hat{X}_0}\ket{a}}_{\ket{b}} + u^2 \bra{b}\underbrace{{\hat{X}_0}\ket{b}}_{\ket{a}} \\ 
-    & = v^2 \braket{a}{b} - uv \braket{a}{a} - uv \braket{b}{b} + u^2\braket{b}{a} \\
+\end{align}
+\endgroup
+\begingroup
+\allowdisplaybreaks
+\begin{align}
+    \mel{w_1}{\hat{X}_0}{w_1} & = (-\bra{a}v + \bra{b} u) \hat{X}_i (-v \ket{a} + u \ket{b}) \nonumber\\
+    & = v^2 \bra{a}\underbrace{{\hat{X}_0}\ket{a}}_{\ket{b}} -  uv \bra{a}\underbrace{{\hat{X}_0}\ket{b}}_{\ket{a}} - uv \bra{b}\underbrace{{\hat{X}_0}\ket{a}}_{\ket{b}} + u^2 \bra{b}\underbrace{{\hat{X}_0}\ket{b}}_{\ket{a}} \nonumber\\ 
+    & = v^2 \braket{a}{b} - uv \braket{a}{a} - uv \braket{b}{b} + u^2\braket{b}{a} \nonumber\\
     & = -2uv
-\end{align*} 
+\end{align}
+\endgroup
 The calculation is exactly similar for $\hat{X}_1$. The expectation value for $\hat{X}$  then evaluates to 
 \begin{align}
     \langle \hat{X} \rangle & = 2uv \qty(\frac{e^{2\beta B} - e^{-2\beta B}}{e^{2\beta B} + e^{-2\beta B}}) = 2uv \tanh (2\beta B) \nonumber \\ 
-    & \implies \boxed{\langle{\hat{X}}\rangle = \frac{J}{B} \tanh(2\beta B)}
+    & \implies \langle{\hat{X}}\rangle = \frac{J}{B} \tanh(2\beta B)
     \label{X-hat_expval}
 \end{align}
 The calculation for $\hat{Z}_0 \hat{Z}_1$ is analogous and the matrix elements are evaluated as follows
-\begin{align*}
-    \mel{w_0}{\hat{Z}_0 \hat{Z}_1}{w_0} & = (\bra{a} u + \bra{b} v) \hat{Z}_0 \hat{Z}_1 (u \ket{a} + v \ket{b}) \\
-    & = u^2 \bra{a}\underbrace{{\hat{Z}_0 \hat{Z}_1}\ket{a}}_{\ket{a}} +  uv \bra{a}\underbrace{{\hat{Z}_0 \hat{Z}_1}\ket{b}}_{-\ket{b}} + uv \bra{b}\underbrace{{\hat{Z}_0 \hat{Z}_1}\ket{a}}_{\ket{a}} + v^2 \bra{b}\underbrace{{\hat{Z}_0 \hat{Z}_1}\ket{b}}_{-\ket{b}} \\ 
-    & = u^2 \braket{a}{a} - uv \braket{a}{b} + uv \braket{b}{a} - v^2\braket{b}{b} \\
+\begin{align}
+    \mel{w_0}{\hat{Z}_0 \hat{Z}_1}{w_0} & = (\bra{a} u + \bra{b} v) \hat{Z}_0 \hat{Z}_1 (u \ket{a} + v \ket{b}) \nonumber\\
+    & = u^2 \bra{a}\underbrace{{\hat{Z}_0 \hat{Z}_1}\ket{a}}_{\ket{a}} +  uv \bra{a}\underbrace{{\hat{Z}_0 \hat{Z}_1}\ket{b}}_{-\ket{b}} + uv \bra{b}\underbrace{{\hat{Z}_0 \hat{Z}_1}\ket{a}}_{\ket{a}} + v^2 \bra{b}\underbrace{{\hat{Z}_0 \hat{Z}_1}\ket{b}}_{-\ket{b}} \nonumber\\ 
+    & = u^2 \braket{a}{a} - uv \braket{a}{b} + uv \braket{b}{a} - v^2\braket{b}{b} \nonumber\\
     & = u^2 - v^2
-\end{align*} 
-\begin{align*}
-    \mel{w_1}{\hat{Z}_0 \hat{Z}_1}{w_1} & = (-\bra{a}v + \bra{b} u) \hat{Z}_0 \hat{Z}_1 (-v \ket{a} + u \ket{b}) \\
-    & = v^2 \bra{a}\underbrace{{\hat{Z}_0 \hat{Z}_1}\ket{a}}_{\ket{a}} -  uv \bra{a}\underbrace{{\hat{Z}_0 \hat{Z}_1}\ket{b}}_{-\ket{b}} - uv \bra{b}\underbrace{{\hat{Z}_0 \hat{Z}_1}\ket{a}}_{\ket{a}} + u^2 \bra{b}\underbrace{{\hat{Z}_0 \hat{Z}_1}\ket{b}}_{-\ket{b}} \\ 
-    & = v^2 \braket{a}{a} - uv \braket{a}{b} + uv \braket{b}{a} - u^2\braket{b}{b} \\
+\end{align}
+\begin{align}
+    \mel{w_1}{\hat{Z}_0 \hat{Z}_1}{w_1} & = (-\bra{a}v + \bra{b} u) \hat{Z}_0 \hat{Z}_1 (-v \ket{a} + u \ket{b}) \nonumber\\
+    & = v^2 \bra{a}\underbrace{{\hat{Z}_0 \hat{Z}_1}\ket{a}}_{\ket{a}} -  uv \bra{a}\underbrace{{\hat{Z}_0 \hat{Z}_1}\ket{b}}_{-\ket{b}} - uv \bra{b}\underbrace{{\hat{Z}_0 \hat{Z}_1}\ket{a}}_{\ket{a}} + u^2 \bra{b}\underbrace{{\hat{Z}_0 \hat{Z}_1}\ket{b}}_{-\ket{b}} \nonumber\\ 
+    & = v^2 \braket{a}{a} - uv \braket{a}{b} + uv \braket{b}{a} - u^2\braket{b}{b} \nonumber\\
     & = -(u^2 - v^2)
-\end{align*}
+\end{align}
 Therefore, the expectation value of $\hat{Z}_0 \hat{Z}_1$ evaluates to 
 \begin{align}
     \langle \hat{Z}_0 \hat{Z}_1 \rangle & = (u^2-v^2) \qty(\frac{e^{2\beta B} - e^{-2\beta B}}{e^{2\beta B} + e^{-2\beta B}}) = (u^2-v^2) \tanh (2\beta B) \nonumber \\ 
-    & \implies \boxed{\langle{\hat{Z}_0 \hat{Z}_1}\rangle = \frac{h}{B} \tanh(2\beta B)}
+    & \implies \langle{\hat{Z}_0 \hat{Z}_1}\rangle = \frac{h}{B} \tanh(2\beta B)
     \label{ZZ-hat_expval}
 \end{align}
 
-\subsection{2 site problem in the classical realm}
-Now that we have the analytical expressions for $\langle \hat{X} \rangle$ and $\langle \hat{Z}_0 \hat{Z}_1 \rangle$, we can compare the results with $\expval{O_{X}}$ and $\expval{O_{Z_0 Z_1}}$ i.e. the expectation values of the corresponding classical observables using Monte Carlo.
-
-The quantum-to-classical correspondance effective action for $N_x = 2$ simplifies to 
-\[
+\subsection{Monte Carlo averages}
+The effective classical action arising out of quantum to classical correspondence looks much simpler for $N_x=2$   
+\begin{equation}
     S = - 2h \Delta \tau \sum_{l=1}^{N_\tau} \sigma^{0}_l \sigma^{1}_{l} - \sum_{l=1}^{N_\tau} \ln \cosh \qty[K \qty(\sigma^0_l \sigma^0_{l+1} + \sigma^1_l \sigma^1_{l+1})] 
-\]  
+\end{equation}
 Thus, for a spin flip $\sigma^{i_0}_{l_0} \to - \sigma^{i_0}_{l_0}$, we can decompose the change in action as 
 \[
     \Delta S_x = 4 h \Delta \tau \sigma^{0}_{l_0} \sigma^{1}_{l_0}  
@@ -843,116 +853,231 @@ Thus, for a spin flip $\sigma^{i_0}_{l_0} \to - \sigma^{i_0}_{l_0}$, we can deco
 \[
     \Delta S_\tau = \ln \qty[ \frac{\cosh\qty[K(\sigma^{0}_{l} \sigma^{0}_{l+1} + \sigma^{1}_{l} \sigma^{1}_{l+1} )] \cdot \cosh\qty[K(\sigma^{0}_{l} \sigma^{0}_{l-1} + \sigma^{1}_{l} \sigma^{1}_{l-1} )] }{\cosh\qty[K(\sigma^{0}_{l} \sigma^{0}_{l+1} - \sigma^{1}_{l} \sigma^{1}_{l+1} )] \cdot \cosh\qty[K(\sigma^{0}_{l} \sigma^{0}_{l-1} - \sigma^{1}_{l} \sigma^{1}_{l-1} )]}  ]
 \]
-\[
+
+\begin{equation}
     \Delta S = \Delta S_x + \Delta S_\tau 
-\]
-As before, the relevant operators are the mappings of $\hat{X}_i$ and $\hat{Z}_0 \hat{Z}_1$ onto classical observables $O_{X}$ and $O_{Z_0 Z_1}$ respectively.
-\[
+\end{equation}
+As before, the relevant operators are the mappings of $\hat{X}_i$ and $\hat{Z}_0 \hat{Z}_1$, i.e., the classical observables $O_{X}$ and $O_{Z_0 Z_1}$ respectively.
+\begin{equation}
     O_{Z_0 Z_1} = \frac{1}{N_\tau} \sum_{l=0}^{N_\tau - 1} \sigma^0_l \sigma^1_l
-\]
-\[
+\end{equation}
+\begin{equation}
     O_X = O_{X_0} = O_{X_1} = \frac{1}{N_\tau} \sum_{l=0}^{N_\tau -1} \Bigg[\frac{\cosh\big( K \sigma^0_l \sigma^0_{l+1} - K \sigma^1_l \sigma^1_{l+1} \big)}{\cosh\big( K \sigma^0_l \sigma^0_{l+1} + K \sigma^1_l \sigma^1_{l+1} \big)}  \Bigg]
-\]
-Therefore, we can now use Metropolis Monte Carlo with an acceptance probability of $\text{min} (1, e^{-\Delta S})$ for spin flips, combined with alignment flips. Finally, we compare the MC expectation values of $O_X$ and $O_{Z_0 Z_1}$ with the analytical results for $\langle \hat{X} \rangle$ and $\langle \hat{Z}_0 \hat{Z}_1\rangle$.
+\end{equation}
+Finally, we can then use our modified Metropolis Monte Carlo algorithm with spin flips and alignment flips, defined with an acceptance probability of $\text{min} (1, e^{-\Delta S})$. These Monte Carlo averages of $O_X$ and $O_{Z_0 Z_1}$ are then compared against the analytical results for $\langle \hat{X} \rangle$ and $\langle \hat{Z}_0 \hat{Z}_1\rangle$.
 
-We perform the Monte Carlo simulation for $\beta = N_\tau = 50$, keeping $\Delta \tau = 1$ and alignment flip fraction $f = \texttt{1.0}$. However, care needs to be taken while choosing the values of $J$ (consequently $K$) and $h$. Since the phase diagram only depends on the ratio $J/h$, we have the freedom of choosing the value of the parameters as large or as small as we want. To explore the system near the critical point ($J/h = 1$), we have to adjust the parameter values accordingly. If $h$ is too small, then the values of $K$ near the critical point are too large and that results in a low \textit{acceptance rate} and high \textit{trotter error}. The values of $K$ near the critical point are small if $h$ is large, but it again results in the same problem. On top of that, having disproportionate orders of magnitude of $K$ and $h$ can lead to freezing of spins in one of the directions.
+\subsection{Comparing Monte Carlo against analytical results}
 
-Therefore, we require an optimum value of the parameters $K$ and $h$ to explore the system near the critical point so as to minimize the \textit{trotter error} and maximize the \textit{acceptance rate}. Therefore, we choose $h = \texttt{0.05}$ and vary $K$. The quantum critical point appears at $K_c = 1.498$, so we choose values of $K$ so as to explore the system near this critical point.    
+We perform the Monte Carlo simulation for $\beta = N_\tau = 50$, keeping $\Delta \tau = 1$ and alignment flip fraction $f = \texttt{1.0}$. However, care needs to be taken while choosing the values of $J$ (consequently $K$) and $h$ (consequently $Y$). Since the model only depends on the ratio $J/h$, we have the freedom of choosing the value of the parameters as large or as small as we want. To explore the system near $J/h = 1$, we have to adjust the parameter values accordingly. If $Y$ is too small, then the values of $K$ near $J/h = 1$ are too large and that results in a low \textit{acceptance rate} and high \textit{trotter error}. The values of $K$ near $J/h = 1$ are small if $h$ is large, but it again results in the same problem. Moreover, disproportionate orders of magnitude of $K$ and $Y$ can lead to spin freezing along one of the directions.
 
+Therefore, we require an optimum range of values for parameters $K$ and $Y$ to explore the system near the $J/h = 1$ point so as to minimize the \textit{trotter error} and maximize the \textit{acceptance rate}. Therefore, we choose $Y = \texttt{0.05}$ and vary $K$. The $J/h = 1$ then translates $K_* = 1.498$, so we choose values of $K$ so as to explore the system near this value.    
 %%% FIG %%%
 \begin{figure}[!htb]
     \centering
-    \begin{subfigure}[b]{0.6\textwidth}
+    \begin{subfigure}[b]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/2_site/O_X.pdf}
-        \caption{Monte Carlo average $\expval{O_X}$ as a function of $J/h$.}
+        \caption{Monte Carlo average $\expval{O_X}$ vs. $J/h$.}
         \label{expval_O_X_vs_J/h_2}
     \end{subfigure}
-\end{figure}
-%%% FIG %%%
-
-%%% FIG %%%
-\begin{figure}[!htb]\ContinuedFloat
-    \centering
-    \begin{subfigure}[b]{0.6\textwidth}  %keep total sum <1 to show in same line
+    \begin{subfigure}[b]{0.49\textwidth}  %keep total sum <1 to show in same line
         \centering
         \includegraphics[width=\textwidth]{images/2_site/O_Z0Z1.pdf}
-        \caption{Monte Carlo average $\expval{O_{Z_0 Z_1}}$ as a function of $J/h$.}
+        \caption{Monte Carlo average $\expval{O_{Z_0 Z_1}}$ vs. $J/h$.}
         \label{expval_O_ZZ_vs_J/h_2}
     \end{subfigure}
-    \caption{Comparing analytical results obtained by exactly diagonalizing the quantum Hamiltonian ($d$)  with the numerical results obtained from performing Monte Carlo on the effective classical model $(d+1)$.}
+    \caption{Comparing analytical results obtained by exactly diagonalizing the quantum Hamiltonian ($1d$)  with the numerical results obtained from performing Monte Carlo on the effective classical model $(1+1d)$.}
     \label{expval_O_vs_J/h_2}
 \end{figure}
+%%% FIG %%%
 \FloatBarrier
 As can be seen from Fig. \ref{expval_O_vs_J/h_2}, the Monte Carlo averages of the corresponding classical observables matches with the thermal expectation values of the quantum operators. At higher values of $J/h$, we can see some deviations arising due to the \textit{trotter error} despite the high MC acceptance rate.
 
-Therefore, the algorithm made a first pass on the $2$-site problem, and we expect the algorithm to work for higher values of $N_x$ as well.   
+Therefore, the modified Monte Carlo algorithm successfully  on the two site problem, and we will verify its relevance for higher spatial lattice sizes $N_x$ in the following section.
 
-\section{Comparing Monte Carlo with Exact Diagonalization}
-Since it is not practical to calculate the analytical expressions for operator thermal expectation values, we perform an Exact Diagonalization (ED) procedure on the quantum Hamiltonian, and calculate the thermal expectation values as 
-\begin{equation*}
+\section{Comparing Monte Carlo against exact diagonalization}
+Analytical calculations for expectation values of quantum operators can only get us so far. The complexity of the calculation grows immensely on going from two sites to three sites. Therefore, it is not practical to rely on analytical calculations for evaluating quantum expectation values at higher lattice sizes $N_x>2$. Instead, we use the machinery of numerical exact diagonalization (ED) to numerically diagonalize the Hamiltonian for expectation value calculations. The quantum expectation value (at finite temperature) of an observable $\hat{\mathcal{O}}$ is calculated as follows, 
+\begin{equation}
     \langle \hat{\mathcal{O}} \rangle =  \frac{1}{Z} \Tr(e^{-\beta \hat{H}} \hat{\mathcal{O}}) = \frac{\sum_{i} \mel{E_i}{\hat{\mathcal{O}}}{E_i} \: e^{-\beta E_i}}{\sum_i \braket{E_i}{E_i} e^{-\beta E_i}}
-\end{equation*}
-where we calculate the trace over the energy eigenbasis. We then compare these quantum thermal expecatation values with the Monte Carlo expectation values of the corresponding classical observables.
+\end{equation}
+where we calculate the trace over the energy eigenbasis. These quantum thermal expecatation values can then be compared with the Monte Carlo averages of the corresponding classical observables.
 
-For the purposes of our model, $N_x = 13$ is an important lattice size because that is where the subsystem symmetry starts breaking (alignment freezing), and we have to introduce alignment flips to restore ergodicity. Therefore, we compare our ED results for $N_x = 13$ with the MC results, at $\beta =50$, hence doing sufficiently low-temperature studies.
+For verification purposes, we take the highest spatial lattice size possible for exact diagonalization calculations, i.e., $N_x = 13$ (due to exponentially increasing computational and memory costs). This is also an interesting lattice size to work with since standard Metropolis Monte Carlo breaks the subsystem symmetries at this lattice size leading to biased sampling. The introduction of alignment flips restores ergodicity in our classical model, and this benchmarking will serve as a test to whether our modified Monte Carlo algorithm captures the correct dynamics of the quantum system.
+
+\subsection{Ground state simulations}
+The ground state properties of the quantum system are probed by considering the $\beta h \to \infty$ limit. This is because it is the combination $\beta h$ (or $\beta J$) which enters the partition function,
+\begin{equation}
+    \exp\qty[-\beta \hat{H}] = \exp\qty[\beta h \qty(\sum_i Z_i Z_{i+1} + \frac{J}{h} \sum_i X_i)].
+\end{equation}
+Thus, for the purposes of our ground state simulations, we choose $\beta h= 2.50$ $(\beta = 50, \: h = 0.05)$. If we desire to simulate our model in the parameter range $J/h \in [a, b]$ and $\Delta \tau = 1$, then the range of $K$ chosen for MC simulations is such that
+\begin{equation}
+    K_i =-\frac{1}{2} \ln \tanh(h\cdot b), \qquad K_f =-\frac{1}{2} \ln \tanh(h\cdot a) 
+\end{equation}   
+
+\subsubsection{Monte Carlo setup}
+\begin{itemize}[label={}]
+    \setlength{\itemsep}{0.1em}
+    \item \texttt{spatial lattice size $N_x = $ 13}
+    \item \texttt{temporal lattice size $N_\tau = $ 50}
+    \item \texttt{trotter unit $\Delta \tau = \texttt{1} $}
+    \item \texttt{coupling parameter $Y = \texttt{0.05}$}
+    \item \texttt{coupling parameter $K \in [\texttt{0.76}, \: \texttt{2.64}]$}
+    \item \texttt{no of equilibration sweeps = \texttt{1.0e3}}
+    \item \texttt{no of sampling sweeps $N_\text{samp} = $ 2$\tau \: \cdot$ 1.0e4}
+    \item \texttt{sampling step size = 2$\tau $ }
+\end{itemize}
+
+\subsubsection{Exact diagonalization setup}
+\begin{itemize}[label={}]
+    \setlength{\itemsep}{0.1em}
+    \item \texttt{spatial lattice size $N_x = $ 13}
+    \item \texttt{interaction parameter $h = \texttt{0.05}$} 
+    \item \texttt{field strength parameter $J \in [\texttt{0.005}, \:\texttt{0.22}]$} 
+    \item \texttt{inverse temperature $\beta = \texttt{50}$}
+\end{itemize}
 
 %%% FIG %%%
 \begin{figure}[!htb]
     \centering
-    \begin{subfigure}[b]{0.6\textwidth}
+    \begin{subfigure}[b]{0.55\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/13_site/L=13_X.pdf}
     \end{subfigure}
-    \caption{Comparing ED results for $\langle \hat{X} \rangle$ with MC average $\expval{O_X}$ vs. $J/h$.}
+    \caption{Comparing ED results for $\langle \hat{X} \rangle$ with MC average $\expval{O_X}$ at $\beta = 2.5$.}
     \label{expvalX_ED_vs_MC_13}
 \end{figure}
 %%% FIG %%%
+\vspace*{1em}
 
 %%% FIG %%%
 \begin{figure}[!htb]
     \centering
-    \begin{subfigure}[b]{0.45\textwidth}  %keep total sum <1 to show in same line
+    \begin{subfigure}[b]{0.5\textwidth}  %keep total sum <1 to show in same line
         \centering
         \includegraphics[width=\textwidth]{images/13_site/L=13_ZZ(r=1).pdf}
         \caption{$r \equiv |i-j| = 1$.}
     \end{subfigure}
-    \hspace{1em}  %\hfill
-    \begin{subfigure}[b]{0.45\textwidth}
+\end{figure}
+    \vspace*{1em}
+\begin{figure}\ContinuedFloat
+    \centering
+    \begin{subfigure}[b]{0.5\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/13_site/L=13_ZZ(r=2).pdf}
         \caption{$r \equiv |i-j| = 2$.}
     \end{subfigure}
-    \hspace{1em}  %\hfill
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[b]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/13_site/L=13_ZZ(r=3).pdf}
         \caption{$r \equiv |i-j| = 3$.}
     \end{subfigure}
-    \caption{Comparing ED results for $\langle \hat{Z}_i \hat{Z}_j \rangle$ with MC average $\expval{O_{Z_i Z_j}}$ vs. $J/h$.}
+    \caption{Comparing ED results for $\langle \hat{Z}_i \hat{Z}_j \rangle$ with MC average $\langle O_{Z_i Z_j} \rangle$ at $\beta = 2.5$.}
     \label{expvalZZ_ED_vs_MC_13}
 \end{figure}
-\FloatBarrier
-\hspace{-1.5em}As can be seen, the results from ED and MC simulations match closely, except for the slight variations in $Z_i Z_j$ expectation values as $|i-j|$ increases, which appear due to periodic boundary effects.
+The benchmark plots in Figs.~\ref{expvalX_ED_vs_MC_13} and~\ref{expvalZZ_ED_vs_MC_13} clearly show that the Monte Carlo averages match very closely (within error bars) with the exact diagonalization expectation values, except for the slight variations in $Z_i Z_j$ expectation values as $|i-j|$ increases, which appear due to periodic boundary effects.
 
-% \textcolor{red}{Need to explain exact diagonalization procedure. Add notes.}
-\section{Simulations in the limit $\beta \to 0$}
-With our machinery set up, we can now attempt to simulate systems in the $\beta < 1$ (or $T>0$) range. However, on staring at the action $S$ of the system for long enough,
-\[
-    S = -h \Delta\tau \sum_{i=0}^{N_x - 1} \sum_{l=0}^{N_\tau -1} \sigma^{i}_{l} \sigma^{i+1}_{l} - \sum_{l=0}^{N_\tau - 1} \ln \cosh \qty(K N_x A(l)) 
-\]
-we realize that for a fixed $N_x$ and $N_\tau$, the action primarily depends on two parameters
-\[
-    Y \equiv h \Delta \tau, \qquad K \equiv -\frac{1}{2} \ln \tanh(J \Delta \tau )
-\]  
-We can rewrite our coupling constants in terms of the above. Therefore, we realize that \ul{keeping the same values of $Y$, $K$ and $N_\tau$}, we essentially end up solving an entire class of problems (parameterized by the value of $\Delta \tau $) with the following parameters
-\begin{align*}
-    h = \frac{Y}{\Delta \tau}, \qquad J = \frac{\text{arctanh}(e^{-2K})}{\Delta \tau }, \qquad \beta = N_\tau \Delta \tau. 
-\end{align*}
-Taking a concrete example, say we perform a MC simulation with $N_\tau = 50$, $h = 0.05$, $K = 2.0$, and $\Delta \tau = 1$. This sets $Y = 0.05$, $K = 2.0$ and $N_\tau = 50$ as fixed values, and the results of this simulation are essentially valid for a class of problems with 
-\begin{align*}
-    h = \frac{0.05}{\Delta \tau}, \qquad J = \frac{0.18}{\Delta \tau }, \qquad \beta = 50 \Delta \tau. 
-\end{align*}  
-with any arbitatry $\Delta \tau$. If we choose $\Delta \tau = 0.01$, then our simulation results are valid for the set of parameters $h = 5$, $J = 18$, and $\beta = 0.5$ (or $T = 2$), hence obtaining the results of a high-temperature problem from an equivalent low temperature simulation (with different values of $h$, $J$).
+\subsection{Finite temperature simulations}
+The machinery of our quantum Monte Carlo simulations can also be used to perform finite temperature simulations of our model. Since $\beta h = Y \cdot N_\tau$ acts like a temperature scale in our model, we can simulate finite temperature features by choosing $\beta h < 1$. 
+
+\subsubsection{Monte Carlo setup}
+Ideally, for a Monte Carlo simulation, having a large value of $N_\tau$ is necessary for reducing the trotter error and ensuring convergence to the correct results. Therefore, for the $ Y \cdot N_\tau < 1$ combination, $Y$ should be as small as possible while also ensuring that the order of magnitude stays roughly the same as $K$ (to prevent freezing of spins along the spatial axis). 
+
+The only relevant parameters entering the Monte Carlo calculation are $Y, \:K, $ and $N_\tau$. We choose $Y = 0.05$, the same as before, and $N_\tau = 10$, implying that the value of the temperature scale is $\beta h = Y \cdot N_\tau = 0.5$. The values of $K$ are chosen accordingly to explore the region close to $J/h = 1$. 
+
+The parameters are chosen as follows
+\begin{itemize}[label={}]
+    \setlength{\itemsep}{0.1em}
+    \item \texttt{spatial lattice size $N_x = $ 13}
+    \item \texttt{temporal lattice size $N_\tau = $ 10}
+    \item \texttt{trotter unit $\Delta \tau = \texttt{1} $}
+    \item \texttt{coupling parameter $Y = \texttt{0.05}$}
+    \item \texttt{coupling parameter $K \in [\texttt{1.15}, \: \texttt{2.30}]$}
+    \item \texttt{no of equilibration sweeps = \texttt{1.0e3}}
+    \item \texttt{no of sampling sweeps $N_\text{samp} = $ 2$\tau \: \cdot$ 1.0e4}
+    \item \texttt{sampling step size = 2$\tau $ }
+\end{itemize}
+
+\subsubsection{Exact diagonalization setup}
+The exact diagonalization calculations doesn't suffer from a spin freezing or trotterization error problem like the Monte Carlo simulations. Moreover, the expectation value calculation for a fixed value of $J/h$ only depends on the value of $\beta h$. This implies that we have a family of parameter pair solutions $(\beta, h)$ which satisfy the constraint $\beta h = C$ where $C$ is our desired temperature scale for the simulation. This family of parameter pairs $(\beta, h = C/\beta)$ gives the same results for the expectation value calculations. 
+
+Thus, exploiting this extra degree of freedom, we pretend to work at unit temperature $\beta = 1$ in exact diagonalization calculations. Consequently, $h$ and $J$ are chosen as follows
+\begin{subequations}
+    \begin{align}
+        &h = \beta h = N_\tau \:Y \\
+        &J = \beta J = N_\tau \: \text{arctanh}(e^{-2K})
+    \end{align}
+\end{subequations}
+where $Y$ value and $K$ ranges are chosen to be the same as the Monte Carlo parameters. The parameters are chosen as follows
+\begin{itemize}[label={}]
+    \setlength{\itemsep}{0.1em}
+    \item \texttt{spatial lattice size $N_x = $ 13}
+    \item \texttt{interaction parameter $h = N_\tau \:Y = \texttt{0.05}$} 
+    \item \texttt{field strength parameter $J = N_\tau \: \textrm{arctanh}(e^{-2K}) \in [\texttt{0.01}, \:\texttt{0.1}]$} 
+    \item \texttt{inverse temperature $\beta = \texttt{1}$}
+\end{itemize}
+%%% FIG %%%
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}[b]{0.55\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/finite temps L13/X.png}
+    \end{subfigure}
+    \caption{Comparing ED results for $\langle \hat{X} \rangle$ with MC average $\expval{O_X}$ at $\beta = 0.5$.}
+    \label{expvalX_ED_vs_MC_13_FT}
+\end{figure}
+%%% FIG %%%
+\vspace*{1em}
+
+%%% FIG %%%
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}  %keep total sum <1 to show in same line
+        \centering
+        \includegraphics[width=\textwidth]{images/finite temps L13/ZZ1.png}
+        \caption{$r \equiv |i-j| = 1$.}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/finite temps L13/ZZ2.png}
+        \caption{$r \equiv |i-j| = 2$.}
+    \end{subfigure}
+    \caption{Comparing ED results for $\langle \hat{Z}_i \hat{Z}_j \rangle$ with MC average $\langle O_{Z_i Z_j} \rangle$ at $\beta = 0.5$.}
+    \label{expvalZZ_ED_vs_MC_13_FT}
+\end{figure}
+\FloatBarrier
+Figs.~\ref{expvalX_ED_vs_MC_13_FT} and~\ref{expvalZZ_ED_vs_MC_13_FT} again show very close matching of Monte Carlo averages with the exact diagonalization calculations, even at finite temperatures $\beta h < 1$. 
+
+Thus, the ergodicity analysis and the benchmarking against exact digaonlization clearly suggest that our modified Metropolis Monte Carlo simulations are successful in simulating the model of interest. Therefore, we conclude that the proposed Metropolis algorithm is an effective numerical tool for understanding the phase structure of $\mathbb{Z}_2$ lattice gauge theory.
+
+\section{Quantum phase transition}
+The study of expectation values of operators in the previous sections highlighted variation in the value of the quantities at $T = 0$ as the coupling parameter $J/h$ is varied across a range. The variation of these quantities from a zero to a non-zero value is illustrates a change in phase. Since such a phase transition isn't driven by any thermal effects and is purely an artefact of the quantum fluctuations tuned by a variation in the nonthermal parameters, it is called a \textit{quantum phase transition}.
+
+However, as noted in Chapter~\ref{chap:1}, it is impossible in theory for a system of finite size to undergo a phase transition. In simulations, the system sizes are often small in comparison to experiments, and understanding of finite size effects is important. An important tool for studying phase transitions in finite size systems is the Binder cumulant, and we recall
+\begin{equation}
+    U_L = 1 - \frac{\expval{\hat{m}^4}_L}{3\expval{\hat{m}^2}^2_L}
+\end{equation}
+where $|m|$ is like an order parameter characterizing the transition. But $Z_i$ is not a singlet compatible operator in the singlet Hilbert space $\mathcal{H}_s$
+\begin{equation}
+    \hat{F} \: Z_i \: \hat{F} = - Z_i
+\end{equation}
+Consequently, the magnetization operator
+\begin{equation}
+    \hat{m} = \frac{1}{N_x} \sum_{i=0}^{N_x-1} Z_i
+\end{equation}
+is also ill-defined. Therefore, magnetization isn't a valid operator in this subspace, let alone be an order parameter. However, even powers of magnetization, i.e., $\langle m^{2n} \rangle$ (for $n \in \mathbb{Z}^+$) are singlet compatible and the definition of the Binder cumulant is still valid.
+
+\subsection{Classical analog of the Binder cumulant}
+Let us consider the elementary operator $\hat{m}^{2n}$ which is used to construct the Binder cumulant. The classical analog of the $\hat{m}^{2n}$ operator is calculated by substituting $\hat{\mathcal{O}} =  \hat{Z}_i \hat{Z}_j$ in Eq.~\eqref{generalop}.
+\begingroup
+\allowdisplaybreaks
+\begin{align}
+    \cdot \langle {\hat{Z}_i \hat{Z}_j} \rangle &= \frac{1}{\mathcal{Z} }\qty(\prod_{l=0}^{N_\tau - 1} \sum_{\{\sigma_l \}, \mu_l, \lambda_l}) \frac{1}{N_\tau} \sum_{l_0 = 0}^{N_\tau - 1} \Bigg[\langle\{\mu_{l_0+1} \sigma _{l_0+1}\}|{e^{-\Delta \tau \hat{H}}{\hat{m}^{2n}}}|{\{\lambda_{l_0} \sigma _{l_0}\}} \rangle \qquad \qquad \nonumber\\
+    &\qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \prod_{l \neq l_0} \mel{\{\mu_{l+1} \sigma _{l+1}\}}{e^{-\Delta \tau \hat{H}}}{\{\lambda_{l} \sigma _{l}\}} \Bigg] \nonumber \\
+    & =  \frac{1}{\mathcal{Z} }\qty(\prod_{l=0}^{N_\tau - 1} \sum_{\{\sigma_l \}, \mu_l, \lambda_l}) \frac{1}{N_\tau} \sum_{l_0 = 0}^{N_\tau - 1} \Bigg[\mel{\{\mu_{l_0+1} \sigma _{l_0+1}\}}{e^{-\Delta \tau \hat{H}}}{\{\lambda_{l_0} \sigma _{l_0}\}} (\lambda_{l_0} \sigma^i_{l_0})(\lambda_{l_0} \sigma^j_{l_0}) \qquad \qquad \nonumber \\ 
+    & \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \prod_{l \neq l_0} \mel{\{\mu_{l+1} \sigma _{l+1}\}}{e^{-\Delta \tau \hat{H}}}{\{\lambda_{l} \sigma _{l}\}}\Bigg] \nonumber \\ 
+    & = \frac{1}{\mathcal{Z} }\qty(\prod_{l=0}^{N_\tau - 1} \sum_{\{\sigma_l \}, \mu_l, \lambda_l}) \qty[\frac{1}{N_\tau} \sum_{l_0 = 0}^{N_\tau - 1}  \qty(\frac{1}{N_x} \sum_{i=0}^{N_x-1} \sigma^i_{l_0})^{2n}]  \nonumber  \\
+    & \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad\qty[\prod_{l = 0}^{N_\tau - 1} \mel{\{\mu_{l+1} \sigma _{l+1}\}}{e^{-\Delta \tau \hat{H}}}{\{\lambda_{l} \sigma _{l}\}}]
+\end{align}
+\endgroup
 
 \end{document}
