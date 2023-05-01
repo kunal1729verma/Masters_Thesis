@@ -4,7 +4,7 @@
 \usepackage{graphicx}
 \usepackage{svg}
 \usepackage{soul} % For using underline \ul
-\usepackage{biblatex} 
+\usepackage[sorting=none]{biblatex} 
 \usepackage[labelfont=bf]{caption}
 \usepackage{wrapfig} %For wrapping figures
 \usepackage{setspace} %For setting line spacing.
@@ -203,49 +203,82 @@
 %     \setcounter{page}{2}
 %     \clearpage
 % % TITLE PAGE END
-
 \begin{titlepage}
-  \begin{center}
-      \textrm{\LARGE \textbf{Monte Carlo studies of quantum phase transitions}} \\
-  \end{center}
-  \vspace{0.5cm}
-  \begin{center}\textsf{\Large 
-  Kunal Verma (MS18148)} \\
-  \end{center}
-  \vspace{0.5cm}
-  \begin{center}\textsf{\Large 
-  Master's Dissertation} \\
-  \end{center}
-  \vspace{0.5cm}
 
-  %%%% FIG %%%%
   \begin{center}
-  \begin{figure}[!htb]
-      \centering
-      \begin{subfigure}[b]{0.7\textwidth}  %keep total sum <1 to show in same line
-          \centering
-          \includegraphics[width=4cm]{images/logo.png}
-      \end{subfigure}
-  \end{figure}
-  \vspace{0.2cm}
-  \textsf{\Large {Department of Physical Sciences}} \\
-  \vspace{0.2cm}
-  \textsf{\Large {Indian Institute of Science Education and Research}}\\
-  \vspace{0.1cm}
-  \textsf{\Large {(IISER) Mohali}}\\
-  \vspace{1.5cm}
-  \textsf{\Large{First Draft: 10th April 2023}}
-  \end{center}
-  %%%% FIG %%%%
-
-  \vspace{1cm}
   
-  \begin{center}
-  \textsf{\large {Supervisor: Prof. Sanjeev Kumar \hfill Co-supervisor: Prof. Vijay B. Shenoy}}
-  \end{center}
+      \vspace*{0.5cm}
+      
+      \LARGE
+      \textbf{Monte Carlo Studies of Quantum Phase Transitions}
+  
+      \vspace{2cm}
+      \Large
+      \textbf{Kunal Verma}
+      \vspace{1cm}
+      
+      \large
+      \textit{A dissertation submitted for the partial fulfilment of
+      BS-MS dual degree in Science}
+      
+      \vspace{1cm}
+  
+      \includegraphics[width=8cm]{images/HighResolutionLogo.jpg}
+  
+      \vspace{1cm}
 
-  \end{titlepage}
-\setcounter{page}{2}
+      \large
+      \textbf{Indian Institute of Science Education and Research, Mohali}\\
+      \large
+      
+      \vspace{1cm}
+      
+      \textbf{May 2, 2023}
+  \end{center}
+\end{titlepage}
+  
+% \begin{titlepage}
+%   \begin{center}
+%       \textrm{\LARGE \textbf{Monte Carlo studies of quantum phase transitions}} \\
+%   \end{center}
+%   \vspace{0.5cm}
+%   \begin{center}\textsf{\Large 
+%   Kunal Verma (MS18148)} \\
+%   \end{center}
+%   \vspace{0.5cm}
+%   \begin{center}\textsf{\Large 
+%   Master's Dissertation} \\
+%   \end{center}
+%   \vspace{0.5cm}
+
+%   %%%% FIG %%%%
+%   \begin{center}
+%   \begin{figure}[!htb]
+%       \centering
+%       \begin{subfigure}[b]{0.7\textwidth}  %keep total sum <1 to show in same line
+%           \centering
+%           \includegraphics[width=4cm]{images/logo.png}
+%       \end{subfigure}
+%   \end{figure}
+%   \vspace{0.2cm}
+%   \textsf{\Large {Department of Physical Sciences}} \\
+%   \vspace{0.2cm}
+%   \textsf{\Large {Indian Institute of Science Education and Research}}\\
+%   \vspace{0.1cm}
+%   \textsf{\Large {(IISER) Mohali}}\\
+%   \vspace{1.5cm}
+%   \textsf{\Large{First Draft: 10th April 2023}}
+%   \end{center}
+%   %%%% FIG %%%%
+
+%   \vspace{1cm}
+  
+%   \begin{center}
+%   \textsf{\large {Supervisor: Prof. Sanjeev Kumar \hfill Co-supervisor: Prof. Vijay B. Shenoy}}
+%   \end{center}
+
+%   \end{titlepage}
+% \setcounter{page}{2}
 
 % Use Roman Page Numbering for first few pages.
 \pagenumbering{Roman}
@@ -253,33 +286,36 @@
 
 % Certificate of Examination.
 \begin{center}
-    \textbf{\Large Certificate of Examination}
+    \textsf{\textbf{\Large Certificate of Examination}} 
 \end{center}
+\vspace*{1em}
 
-This is to certify that the dissertation titled \textbf{Monte Carlo studies of quantum phase transitions} submitted by \textbf{Kunal Verma} (Reg. No. MS18148) for the partial fulfillment of BS- MS Dual Degree programme of the institute, has been examined by the thesis committee duly appointed by the institute. The committee finds the work done by the candidate satisfactory and recommends that the report be accepted.
+This is to certify that the dissertation titled \textbf{Monte Carlo Studies of Quantum Phase Transitions} submitted by \textbf{Kunal Verma} (Reg. No. MS18148) for the partial fulfillment of BS- MS Dual Degree programme of the institute, has been examined by the thesis committee duly appointed by the institute. The committee finds the work done by the candidate satisfactory and recommends that the report be accepted.
 
 \vspace{4cm}
 
-Prof. Sanjeev Kumar \hspace{1.5cm} Dr. Abhishek Chaudhari \hspace{1.5cm}  Dr. Yogesh Singh
+Dr.~Sanjeev Kumar \hspace{1.5cm} Dr.~Abhishek Chaudhari \hspace{1.5cm}  Dr.~Yogesh Singh
 
 \vspace{4cm}
 
 \begin{flushright}
-    Prof. Sanjeev Kumar
+    Dr.~Sanjeev Kumar
     \\
     (Supervisor)
     \\
     \vspace{4cm}
-    Dated: 10th April 2023
+    Dated: May 2, 2023
 \end{flushright}
 
 \cleardoublepage
 
 % Declaration.
 \begin{center}
-    \textbf{\Large Declaration}
+    \textsf{\textbf{\Large Declaration}} 
 \end{center}
-The work presented in this dissertation has been carried out by me under the guidance of Prof. Sanjeev Kumar at the Indian Institute of Science Education and Research, Mohali.
+\vspace*{1em}
+
+The work presented in this dissertation has been carried out by me under the guidance of Dr.~Sanjeev Kumar (supervisor) at the Indian Institute of Science Education and Research, Mohali and Prof.~Vijay B. Shenoy (co-supervisor) at the Indian Institute of Science, Bengaluru.
 
 \vspace{0.4cm}
 
@@ -292,27 +328,29 @@ Kunal Verma
 \\
 (Candidate)
 \\
-Dated: 10th April 2023
+Dated: May 2, 2023
 \end{flushright}
+\vspace*{1em}
 
-In my capacity as the supervisor of the candidates project work, I certify that the above statements by the candidate are true to the best of my knowledge.
+In my capacity as the supervisor of the candidate's project work, I certify that the above statements by the candidate are true to the best of my knowledge.
 
 \vspace{2cm}
 
 \begin{flushright}
-Prof. Sanjeev Kumar
+Dr.~Sanjeev Kumar
 \\
 (Supervisor)
 \\
-Dated: 10th April 2023
+Dated: May 2, 2023
 \end{flushright}
 
 \cleardoublepage
 
 % Acknowledgements.
 \begin{center}
-\textbf{\Large Acknowledgements}
+\textsf{\textbf{\Large Acknowledgements}} 
 \end{center}
+\vspace*{1em}
 
 Use this section to acknowledge the help/contribution of others.
 
@@ -321,8 +359,9 @@ Use this section to acknowledge the help/contribution of others.
 % Abstract of the Thesis
 \addcontentsline{toc}{chapter}{\textbf{Abstract}}
 \begin{center}
-    \textbf{\Large Abstract}
+    \textsf{\textbf{\Large Abstract}} 
 \end{center}
+\vspace*{1em}
 
 Use this section to include an abstract of the thesis.
 
@@ -343,7 +382,7 @@ Use this section to include an abstract of the thesis.
 % \section{Introduction}
 %%%%%%
 
-% \newpage
+\newpage
 \subfile{subfiles/monte_carlo.tex}\newpage
 \subfile{subfiles/j1j2.tex}\newpage
 \subfile{subfiles/z2_lgt.tex}\newpage

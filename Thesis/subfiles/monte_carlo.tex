@@ -2,7 +2,7 @@
 \begin{document}
 
 \chapter{Monte Carlo simulations}\label{chap:1}
-The purpose of this chapter is to give a brief introduction to Monte Carlo simulations and their applications in the numerical analysis of phase transitions in statistical physics models. We will start by illustrating the general idea of importance sampling Monte Carlo methods, followed by the different type of update schemes (Metropolis, Wolff-cluster, etc.) to sample non-uniform distributions efficiently. We will also pay attention to the topic of statistical analysis of the generated data via autocorrelation analysis and statistical error analysis. For illustration purposes, we will primarily focus our attention on the simplest spin model, i.e., the two-dimensional Ising model (without external field) and discuss the finite-temperature critical phenomena and phase transition. Finally, we will demonstrate the calculation of the critical exponents of the two-dimensional Ising model using finite-size scaling analysis of relevant physical observables. Although we start with a classical statistical model, these ideas can be generalized and are applicable in simulations of quantum-spin systems, where they become the \textit{Quantum Monte Carlo} (QMC) methods [Janke, Sandvik]. 
+The purpose of this chapter is to give a brief introduction to Monte Carlo simulations and their applications in the numerical analysis of phase transitions in statistical physics models. We will start by illustrating the general idea of importance sampling Monte Carlo methods, followed by the different type of update schemes (Metropolis, Wolff-cluster, etc.) to sample non-uniform distributions efficiently. We will also pay attention to the topic of statistical analysis of the generated data via autocorrelation analysis and statistical error analysis. For illustration purposes, we will primarily focus our attention on the simplest spin model, i.e., the two-dimensional Ising model (without external field) and discuss the finite-temperature critical phenomena and phase transition. Finally, we will demonstrate the calculation of the critical exponents of the two-dimensional Ising model using finite-size scaling analysis of relevant physical observables. Although we start with a classical statistical model, these ideas can be generalized and are applicable in simulations of quantum-spin systems, where they become the \textit{Quantum Monte Carlo} (QMC) methods \cite{Janke1996, Sandvik}. 
 
 \section{Introduction to Monte Carlo}
 Monte Carlo simulations are an important and broad class of stochastic methods that utilize randomness to solve deterministic problems efficiently. To show their utility, we will start with a simple and illustrative example. Consider the calculation of a thermal expectation value of an observable $Q(x)$ in statistical physics;
@@ -189,7 +189,7 @@ and $\tau $ is called the \textit{autocorrelation time}. The autocorrelation tim
     \tau _{\text{int},\mathcal{O}} & = \frac{1}{2} \sum_{t= -\infty}^{\infty} A_\mathcal{O}(t) = \frac{1}{2} + \sum_{t=1}^{\infty} A_\mathcal{O}(t) 
     \label{autocorsum}
 \end{align}   
-However, this natural estimator isn't \textit{quite} correct because the autocorrelations $A_\mathcal{O}(t)$ for $t \gg \tau_\text{int}$ contain much noise and little signal. To fix this, we implement the \textit{automatic windowing algorithm} [Sokal] by introducing a cutoff $M$ on the sum
+However, this natural estimator isn't \textit{quite} correct because the autocorrelations $A_\mathcal{O}(t)$ for $t \gg \tau_\text{int}$ contain much noise and little signal. To fix this, we implement the \textit{automatic windowing algorithm} \cite{Sokal1997} by introducing a cutoff $M$ on the sum
 \begin{equation}
     \tau_{\text{int}, \mathcal{O}} = \frac{1}{2} + \sum_{t=1}^{M} A_\mathcal{O}(t)
 \end{equation} 
@@ -303,7 +303,7 @@ The phenomena of critical slowing down is primarily dependent on the algorithm u
 Therefore, it should be intuitively clear that some sort of non-local updates should be able to alleviate this problem by flipping entire clusters of spins. This class of algorithms is generally known as \textit{Cluster-update algorithms}. Although the critical slowing down can be significantly reduced with cluster algorithms, they are still far less general applicable than local update algorithms.
 
 \section{Wolff Cluster algorithm}
-The acceptance probability of local update algorithms is very low around the critical regions making it an inefficient way to probe the critical properties of the system. In this section, we will discuss the \textit{Wolff cluster algorithm}, which is a generalization of the Swendsen-Wang clyster dynamics and is even more efficient. The Wolff cluster algorithm works by identifying domains of identically oriented spins and performing a flip operation on the entire cluster [Krauth].
+The acceptance probability of local update algorithms is very low around the critical regions making it an inefficient way to probe the critical properties of the system. In this section, we will discuss the \textit{Wolff cluster algorithm}, which is a generalization of the Swendsen-Wang clyster dynamics and is even more efficient. The Wolff cluster algorithm works by identifying domains of identically oriented spins and performing a flip operation on the entire cluster \cite{krauth}.
 \subsection{Deriving the probabilities}
 We will start by considering the example of two states $a$ and $b$ which differ by flipping of a cluster of identically oriented spins.
 
@@ -360,7 +360,7 @@ Before starting, we will assume we are working with a 2-dimensional spin configu
     \item Keep repeating till no more spins are added to the cluster $\mathcal{C}$.
     \item Once the cluster is constructed, flip all the spins, i.e., $\forall \:j \: \in \mathcal{C} \: | \: \sigma_j \to - \sigma_j$.
 \end{enumerate}
-More concisely, a single sweep of the Monte Carlo Wolff algorithm in \texttt{psuedocode language} is given below from [Krauth]. The sets $\mathcal{F}_\text{old}$ and $\mathcal{F}_\text{new}$ denote the frontier of the cluster at $(n-1)^\text{th}$ and $n^\text{th}$ steps, respectively. The set $\mathcal{C}$ contains the sites belonging to the cluster.
+More concisely, a single sweep of the Monte Carlo Wolff algorithm in \texttt{psuedocode language} is given below from \cite{krauth}. The sets $\mathcal{F}_\text{old}$ and $\mathcal{F}_\text{new}$ denote the frontier of the cluster at $(n-1)^\text{th}$ and $n^\text{th}$ steps, respectively. The set $\mathcal{C}$ contains the sites belonging to the cluster.
 \begin{algorithm}{wolff-cluster}
     \> $i:=\text{random site}$; \\
     \> $\mathcal{C}:=\{ i \}$; \\
@@ -482,9 +482,9 @@ The average (absolute) magnetization curve as a function of temperature (Fig. \r
 
 Another interesting feature of the Ising phase transitions are the specific heat $C_V$ (Fig. \ref{specificheat}) and magnetic susceptibility $\chi$ (Fig. \ref{susceptibility}) curves. They show an approximate divergence at the critical temperature $T_c$, which becomes exact in the thermodynamic limit $L \to \infty$. Hence, our numerical studies confirm that the Ising phase transition is second-order in nature.
 
-The way to numerically estimate the critical temperature $T_c$ of the phase transition was given by Binder [Binder 1981]. According to Binder, the transition temperature $T_c$ is the temperature at which different $U_L$ curves (corresponding to different lattice sizes $L$) cross in the thermodynamic limit (Fig. \ref{bindercumulant}). In our studies, we estimated the critical temperature $T_c \approx 2.269$, which is very close to the exact value of $2/\ln\qty(1+\sqrt{2}) \approx 2.26918$.
+The way to numerically estimate the critical temperature $T_c$ of the phase transition was given by Binder \cite{Binder1981}. According to Binder, the transition temperature $T_c$ is the temperature at which different $U_L$ curves (corresponding to different lattice sizes $L$) cross in the thermodynamic limit (Fig. \ref{bindercumulant}). In our studies, we estimated the critical temperature $T_c \approx 2.269$, which is very close to the exact value of $2/\ln\qty(1+\sqrt{2}) \approx 2.26918$.
 
-Finally, a short note on autocorrelation times. As one can see in Fig. \ref{autocorrelationtime}, we have scaled the $\tau_\text{cluster}$ by $\expval{C}/L^2$, where $\expval{C}$ is the average cluster size. We claim that this is the correct autocorrelation time to compare with the Metropolis autocorrelation times [Tamayo et al]. This is because $N$ Metropolis sweeps are fundamentally different than $N$ Wolff sweeps. If we go through $N$ sweeps, 
+Finally, a short note on autocorrelation times. As one can see in Fig. \ref{autocorrelationtime}, we have scaled the $\tau_\text{cluster}$ by $\expval{C}/L^2$, where $\expval{C}$ is the average cluster size. We claim that this is the correct autocorrelation time to compare with the Metropolis autocorrelation times \cite{Tamayo1990}. This is because $N$ Metropolis sweeps are fundamentally different than $N$ Wolff sweeps. If we go through $N$ sweeps, 
 \vspace{-1em}
 \begin{gather*}
     \text{For Metropolis } \longrightarrow N \cdot L^2 \text{ spin flips} \\
@@ -620,7 +620,7 @@ The data collapse of the quantities obtained from the Monte Carlo studies is sho
     \label{datacollapse}
 \end{figure}
 %%% FIG %%%
-\FloatBarrier \!\!\!\!\!\!\!\!\!\!\!
+\FloatBarrier
 The following table (Table \ref{critical}) summarizes the results of the critical exponents computed from a finite-size scaling study of the data obtained from Monte Carlo simulations compared to the exact values.
 %%% TABLE %%%
 \begin{table}[h!]

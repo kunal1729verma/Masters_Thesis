@@ -63,6 +63,280 @@
       \verb https://doi.org/10.1088%2F0305-4470%2F34%2F33%2F302
       \endverb
     \endentry
+    \entry{Binder1981}{article}{}
+      \name{author}{1}{}{%
+        {{hash=2c30ae80b3977f7b00db06a48b7506bb}{%
+           family={Binder},
+           familyi={B\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{2c30ae80b3977f7b00db06a48b7506bb}
+      \strng{fullhash}{2c30ae80b3977f7b00db06a48b7506bb}
+      \strng{bibnamehash}{2c30ae80b3977f7b00db06a48b7506bb}
+      \strng{authorbibnamehash}{2c30ae80b3977f7b00db06a48b7506bb}
+      \strng{authornamehash}{2c30ae80b3977f7b00db06a48b7506bb}
+      \strng{authorfullhash}{2c30ae80b3977f7b00db06a48b7506bb}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1431-584X}
+      \field{journaltitle}{Zeitschrift für Physik B Condensed Matter}
+      \field{month}{6}
+      \field{number}{2}
+      \field{title}{Finite size scaling analysis of ising model block distribution functions}
+      \field{volume}{43}
+      \field{year}{1981}
+      \field{pages}{119\bibrangedash 140}
+      \range{pages}{22}
+      \verb{doi}
+      \verb 10.1007/BF01293604
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/BF01293604
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/BF01293604
+      \endverb
+    \endentry
+    \entry{Janke1996}{inbook}{}
+      \name{author}{1}{}{%
+        {{hash=b525c12c23308e698e920a2c6f1329dc}{%
+           family={Janke},
+           familyi={J\bibinitperiod},
+           given={Wolfhard},
+           giveni={W\bibinitperiod}}}%
+      }
+      \name{editor}{2}{}{%
+        {{hash=c4ebff53fd39f304cc9f5dae55d55cf0}{%
+           family={Hoffmann},
+           familyi={H\bibinitperiod},
+           given={Karl\bibnamedelima Heinz},
+           giveni={K\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=15d87d133f194bd38e98ad0aa4f4a452}{%
+           family={Schreiber},
+           familyi={S\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin, Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{b525c12c23308e698e920a2c6f1329dc}
+      \strng{fullhash}{b525c12c23308e698e920a2c6f1329dc}
+      \strng{bibnamehash}{b525c12c23308e698e920a2c6f1329dc}
+      \strng{authorbibnamehash}{b525c12c23308e698e920a2c6f1329dc}
+      \strng{authornamehash}{b525c12c23308e698e920a2c6f1329dc}
+      \strng{authorfullhash}{b525c12c23308e698e920a2c6f1329dc}
+      \strng{editorbibnamehash}{9b833d153770ef4c0ccf9a96e6737a80}
+      \strng{editornamehash}{9b833d153770ef4c0ccf9a96e6737a80}
+      \strng{editorfullhash}{9b833d153770ef4c0ccf9a96e6737a80}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Computational Physics: Selected Methods Simple Exercises Serious Applications}
+      \field{isbn}{978-3-642-85238-1}
+      \field{title}{Monte Carlo Simulations of Spin Systems}
+      \field{year}{1996}
+      \field{pages}{10\bibrangedash 43}
+      \range{pages}{34}
+      \verb{doi}
+      \verb 10.1007/978-3-642-85238-1_3
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-642-85238-1_3
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-642-85238-1_3
+      \endverb
+    \endentry
+    \entry{krauth}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=d1a9093d8a8328c6f6bfb02fba161d48}{%
+           family={Krauth},
+           familyi={K\bibinitperiod},
+           given={Werner},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{d1a9093d8a8328c6f6bfb02fba161d48}
+      \strng{fullhash}{d1a9093d8a8328c6f6bfb02fba161d48}
+      \strng{bibnamehash}{d1a9093d8a8328c6f6bfb02fba161d48}
+      \strng{authorbibnamehash}{d1a9093d8a8328c6f6bfb02fba161d48}
+      \strng{authornamehash}{d1a9093d8a8328c6f6bfb02fba161d48}
+      \strng{authorfullhash}{d1a9093d8a8328c6f6bfb02fba161d48}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Cluster Monte Carlo algorithms}
+      \field{year}{2003}
+      \verb{doi}
+      \verb 10.48550/ARXIV.COND-MAT/0311623
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/cond-mat/0311623
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/cond-mat/0311623
+      \endverb
+      \keyw{Statistical Mechanics (cond-mat.stat-mech),FOS: Physical sciences,FOS: Physical sciences}
+    \endentry
+    \entry{Sandvik}{article}{}
+      \name{author}{1}{}{%
+        {{hash=d7afdd68e17370e4699da96c7587d3cc}{%
+           family={Sandvik},
+           familyi={S\bibinitperiod},
+           given={Anders\bibnamedelima W.},
+           giveni={A\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{d7afdd68e17370e4699da96c7587d3cc}
+      \strng{fullhash}{d7afdd68e17370e4699da96c7587d3cc}
+      \strng{bibnamehash}{d7afdd68e17370e4699da96c7587d3cc}
+      \strng{authorbibnamehash}{d7afdd68e17370e4699da96c7587d3cc}
+      \strng{authornamehash}{d7afdd68e17370e4699da96c7587d3cc}
+      \strng{authorfullhash}{d7afdd68e17370e4699da96c7587d3cc}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0094-243X}
+      \field{journaltitle}{AIP Conference Proceedings}
+      \field{month}{11}
+      \field{number}{1}
+      \field{title}{{Computational Studies of Quantum Spin Systems}}
+      \field{volume}{1297}
+      \field{year}{2010}
+      \field{pages}{135\bibrangedash 338}
+      \range{pages}{204}
+      \verb{doi}
+      \verb 10.1063/1.3518900
+      \endverb
+      \verb{eprint}
+      \verb https://pubs.aip.org/aip/acp/article-pdf/1297/1/135/11407753/135\_1\_online.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1063/1.3518900
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1063/1.3518900
+      \endverb
+    \endentry
+    \entry{Sokal1997}{inbook}{}
+      \name{author}{1}{}{%
+        {{hash=dc98f350be517c65756272ccbb729fda}{%
+           family={Sokal},
+           familyi={S\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+      }
+      \name{editor}{3}{}{%
+        {{hash=907fc5bd8de2770104b2e18d1440dccd}{%
+           family={DeWitt-Morette},
+           familyi={D\bibinithyphendelim M\bibinitperiod},
+           given={Cecile},
+           giveni={C\bibinitperiod}}}%
+        {{hash=7073b61aa9586ea147148b9e875dd315}{%
+           family={Cartier},
+           familyi={C\bibinitperiod},
+           given={Pierre},
+           giveni={P\bibinitperiod}}}%
+        {{hash=51933427447f1d6b45629b7d5df51f35}{%
+           family={Folacci},
+           familyi={F\bibinitperiod},
+           given={Antoine},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Boston, MA}%
+      }
+      \list{publisher}{1}{%
+        {Springer US}%
+      }
+      \strng{namehash}{dc98f350be517c65756272ccbb729fda}
+      \strng{fullhash}{dc98f350be517c65756272ccbb729fda}
+      \strng{bibnamehash}{dc98f350be517c65756272ccbb729fda}
+      \strng{authorbibnamehash}{dc98f350be517c65756272ccbb729fda}
+      \strng{authornamehash}{dc98f350be517c65756272ccbb729fda}
+      \strng{authorfullhash}{dc98f350be517c65756272ccbb729fda}
+      \strng{editorbibnamehash}{c93e42c5e0d1ea1b5e259f67c6b4540e}
+      \strng{editornamehash}{c93e42c5e0d1ea1b5e259f67c6b4540e}
+      \strng{editorfullhash}{c93e42c5e0d1ea1b5e259f67c6b4540e}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{These notes are an updated version of lectures given at the Cours de Troisième Cycle de la Physique en Suisse Romande (Lausanne, Switzerland) in June 1989. We thank the Troisième Cycle de la Physique en Suisse Romande and Professor Michel Droz for kindly giving permission to reprint these notes.}
+      \field{booktitle}{Functional Integration: Basics and Applications}
+      \field{isbn}{978-1-4899-0319-8}
+      \field{title}{Monte Carlo Methods in Statistical Mechanics: Foundations and New Algorithms}
+      \field{year}{1997}
+      \field{pages}{131\bibrangedash 192}
+      \range{pages}{62}
+      \verb{doi}
+      \verb 10.1007/978-1-4899-0319-8_6
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-1-4899-0319-8_6
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-1-4899-0319-8_6
+      \endverb
+    \endentry
+    \entry{Tamayo1990}{article}{}
+      \name{author}{3}{}{%
+        {{hash=b3bb484325de4b146ed9bfef2b766647}{%
+           family={Tamayo},
+           familyi={T\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=3a4edbc2d902c560ccb3603946bd414a}{%
+           family={Brower},
+           familyi={B\bibinitperiod},
+           given={R.\bibnamedelimi C.},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=bbf04039f7350f6f3edb3d7b94ce7301}{%
+           family={Klein},
+           familyi={K\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{abf5d8f569d0f6f0d19149f7143d8a71}
+      \strng{fullhash}{abf5d8f569d0f6f0d19149f7143d8a71}
+      \strng{bibnamehash}{abf5d8f569d0f6f0d19149f7143d8a71}
+      \strng{authorbibnamehash}{abf5d8f569d0f6f0d19149f7143d8a71}
+      \strng{authornamehash}{abf5d8f569d0f6f0d19149f7143d8a71}
+      \strng{authorfullhash}{abf5d8f569d0f6f0d19149f7143d8a71}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1572-9613}
+      \field{journaltitle}{Journal of Statistical Physics}
+      \field{month}{3}
+      \field{number}{5}
+      \field{title}{Single-cluster Monte Carlo dynamics for the Ising model}
+      \field{volume}{58}
+      \field{year}{1990}
+      \field{pages}{1083\bibrangedash 1094}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1007/BF01026564
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/BF01026564
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/BF01026564
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

@@ -18,7 +18,281 @@
 
 
 \refsection{0}
-  \datalist[entry]{nty/global//global/global}
+  \datalist[entry]{none/global//global/global}
+    \entry{Janke1996}{inbook}{}
+      \name{author}{1}{}{%
+        {{hash=b525c12c23308e698e920a2c6f1329dc}{%
+           family={Janke},
+           familyi={J\bibinitperiod},
+           given={Wolfhard},
+           giveni={W\bibinitperiod}}}%
+      }
+      \name{editor}{2}{}{%
+        {{hash=c4ebff53fd39f304cc9f5dae55d55cf0}{%
+           family={Hoffmann},
+           familyi={H\bibinitperiod},
+           given={Karl\bibnamedelima Heinz},
+           giveni={K\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=15d87d133f194bd38e98ad0aa4f4a452}{%
+           family={Schreiber},
+           familyi={S\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin, Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{b525c12c23308e698e920a2c6f1329dc}
+      \strng{fullhash}{b525c12c23308e698e920a2c6f1329dc}
+      \strng{bibnamehash}{b525c12c23308e698e920a2c6f1329dc}
+      \strng{authorbibnamehash}{b525c12c23308e698e920a2c6f1329dc}
+      \strng{authornamehash}{b525c12c23308e698e920a2c6f1329dc}
+      \strng{authorfullhash}{b525c12c23308e698e920a2c6f1329dc}
+      \strng{editorbibnamehash}{9b833d153770ef4c0ccf9a96e6737a80}
+      \strng{editornamehash}{9b833d153770ef4c0ccf9a96e6737a80}
+      \strng{editorfullhash}{9b833d153770ef4c0ccf9a96e6737a80}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Computational Physics: Selected Methods Simple Exercises Serious Applications}
+      \field{isbn}{978-3-642-85238-1}
+      \field{title}{Monte Carlo Simulations of Spin Systems}
+      \field{year}{1996}
+      \field{pages}{10\bibrangedash 43}
+      \range{pages}{34}
+      \verb{doi}
+      \verb 10.1007/978-3-642-85238-1_3
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-642-85238-1_3
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-642-85238-1_3
+      \endverb
+    \endentry
+    \entry{Sandvik}{article}{}
+      \name{author}{1}{}{%
+        {{hash=d7afdd68e17370e4699da96c7587d3cc}{%
+           family={Sandvik},
+           familyi={S\bibinitperiod},
+           given={Anders\bibnamedelima W.},
+           giveni={A\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{d7afdd68e17370e4699da96c7587d3cc}
+      \strng{fullhash}{d7afdd68e17370e4699da96c7587d3cc}
+      \strng{bibnamehash}{d7afdd68e17370e4699da96c7587d3cc}
+      \strng{authorbibnamehash}{d7afdd68e17370e4699da96c7587d3cc}
+      \strng{authornamehash}{d7afdd68e17370e4699da96c7587d3cc}
+      \strng{authorfullhash}{d7afdd68e17370e4699da96c7587d3cc}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0094-243X}
+      \field{journaltitle}{AIP Conference Proceedings}
+      \field{month}{11}
+      \field{number}{1}
+      \field{title}{{Computational Studies of Quantum Spin Systems}}
+      \field{volume}{1297}
+      \field{year}{2010}
+      \field{pages}{135\bibrangedash 338}
+      \range{pages}{204}
+      \verb{doi}
+      \verb 10.1063/1.3518900
+      \endverb
+      \verb{eprint}
+      \verb https://pubs.aip.org/aip/acp/article-pdf/1297/1/135/11407753/135\_1\_online.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1063/1.3518900
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1063/1.3518900
+      \endverb
+    \endentry
+    \entry{Sokal1997}{inbook}{}
+      \name{author}{1}{}{%
+        {{hash=dc98f350be517c65756272ccbb729fda}{%
+           family={Sokal},
+           familyi={S\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+      }
+      \name{editor}{3}{}{%
+        {{hash=907fc5bd8de2770104b2e18d1440dccd}{%
+           family={DeWitt-Morette},
+           familyi={D\bibinithyphendelim M\bibinitperiod},
+           given={Cecile},
+           giveni={C\bibinitperiod}}}%
+        {{hash=7073b61aa9586ea147148b9e875dd315}{%
+           family={Cartier},
+           familyi={C\bibinitperiod},
+           given={Pierre},
+           giveni={P\bibinitperiod}}}%
+        {{hash=51933427447f1d6b45629b7d5df51f35}{%
+           family={Folacci},
+           familyi={F\bibinitperiod},
+           given={Antoine},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Boston, MA}%
+      }
+      \list{publisher}{1}{%
+        {Springer US}%
+      }
+      \strng{namehash}{dc98f350be517c65756272ccbb729fda}
+      \strng{fullhash}{dc98f350be517c65756272ccbb729fda}
+      \strng{bibnamehash}{dc98f350be517c65756272ccbb729fda}
+      \strng{authorbibnamehash}{dc98f350be517c65756272ccbb729fda}
+      \strng{authornamehash}{dc98f350be517c65756272ccbb729fda}
+      \strng{authorfullhash}{dc98f350be517c65756272ccbb729fda}
+      \strng{editorbibnamehash}{c93e42c5e0d1ea1b5e259f67c6b4540e}
+      \strng{editornamehash}{c93e42c5e0d1ea1b5e259f67c6b4540e}
+      \strng{editorfullhash}{c93e42c5e0d1ea1b5e259f67c6b4540e}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{These notes are an updated version of lectures given at the Cours de Troisième Cycle de la Physique en Suisse Romande (Lausanne, Switzerland) in June 1989. We thank the Troisième Cycle de la Physique en Suisse Romande and Professor Michel Droz for kindly giving permission to reprint these notes.}
+      \field{booktitle}{Functional Integration: Basics and Applications}
+      \field{isbn}{978-1-4899-0319-8}
+      \field{title}{Monte Carlo Methods in Statistical Mechanics: Foundations and New Algorithms}
+      \field{year}{1997}
+      \field{pages}{131\bibrangedash 192}
+      \range{pages}{62}
+      \verb{doi}
+      \verb 10.1007/978-1-4899-0319-8_6
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-1-4899-0319-8_6
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-1-4899-0319-8_6
+      \endverb
+    \endentry
+    \entry{krauth}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=d1a9093d8a8328c6f6bfb02fba161d48}{%
+           family={Krauth},
+           familyi={K\bibinitperiod},
+           given={Werner},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{d1a9093d8a8328c6f6bfb02fba161d48}
+      \strng{fullhash}{d1a9093d8a8328c6f6bfb02fba161d48}
+      \strng{bibnamehash}{d1a9093d8a8328c6f6bfb02fba161d48}
+      \strng{authorbibnamehash}{d1a9093d8a8328c6f6bfb02fba161d48}
+      \strng{authornamehash}{d1a9093d8a8328c6f6bfb02fba161d48}
+      \strng{authorfullhash}{d1a9093d8a8328c6f6bfb02fba161d48}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Cluster Monte Carlo algorithms}
+      \field{year}{2003}
+      \verb{doi}
+      \verb 10.48550/ARXIV.COND-MAT/0311623
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/cond-mat/0311623
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/cond-mat/0311623
+      \endverb
+      \keyw{Statistical Mechanics (cond-mat.stat-mech),FOS: Physical sciences,FOS: Physical sciences}
+    \endentry
+    \entry{Binder1981}{article}{}
+      \name{author}{1}{}{%
+        {{hash=2c30ae80b3977f7b00db06a48b7506bb}{%
+           family={Binder},
+           familyi={B\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{2c30ae80b3977f7b00db06a48b7506bb}
+      \strng{fullhash}{2c30ae80b3977f7b00db06a48b7506bb}
+      \strng{bibnamehash}{2c30ae80b3977f7b00db06a48b7506bb}
+      \strng{authorbibnamehash}{2c30ae80b3977f7b00db06a48b7506bb}
+      \strng{authornamehash}{2c30ae80b3977f7b00db06a48b7506bb}
+      \strng{authorfullhash}{2c30ae80b3977f7b00db06a48b7506bb}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1431-584X}
+      \field{journaltitle}{Zeitschrift für Physik B Condensed Matter}
+      \field{month}{6}
+      \field{number}{2}
+      \field{title}{Finite size scaling analysis of ising model block distribution functions}
+      \field{volume}{43}
+      \field{year}{1981}
+      \field{pages}{119\bibrangedash 140}
+      \range{pages}{22}
+      \verb{doi}
+      \verb 10.1007/BF01293604
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/BF01293604
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/BF01293604
+      \endverb
+    \endentry
+    \entry{Tamayo1990}{article}{}
+      \name{author}{3}{}{%
+        {{hash=b3bb484325de4b146ed9bfef2b766647}{%
+           family={Tamayo},
+           familyi={T\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=3a4edbc2d902c560ccb3603946bd414a}{%
+           family={Brower},
+           familyi={B\bibinitperiod},
+           given={R.\bibnamedelimi C.},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=bbf04039f7350f6f3edb3d7b94ce7301}{%
+           family={Klein},
+           familyi={K\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{abf5d8f569d0f6f0d19149f7143d8a71}
+      \strng{fullhash}{abf5d8f569d0f6f0d19149f7143d8a71}
+      \strng{bibnamehash}{abf5d8f569d0f6f0d19149f7143d8a71}
+      \strng{authorbibnamehash}{abf5d8f569d0f6f0d19149f7143d8a71}
+      \strng{authornamehash}{abf5d8f569d0f6f0d19149f7143d8a71}
+      \strng{authorfullhash}{abf5d8f569d0f6f0d19149f7143d8a71}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1572-9613}
+      \field{journaltitle}{Journal of Statistical Physics}
+      \field{month}{3}
+      \field{number}{5}
+      \field{title}{Single-cluster Monte Carlo dynamics for the Ising model}
+      \field{volume}{58}
+      \field{year}{1990}
+      \field{pages}{1083\bibrangedash 1094}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1007/BF01026564
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/BF01026564
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/BF01026564
+      \endverb
+    \endentry
     \entry{Bhattacharjee_2001}{article}{}
       \name{author}{2}{}{%
         {{hash=7351612ef166ab1fcc77979fd5839286}{%
@@ -41,8 +315,8 @@
       \strng{authorbibnamehash}{2e4dc9acaf2edbbb407c89cdc1d8e9de}
       \strng{authornamehash}{2e4dc9acaf2edbbb407c89cdc1d8e9de}
       \strng{authorfullhash}{2e4dc9acaf2edbbb407c89cdc1d8e9de}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Physics A: Mathematical and General}
@@ -61,6 +335,95 @@
       \endverb
       \verb{url}
       \verb https://doi.org/10.1088%2F0305-4470%2F34%2F33%2F302
+      \endverb
+    \endentry
+    \entry{Li_2014}{article}{}
+      \name{author}{3}{}{%
+        {{hash=fe3ecd728277ae925d4297f109621bc4}{%
+           family={P.\bibnamedelimi H.\bibnamedelimi Y.\bibnamedelimi Li},
+           familyi={P\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim Y\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=989b0893ad0fcc100e17e2467c6bd2ee}{%
+           family={R.\bibnamedelimi F.\bibnamedelimi Bishop},
+           familyi={R\bibinitperiod\bibinitdelim F\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=1faf75549cc240c0dbaa285a3e2beeea}{%
+           family={C.\bibnamedelimi E.\bibnamedelimi Campbell},
+           familyi={C\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{e0e0160809d47e9c74e8fc2532372290}
+      \strng{fullhash}{e0e0160809d47e9c74e8fc2532372290}
+      \strng{bibnamehash}{e0e0160809d47e9c74e8fc2532372290}
+      \strng{authorbibnamehash}{e0e0160809d47e9c74e8fc2532372290}
+      \strng{authornamehash}{e0e0160809d47e9c74e8fc2532372290}
+      \strng{authorfullhash}{e0e0160809d47e9c74e8fc2532372290}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Physics: Conference Series}
+      \field{month}{8}
+      \field{number}{1}
+      \field{title}{A frustrated spin-1 $J_1-J_2$ Heisenberg antiferromagnet: An anisotropic planar pyrochlore model}
+      \field{volume}{529}
+      \field{year}{2014}
+      \field{pages}{012008}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1742-6596/529/1/012008
+      \endverb
+      \verb{urlraw}
+      \verb https://dx.doi.org/10.1088/1742-6596/529/1/012008
+      \endverb
+      \verb{url}
+      \verb https://dx.doi.org/10.1088/1742-6596/529/1/012008
+      \endverb
+    \endentry
+    \entry{Ren_2014}{article}{}
+      \name{author}{3}{}{%
+        {{hash=734640b171ff38778cee7381fc539d60}{%
+           family={Ren},
+           familyi={R\bibinitperiod},
+           given={Yong-Zhi},
+           giveni={Y\bibinithyphendelim Z\bibinitperiod}}}%
+        {{hash=e4945b8486a79010c06d9507355975de}{%
+           family={Tong},
+           familyi={T\bibinitperiod},
+           given={Ning-Hua},
+           giveni={N\bibinithyphendelim H\bibinitperiod}}}%
+        {{hash=d3a450e512337c1b85392cf411d452f1}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={Xin-Cheng},
+           giveni={X\bibinithyphendelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{7a5951df585288c6f476dc444016f522}
+      \strng{fullhash}{7a5951df585288c6f476dc444016f522}
+      \strng{bibnamehash}{7a5951df585288c6f476dc444016f522}
+      \strng{authorbibnamehash}{7a5951df585288c6f476dc444016f522}
+      \strng{authornamehash}{7a5951df585288c6f476dc444016f522}
+      \strng{authorfullhash}{7a5951df585288c6f476dc444016f522}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Physics: Condensed Matter}
+      \field{month}{3}
+      \field{number}{11}
+      \field{title}{Cluster mean-field theory study of $J_1-J_2$ Heisenberg model on a square lattice}
+      \field{volume}{26}
+      \field{year}{2014}
+      \field{pages}{115601}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/0953-8984/26/11/115601
+      \endverb
+      \verb{urlraw}
+      \verb https://dx.doi.org/10.1088/0953-8984/26/11/115601
+      \endverb
+      \verb{url}
+      \verb https://dx.doi.org/10.1088/0953-8984/26/11/115601
       \endverb
     \endentry
     \entry{Sergej}{article}{}
@@ -95,8 +458,8 @@
       \strng{authorbibnamehash}{d1fa33c5ed1a959cace4d0f660822b92}
       \strng{authornamehash}{d1fa33c5ed1a959cace4d0f660822b92}
       \strng{authorfullhash}{b593dd4f8a1ac96c74bf92325089a028}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issue}{7}
@@ -115,52 +478,6 @@
       \endverb
       \verb{url}
       \verb https://link.aps.org/doi/10.1103/PhysRevB.105.075132
-      \endverb
-    \endentry
-    \entry{Li_2014}{article}{}
-      \name{author}{3}{}{%
-        {{hash=db0342e37abe2052f1aa3a9a75d424eb}{%
-           family={Li},
-           familyi={L\bibinitperiod},
-           given={P\bibnamedelima H\bibnamedelima Y},
-           giveni={P\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
-        {{hash=3a64d80d2d674c889f2b2360c93e9eb5}{%
-           family={Bishop},
-           familyi={B\bibinitperiod},
-           given={R\bibnamedelima F},
-           giveni={R\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
-        {{hash=c0534eec713053e35c1a2458000b5327}{%
-           family={Campbell},
-           familyi={C\bibinitperiod},
-           given={C\bibnamedelima E},
-           giveni={C\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
-      }
-      \strng{namehash}{effe337bfae44baa8432ef74940a2905}
-      \strng{fullhash}{effe337bfae44baa8432ef74940a2905}
-      \strng{bibnamehash}{effe337bfae44baa8432ef74940a2905}
-      \strng{authorbibnamehash}{effe337bfae44baa8432ef74940a2905}
-      \strng{authornamehash}{effe337bfae44baa8432ef74940a2905}
-      \strng{authorfullhash}{effe337bfae44baa8432ef74940a2905}
-      \field{sortinit}{L}
-      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of Physics: Conference Series}
-      \field{month}{8}
-      \field{number}{1}
-      \field{title}{A frustrated spin-1 $J_1-J_2$ Heisenberg antiferromagnet: An anisotropic planar pyrochlore model}
-      \field{volume}{529}
-      \field{year}{2014}
-      \field{pages}{012008}
-      \range{pages}{1}
-      \verb{doi}
-      \verb 10.1088/1742-6596/529/1/012008
-      \endverb
-      \verb{urlraw}
-      \verb https://dx.doi.org/10.1088/1742-6596/529/1/012008
-      \endverb
-      \verb{url}
-      \verb https://dx.doi.org/10.1088/1742-6596/529/1/012008
       \endverb
     \endentry
     \entry{Mathur_et_al}{article}{}
@@ -185,8 +502,8 @@
       \strng{authorbibnamehash}{703302fd8206ac84c92f10e7e548d91a}
       \strng{authornamehash}{703302fd8206ac84c92f10e7e548d91a}
       \strng{authorfullhash}{703302fd8206ac84c92f10e7e548d91a}
-      \field{sortinit}{M}
-      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issue}{8}
@@ -207,53 +524,158 @@
       \verb https://link.aps.org/doi/10.1103/PhysRevD.94.085029
       \endverb
     \endentry
-    \entry{Ren_2014}{article}{}
-      \name{author}{3}{}{%
-        {{hash=734640b171ff38778cee7381fc539d60}{%
-           family={Ren},
-           familyi={R\bibinitperiod},
-           given={Yong-Zhi},
-           giveni={Y\bibinithyphendelim Z\bibinitperiod}}}%
-        {{hash=e4945b8486a79010c06d9507355975de}{%
-           family={Tong},
-           familyi={T\bibinitperiod},
-           given={Ning-Hua},
-           giveni={N\bibinithyphendelim H\bibinitperiod}}}%
-        {{hash=d3a450e512337c1b85392cf411d452f1}{%
-           family={Xie},
-           familyi={X\bibinitperiod},
-           given={Xin-Cheng},
-           giveni={X\bibinithyphendelim C\bibinitperiod}}}%
+    \entry{wegner2014duality}{article}{}
+      \name{author}{1}{}{%
+        {{hash=068649ef5b0b9a4bfc324c64cbfb6723}{%
+           family={Wegner},
+           familyi={W\bibinitperiod},
+           given={Franz\bibnamedelima J.},
+           giveni={F\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
       }
-      \list{publisher}{1}{%
-        {IOP Publishing}%
-      }
-      \strng{namehash}{7a5951df585288c6f476dc444016f522}
-      \strng{fullhash}{7a5951df585288c6f476dc444016f522}
-      \strng{bibnamehash}{7a5951df585288c6f476dc444016f522}
-      \strng{authorbibnamehash}{7a5951df585288c6f476dc444016f522}
-      \strng{authornamehash}{7a5951df585288c6f476dc444016f522}
-      \strng{authorfullhash}{7a5951df585288c6f476dc444016f522}
-      \field{sortinit}{R}
-      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \strng{namehash}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \strng{fullhash}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \strng{bibnamehash}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \strng{authorbibnamehash}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \strng{authornamehash}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \strng{authorfullhash}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of Physics: Condensed Matter}
-      \field{month}{3}
-      \field{number}{11}
-      \field{title}{Cluster mean-field theory study of J1-J2 Heisenberg model on a square lattice}
-      \field{volume}{26}
-      \field{year}{2014}
-      \field{pages}{115601}
-      \range{pages}{1}
+      \field{abstract}{{It is shown that any Ising model with positive coupling constants is related to another Ising model by a duality transformation. We define a class of Ising models Mdn on d‐dimensional lattices characterized by a number n = 1, 2, … , d (n = 1 corresponds to the Ising model with two‐spin interaction). These models are related by two duality transformations. The models with 1 \\&lt; n \\&lt; d exhibit a phase transition without local order parameter. A nonanalyticity in the specific heat and a different qualitative behavior of certain spin correlation functions in the low and the high temperature phases indicate the existence of a phase transition. The Hamiltonian of the simple cubic dual model contains products of four Ising spin operators. Applying a star square transformation, one obtains an Ising model with competing interactions exhibiting a singularity in the specific heat but no long‐range order of the spins in the low temperature phase.}}
+      \field{issn}{0022-2488}
+      \field{journaltitle}{Journal of Mathematical Physics}
+      \field{month}{10}
+      \field{number}{10}
+      \field{title}{{Duality in Generalized Ising Models and Phase Transitions without Local Order Parameters}}
+      \field{volume}{12}
+      \field{year}{2003}
+      \field{pages}{2259\bibrangedash 2272}
+      \range{pages}{14}
       \verb{doi}
-      \verb 10.1088/0953-8984/26/11/115601
+      \verb 10.1063/1.1665530
+      \endverb
+      \verb{eprint}
+      \verb https://pubs.aip.org/aip/jmp/article-pdf/12/10/2259/10964602/2259\_1\_online.pdf
       \endverb
       \verb{urlraw}
-      \verb https://dx.doi.org/10.1088/0953-8984/26/11/115601
+      \verb https://doi.org/10.1063/1.1665530
       \endverb
       \verb{url}
-      \verb https://dx.doi.org/10.1088/0953-8984/26/11/115601
+      \verb https://doi.org/10.1063/1.1665530
+      \endverb
+    \endentry
+    \entry{gupta_pragati.}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=0c1edfd21f95b2eae5107914e097a83d}{%
+           family={Gupta},
+           familyi={G\bibinitperiod},
+           given={Pragati},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Indian Institute of Science, Bengaluru}%
+      }
+      \strng{namehash}{0c1edfd21f95b2eae5107914e097a83d}
+      \strng{fullhash}{0c1edfd21f95b2eae5107914e097a83d}
+      \strng{bibnamehash}{0c1edfd21f95b2eae5107914e097a83d}
+      \strng{authorbibnamehash}{0c1edfd21f95b2eae5107914e097a83d}
+      \strng{authornamehash}{0c1edfd21f95b2eae5107914e097a83d}
+      \strng{authorfullhash}{0c1edfd21f95b2eae5107914e097a83d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Ground State Phases of the Amorphous $\mathbb{Z}_2$ Gauge Theory}
+      \field{type}{Master's Thesis}
+      \field{year}{July 2021}
+    \endentry
+    \entry{JohnKogut_Intro_to_LGT}{article}{}
+      \name{author}{1}{}{%
+        {{hash=e83a67dad588bb5ce85b4c77cb62a743}{%
+           family={Kogut},
+           familyi={K\bibinitperiod},
+           given={John\bibnamedelima B.},
+           giveni={J\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{e83a67dad588bb5ce85b4c77cb62a743}
+      \strng{fullhash}{e83a67dad588bb5ce85b4c77cb62a743}
+      \strng{bibnamehash}{e83a67dad588bb5ce85b4c77cb62a743}
+      \strng{authorbibnamehash}{e83a67dad588bb5ce85b4c77cb62a743}
+      \strng{authornamehash}{e83a67dad588bb5ce85b4c77cb62a743}
+      \strng{authorfullhash}{e83a67dad588bb5ce85b4c77cb62a743}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{4}
+      \field{journaltitle}{Rev. Mod. Phys.}
+      \field{month}{10}
+      \field{title}{An introduction to lattice gauge theory and spin systems}
+      \field{volume}{51}
+      \field{year}{1979}
+      \field{pages}{659\bibrangedash 713}
+      \range{pages}{55}
+      \verb{doi}
+      \verb 10.1103/RevModPhys.51.659
+      \endverb
+      \verb{urlraw}
+      \verb https://link.aps.org/doi/10.1103/RevModPhys.51.659
+      \endverb
+      \verb{url}
+      \verb https://link.aps.org/doi/10.1103/RevModPhys.51.659
+      \endverb
+    \endentry
+    \entry{ZN_Hamiltonian_LGT}{article}{}
+      \name{author}{3}{}{%
+        {{hash=3d25280644450a7282dca8cd1daee849}{%
+           family={Horn},
+           familyi={H\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=a6f4a9c8911d05d06968b0759be25a79}{%
+           family={Weinstein},
+           familyi={W\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=069110b7ddf18f56404a4f109b747ae3}{%
+           family={Yankielowicz},
+           familyi={Y\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{3b4bcec1f97b97e00788b58dcbdb8447}
+      \strng{fullhash}{3b4bcec1f97b97e00788b58dcbdb8447}
+      \strng{bibnamehash}{3b4bcec1f97b97e00788b58dcbdb8447}
+      \strng{authorbibnamehash}{3b4bcec1f97b97e00788b58dcbdb8447}
+      \strng{authornamehash}{3b4bcec1f97b97e00788b58dcbdb8447}
+      \strng{authorfullhash}{3b4bcec1f97b97e00788b58dcbdb8447}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{12}
+      \field{journaltitle}{Phys. Rev. D}
+      \field{month}{6}
+      \field{title}{Hamiltonian approach to $Z(N)$ lattice gauge theories}
+      \field{volume}{19}
+      \field{year}{1979}
+      \field{pages}{3715\bibrangedash 3731}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.19.3715
+      \endverb
+      \verb{urlraw}
+      \verb https://link.aps.org/doi/10.1103/PhysRevD.19.3715
+      \endverb
+      \verb{url}
+      \verb https://link.aps.org/doi/10.1103/PhysRevD.19.3715
       \endverb
     \endentry
     \entry{suzuki}{article}{}
@@ -270,8 +692,8 @@
       \strng{authorbibnamehash}{69cc1e3c555789f39f023984cb106915}
       \strng{authornamehash}{69cc1e3c555789f39f023984cb106915}
       \strng{authorfullhash}{69cc1e3c555789f39f023984cb106915}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{{The partition function of a quantal spin system is expressed by that of the Ising model, on the basis of the generalized Trotter formula. Thereby the ground state of the d-dimensional Ising model with a transverse field is proven to be equivalent to the (d+1)-dimensional Ising model at finite temperatures. A general relationship is established between the two partition functions of a general quantal spin system and the corresponding Ising model with many-spin interactions, which yields some rigorous results on quantum systems. Some applications are given.}}
@@ -279,7 +701,7 @@
       \field{journaltitle}{Progress of Theoretical Physics}
       \field{month}{11}
       \field{number}{5}
-      \field{title}{{Relationship between d-Dimensional Quantal Spin Systems and (d+1)-Dimensional Ising Systems: Equivalence, Critical Exponents and Systematic Approximants of the Partition Function and Spin Correlations}}
+      \field{title}{{Relationship between $d$-Dimensional Quantal Spin Systems and $(d+1)$-Dimensional Ising Systems: Equivalence, Critical Exponents and Systematic Approximants of the Partition Function and Spin Correlations}}
       \field{volume}{56}
       \field{year}{1976}
       \field{pages}{1454\bibrangedash 1469}
@@ -295,32 +717,6 @@
       \endverb
       \verb{url}
       \verb https://doi.org/10.1143/PTP.56.1454
-      \endverb
-    \endentry
-    \entry{wegner2014duality}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=068649ef5b0b9a4bfc324c64cbfb6723}{%
-           family={Wegner},
-           familyi={W\bibinitperiod},
-           given={Franz\bibnamedelima J.},
-           giveni={F\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
-      }
-      \strng{namehash}{068649ef5b0b9a4bfc324c64cbfb6723}
-      \strng{fullhash}{068649ef5b0b9a4bfc324c64cbfb6723}
-      \strng{bibnamehash}{068649ef5b0b9a4bfc324c64cbfb6723}
-      \strng{authorbibnamehash}{068649ef5b0b9a4bfc324c64cbfb6723}
-      \strng{authornamehash}{068649ef5b0b9a4bfc324c64cbfb6723}
-      \strng{authorfullhash}{068649ef5b0b9a4bfc324c64cbfb6723}
-      \field{sortinit}{W}
-      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{eprintclass}{hep-lat}
-      \field{eprinttype}{arXiv}
-      \field{title}{Duality in generalized Ising models}
-      \field{year}{2014}
-      \verb{eprint}
-      \verb 1411.5815
       \endverb
     \endentry
   \enddatalist
