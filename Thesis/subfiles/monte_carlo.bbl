@@ -18,88 +18,7 @@
 
 
 \refsection{0}
-  \datalist[entry]{nty/global//global/global}
-    \entry{Bhattacharjee_2001}{article}{}
-      \name{author}{2}{}{%
-        {{hash=7351612ef166ab1fcc77979fd5839286}{%
-           family={Bhattacharjee},
-           familyi={B\bibinitperiod},
-           given={Somendra\bibnamedelima M},
-           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
-        {{hash=e36627c91cecf5c7828339d1b38e4999}{%
-           family={Seno},
-           familyi={S\bibinitperiod},
-           given={Flavio},
-           giveni={F\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {{IOP} Publishing}%
-      }
-      \strng{namehash}{2e4dc9acaf2edbbb407c89cdc1d8e9de}
-      \strng{fullhash}{2e4dc9acaf2edbbb407c89cdc1d8e9de}
-      \strng{bibnamehash}{2e4dc9acaf2edbbb407c89cdc1d8e9de}
-      \strng{authorbibnamehash}{2e4dc9acaf2edbbb407c89cdc1d8e9de}
-      \strng{authornamehash}{2e4dc9acaf2edbbb407c89cdc1d8e9de}
-      \strng{authorfullhash}{2e4dc9acaf2edbbb407c89cdc1d8e9de}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of Physics A: Mathematical and General}
-      \field{month}{8}
-      \field{number}{33}
-      \field{title}{A measure of data collapse for scaling}
-      \field{volume}{34}
-      \field{year}{2001}
-      \field{pages}{6375\bibrangedash 6380}
-      \range{pages}{6}
-      \verb{doi}
-      \verb 10.1088/0305-4470/34/33/302
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.1088%2F0305-4470%2F34%2F33%2F302
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1088%2F0305-4470%2F34%2F33%2F302
-      \endverb
-    \endentry
-    \entry{Binder1981}{article}{}
-      \name{author}{1}{}{%
-        {{hash=2c30ae80b3977f7b00db06a48b7506bb}{%
-           family={Binder},
-           familyi={B\bibinitperiod},
-           given={K.},
-           giveni={K\bibinitperiod}}}%
-      }
-      \strng{namehash}{2c30ae80b3977f7b00db06a48b7506bb}
-      \strng{fullhash}{2c30ae80b3977f7b00db06a48b7506bb}
-      \strng{bibnamehash}{2c30ae80b3977f7b00db06a48b7506bb}
-      \strng{authorbibnamehash}{2c30ae80b3977f7b00db06a48b7506bb}
-      \strng{authornamehash}{2c30ae80b3977f7b00db06a48b7506bb}
-      \strng{authorfullhash}{2c30ae80b3977f7b00db06a48b7506bb}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{issn}{1431-584X}
-      \field{journaltitle}{Zeitschrift für Physik B Condensed Matter}
-      \field{month}{6}
-      \field{number}{2}
-      \field{title}{Finite size scaling analysis of ising model block distribution functions}
-      \field{volume}{43}
-      \field{year}{1981}
-      \field{pages}{119\bibrangedash 140}
-      \range{pages}{22}
-      \verb{doi}
-      \verb 10.1007/BF01293604
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.1007/BF01293604
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1007/BF01293604
-      \endverb
-    \endentry
+  \datalist[entry]{none/global//global/global}
     \entry{Janke1996}{inbook}{}
       \name{author}{1}{}{%
         {{hash=b525c12c23308e698e920a2c6f1329dc}{%
@@ -135,8 +54,8 @@
       \strng{editorbibnamehash}{9b833d153770ef4c0ccf9a96e6737a80}
       \strng{editornamehash}{9b833d153770ef4c0ccf9a96e6737a80}
       \strng{editorfullhash}{9b833d153770ef4c0ccf9a96e6737a80}
-      \field{sortinit}{J}
-      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Computational Physics: Selected Methods Simple Exercises Serious Applications}
@@ -155,40 +74,6 @@
       \verb https://doi.org/10.1007/978-3-642-85238-1_3
       \endverb
     \endentry
-    \entry{krauth}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=d1a9093d8a8328c6f6bfb02fba161d48}{%
-           family={Krauth},
-           familyi={K\bibinitperiod},
-           given={Werner},
-           giveni={W\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {arXiv}%
-      }
-      \strng{namehash}{d1a9093d8a8328c6f6bfb02fba161d48}
-      \strng{fullhash}{d1a9093d8a8328c6f6bfb02fba161d48}
-      \strng{bibnamehash}{d1a9093d8a8328c6f6bfb02fba161d48}
-      \strng{authorbibnamehash}{d1a9093d8a8328c6f6bfb02fba161d48}
-      \strng{authornamehash}{d1a9093d8a8328c6f6bfb02fba161d48}
-      \strng{authorfullhash}{d1a9093d8a8328c6f6bfb02fba161d48}
-      \field{sortinit}{K}
-      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Cluster Monte Carlo algorithms}
-      \field{year}{2003}
-      \verb{doi}
-      \verb 10.48550/ARXIV.COND-MAT/0311623
-      \endverb
-      \verb{urlraw}
-      \verb https://arxiv.org/abs/cond-mat/0311623
-      \endverb
-      \verb{url}
-      \verb https://arxiv.org/abs/cond-mat/0311623
-      \endverb
-      \keyw{Statistical Mechanics (cond-mat.stat-mech),FOS: Physical sciences,FOS: Physical sciences}
-    \endentry
     \entry{Sandvik}{article}{}
       \name{author}{1}{}{%
         {{hash=d7afdd68e17370e4699da96c7587d3cc}{%
@@ -203,8 +88,8 @@
       \strng{authorbibnamehash}{d7afdd68e17370e4699da96c7587d3cc}
       \strng{authornamehash}{d7afdd68e17370e4699da96c7587d3cc}
       \strng{authorfullhash}{d7afdd68e17370e4699da96c7587d3cc}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{0094-243X}
@@ -269,8 +154,8 @@
       \strng{editorbibnamehash}{c93e42c5e0d1ea1b5e259f67c6b4540e}
       \strng{editornamehash}{c93e42c5e0d1ea1b5e259f67c6b4540e}
       \strng{editorfullhash}{c93e42c5e0d1ea1b5e259f67c6b4540e}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{These notes are an updated version of lectures given at the Cours de Troisième Cycle de la Physique en Suisse Romande (Lausanne, Switzerland) in June 1989. We thank the Troisième Cycle de la Physique en Suisse Romande and Professor Michel Droz for kindly giving permission to reprint these notes.}
@@ -288,6 +173,77 @@
       \endverb
       \verb{url}
       \verb https://doi.org/10.1007/978-1-4899-0319-8_6
+      \endverb
+    \endentry
+    \entry{krauth}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=d1a9093d8a8328c6f6bfb02fba161d48}{%
+           family={Krauth},
+           familyi={K\bibinitperiod},
+           given={Werner},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{d1a9093d8a8328c6f6bfb02fba161d48}
+      \strng{fullhash}{d1a9093d8a8328c6f6bfb02fba161d48}
+      \strng{bibnamehash}{d1a9093d8a8328c6f6bfb02fba161d48}
+      \strng{authorbibnamehash}{d1a9093d8a8328c6f6bfb02fba161d48}
+      \strng{authornamehash}{d1a9093d8a8328c6f6bfb02fba161d48}
+      \strng{authorfullhash}{d1a9093d8a8328c6f6bfb02fba161d48}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Cluster Monte Carlo algorithms}
+      \field{year}{2003}
+      \verb{doi}
+      \verb 10.48550/ARXIV.COND-MAT/0311623
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/cond-mat/0311623
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/cond-mat/0311623
+      \endverb
+      \keyw{Statistical Mechanics (cond-mat.stat-mech),FOS: Physical sciences,FOS: Physical sciences}
+    \endentry
+    \entry{Binder1981}{article}{}
+      \name{author}{1}{}{%
+        {{hash=2c30ae80b3977f7b00db06a48b7506bb}{%
+           family={Binder},
+           familyi={B\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{2c30ae80b3977f7b00db06a48b7506bb}
+      \strng{fullhash}{2c30ae80b3977f7b00db06a48b7506bb}
+      \strng{bibnamehash}{2c30ae80b3977f7b00db06a48b7506bb}
+      \strng{authorbibnamehash}{2c30ae80b3977f7b00db06a48b7506bb}
+      \strng{authornamehash}{2c30ae80b3977f7b00db06a48b7506bb}
+      \strng{authorfullhash}{2c30ae80b3977f7b00db06a48b7506bb}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1431-584X}
+      \field{journaltitle}{Zeitschrift für Physik B Condensed Matter}
+      \field{month}{6}
+      \field{number}{2}
+      \field{title}{Finite size scaling analysis of ising model block distribution functions}
+      \field{volume}{43}
+      \field{year}{1981}
+      \field{pages}{119\bibrangedash 140}
+      \range{pages}{22}
+      \verb{doi}
+      \verb 10.1007/BF01293604
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/BF01293604
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/BF01293604
       \endverb
     \endentry
     \entry{Tamayo1990}{article}{}
@@ -314,8 +270,8 @@
       \strng{authorbibnamehash}{abf5d8f569d0f6f0d19149f7143d8a71}
       \strng{authornamehash}{abf5d8f569d0f6f0d19149f7143d8a71}
       \strng{authorfullhash}{abf5d8f569d0f6f0d19149f7143d8a71}
-      \field{sortinit}{T}
-      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{1572-9613}
@@ -335,6 +291,50 @@
       \endverb
       \verb{url}
       \verb https://doi.org/10.1007/BF01026564
+      \endverb
+    \endentry
+    \entry{Bhattacharjee_2001}{article}{}
+      \name{author}{2}{}{%
+        {{hash=7351612ef166ab1fcc77979fd5839286}{%
+           family={Bhattacharjee},
+           familyi={B\bibinitperiod},
+           given={Somendra\bibnamedelima M},
+           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=e36627c91cecf5c7828339d1b38e4999}{%
+           family={Seno},
+           familyi={S\bibinitperiod},
+           given={Flavio},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {{IOP} Publishing}%
+      }
+      \strng{namehash}{2e4dc9acaf2edbbb407c89cdc1d8e9de}
+      \strng{fullhash}{2e4dc9acaf2edbbb407c89cdc1d8e9de}
+      \strng{bibnamehash}{2e4dc9acaf2edbbb407c89cdc1d8e9de}
+      \strng{authorbibnamehash}{2e4dc9acaf2edbbb407c89cdc1d8e9de}
+      \strng{authornamehash}{2e4dc9acaf2edbbb407c89cdc1d8e9de}
+      \strng{authorfullhash}{2e4dc9acaf2edbbb407c89cdc1d8e9de}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Physics A: Mathematical and General}
+      \field{month}{8}
+      \field{number}{33}
+      \field{title}{A measure of data collapse for scaling}
+      \field{volume}{34}
+      \field{year}{2001}
+      \field{pages}{6375\bibrangedash 6380}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1088/0305-4470/34/33/302
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1088%2F0305-4470%2F34%2F33%2F302
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1088%2F0305-4470%2F34%2F33%2F302
       \endverb
     \endentry
   \enddatalist

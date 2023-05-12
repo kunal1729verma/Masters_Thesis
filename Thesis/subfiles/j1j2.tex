@@ -1,6 +1,6 @@
 \documentclass[../thesis_main.tex]{subfiles}
 \begin{document}
-\chapter{Semi-classical Monte Carlo for the $J_1 - J_2$ model}
+\chapter[$J_1 - J_2$ Heisenberg model (Semi-classical Monte Carlo)]{$J_1 - J_2$ Heisenberg model $\qquad$(Semi-classical Monte Carlo)}
 The 2-dimensional $J_1 - J_2$ Heisenberg model with nearest $(J_1)$ and next-nearest neighbor $(J_2)$ interactions on a square lattice is an archetypal example of a strongly correlated and frustrated spin model. Although the model is conceptually simple and easy to write down, it exhibits rich and interesting physics owing to the interplay between frustration and quantum fluctuations. The model is known to exhibit two phases with quasi-classical long range antiferromagnetic (AFM) order at $T = 0$ (Fig. \ref{AFM}), namely, a Néel-ordered phase ($(\pi,\pi)$ AFM) for $J_2/J_1 \lesssim 0.4$, and a stripe-ordered phase ($(\pi, 0)$ or $(0, \pi)$ AFM) for $J_2/J_1 \gtrsim 0.6$. These two AFM states are separated by an intermediate quantum paramagnetic phase ($0.4 \lesssim J_2/J_1 \lesssim 0.6$), also known as the \textit{spin liquid} phase \cite{Li_2014}. These phase transitions can be readily studied using state-of-the-art quantum Monte Carlo or exact diagonalization calculations, but these methods require large amounts of computational resources. In this chapter, we will present a semi-classical approach to study the spin-$1/2$ $J_1-J_2$ Heisenberg model where we treat a part of the Hamiltonian as a source of \textit{quantum fluctuations} and encode them in a semi-classical manner in combination with classical Monte Carlo simulations, thereby reducing the required computational cost.
 
 \section{Hamiltonian}
@@ -346,5 +346,10 @@ As discussed in Section \ref{t=0}, we saw that the quantum critical points ($T=0
 \end{figure}
 %%% FIG %%%
 \FloatBarrier \!\!\!\!\!\!\!\!\!\!\!
-This entropic stabilization process for the AFM state further pushes the boundaries of the phases and can be tuned via the parameter $p$ to give the correct phase transition points. It is, of course, necessary to provide a physical or a mathematical explanation for choosing the value of $p$ which gives the same results as a Quantum Monte Carlo calculation. We aim to address the issue of the correct critical behavior in our future work.  
+This entropic stabilization process for the AFM state further pushes the boundaries of the phases and can be tuned via the parameter $p$ to give the correct phase transition points. It is, of course, necessary to provide a physical or a mathematical explanation for choosing the value of $p$ which gives the same results as a quantum Monte Carlo calculation.
+
+\section{Summary and future outlook}
+As demonstrated in this chapter, there is evidence that quantum spin models can be analyzed using a combination of  classical Monte Carlo simulations and singlet dimer dynamics, which accounts for the quantum fluctuations in the system. We see that the spin liquid phase emerges out of a semi-classical calculation, and is stable in roughly the correct region. The semi-classical simulations give the correct qualitative behavior, but we are still working on developing an accurate method which gives the correct phase boundaries of the resulting phases.
+
+We also aim to work on evaluating whether the region between $0.4 \lessapprox {J_2}/{J_1} \lessapprox 0.6$ is actually a spin liquid phase or a valence bond state. This can be verified by calculating the singlet structure factor. We also aim to extend this approach to different spin models or different lattice geometries by defining a rigorous way to extract the quantum features of a model.
 \end{document}

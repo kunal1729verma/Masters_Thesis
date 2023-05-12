@@ -2,7 +2,7 @@
 \DeclareMathOperator*{\barr}{\scalerel*{+}{\textstyle\sum}}
 
 \begin{document}
-\chapter{$\mathbb{Z}_2$ Lattice Gauge Theory}
+\chapter[$\mathbb{Z}_2$ Lattice Gauge Theory (Quantum Monte Carlo)]{$\mathbb{Z}_2$ Lattice Gauge Theory $\qquad$(Quantum Monte Carlo)}
 The principle of gauging symmetries has been one of the most successful paradigms in the history of physics, ranging from the theory of general relativity to the Standard Model of particle physics. Despite the introduction of redundancy, gauging of symmetries is often employed as a guiding principle for constructing physical theories. In condensed matter physics, gauge theories appear as an emergent theory of strongly interacting many-body problems, and gauge description becomes indispensible to understand confined and deconfined phases of matter \cite{Sergej,Mathur_et_al}. 
 
 In this chapter, we will discuss the simplest gauge theory one can define on a lattice $-$ the pure $\mathbb{Z}_2$ lattice gauge theory (without matter fields) with the topology of a torus (periodic boundary conditions), which was discovered by Franz Wegner in 1971 \cite{wegner2014duality}. We will also discuss the Wegner duality which maps the $\mathbb{Z}_2$ gauge theory to the $\mathbb{Z}_2$ Transverse Field Ising model (TFIM) with the \textit{singlet constraint}. To study the phases of this dual theory, we employ the Path Integral Monte Carlo method which further maps the $d$-dimensional TFIM to a $(d+1)$-dimensional generalized classical Ising model which can be simulated using an extended version of the Metropolis algorithm~\cite{gupta_pragati.}.
@@ -79,7 +79,7 @@ dual mapping:
 \end{equation}
 where $X_p$ and $Z_p$ are the new spin degrees of freedom on the dual lattice. Furthermore, as mentioned earlier, they satisfy the same algebra, and it is straightforward to show that
 \begin{equation}
-    X_p^2 = B_p^2 = \mathds{1}, \qquad \{X_p, Z_p\} = \mathds{1}, \qquad [X_{p_e}, Z_{p'_e}] = 0 \text{  if } p_e \neq p'_e   
+    X_p^2 = B_p^2 = \mathds{1}, \qquad \{X_p, Z_p\} = 0, \qquad [X_{p_e}, Z_{p'_e}] = 0 \text{  if } p_e \neq p'_e   
 \end{equation} 
 The Hilbert space on which $X$, $Z$ operators act is on a set of spins placed at the centre of the plaquettes at $p$. This is also shown in Fig. \ref{dual_lattice} where the $\mathbb{Z}_2$ gauge theory lattice is represented by dotted lines with link degrees of freedom, and the dual lattice is represented by the solid lines with vertex degrees of freedom.
 
@@ -123,7 +123,7 @@ where $\sum_{\{\sigma\}}$ denotes a sum over all $2^{N_x}$ different lattice con
 \begin{equation}
     \mathds{1}_s = \sum_{\{\sigma\}} \hat{P} \ket{\{\sigma\}} \bra{\{\sigma\}} \hat{P} = \frac{1}{4} \sum_{\{\sigma\}, \mu', \lambda'} \hat{F}^{\lambda'} \ket{\{\sigma\}} \bra{\{\sigma\}} \hat{F}^{\mu'}  
 \end{equation}
-Since $\hat{F}^{\mu'} = (\prod_i X_i)^{\mu'}$ flips all the spins $\{\sigma\} \longrightarrow \{-\sigma\}$ or leaves them invariant $\{\sigma\} \longrightarrow \{+\sigma\}$ for the cases ${\mu'} = -1$ and ${\mu'} = +1$, respectively. Therefore, an alternate representation of its action on the basis states is $\hat{F}^{\mu'} \ket{\{\sigma\}} = \ket{\{\mu \: \sigma\}}$ where $\mu'= (-1)^{\mu} \implies \mu \: \in \: \{\pm 1\}$. The singlet-identity (ignoring the $1/4$ factor) can then be rewritten as
+The operator $\hat{F}^{\mu'} = (\prod_i X_i)^{\mu'}$ flips all the spins $\{\sigma\} \longrightarrow \{-\sigma\}$ or leaves them invariant $\{\sigma\} \longrightarrow \{+\sigma\}$ for the cases ${\mu'} = 1$ and ${\mu'} = 0$, respectively. Therefore, an alternate representation of its action on the basis states is $\hat{F}^{\mu'} \ket{\{\sigma\}} = \ket{\{\mu \: \sigma\}}$ where $\mu'= (-1)^{\mu} \implies \mu \: \in \: \{\pm 1\}$. The singlet-identity (ignoring the $1/4$ factor) can then be rewritten as
 \begin{equation}
     \mathds{1}_s = \sum_{\mu, \:\lambda \: \in \: \{\pm 1\}} \ket{\{\lambda \: \sigma\}} \bra{\{\mu \: \sigma\}}
 \end{equation}
@@ -174,7 +174,7 @@ since $\mu_l^2 = 1$, and $H_I[\{\sigma_l\}]$ is a classical Ising interaction wi
     \label{matrixelement}
 \end{align}
 \endgroup
-The matrix element $C_l(i)$ can further be evaluated as follows: we can write it as an arbitrary function $C_l(i) = A e^{K(\mu_{l+1}\lambda_l \: \sigma_{l+1}(i)\sigma_{l}(i))}$ where we don't yet know the constants $A$ and $K$. However, due to the structure of the matrix element,
+The matrix element $C_l(i)$ can further be evaluated as follows $-$ we can write it as an arbitrary function $C_l(i) = A e^{K(\mu_{l+1}\lambda_l \: \sigma_{l+1}(i)\sigma_{l}(i))}$ where we don't yet know the constants $A$ and $K$. However, due to the structure of the matrix element,
 \begin{equation}
     C_l(i) = 
     \begin{cases}
@@ -366,7 +366,7 @@ The freezing of the alignment value to $\expval{A(l)} \neq 0$ indicates that the
 The breaking of this subsystem symmetry gives us the first indication that a naive implementation of the Metropolis algorithm cannot give us the correct equilibration behavior of this system.
 
 \subsection{Autocorrelation function}
-Another quantity which is shown to give undesired results with the onset of subsystem symmetry breaking is the autocorrelation function of the alignment observable $A(l)$. For the notational convenience, we briefly switch to writing $A(l)$ as $A_l$. For the observable $A_l$, the autocorrelation function is computed as follows
+Another quantity which is shown to give undesired results with the onset of subsystem symmetry breaking is the autocorrelation function of the alignment observable $A(l)$. For notational convenience, we briefly switch to writing $A(l)$ as $A_l$. For the observable $A_l$, the autocorrelation function is computed as follows
 \begin{equation}
     \text{Autocorr}[A_l] = \frac{\expval{A_l(k) A_l(k+T)}}{\expval{A_l(k)^2}} = \frac{1}{N-T} \sum_{k=0}^{N-T-1} \frac{A_l(k) \cdot A_l(k+T)}{\expval{A_l(k)^2}}
 \end{equation} 
@@ -551,7 +551,7 @@ where $\hat{P} = (\mathds{1} + \hat{F})/2$ is the singlet projection operator. T
 \begin{equation}
     \hat{F} \: \hat{\mathcal{O}} \: \hat{F} = \sum_{ij} c_{ij} \: \underbrace{\hat{F}\hat{P}}_{ = \hat{P}} \: \ket{\{\sigma\}}_i \bra{\{\sigma '\}}_j \:\underbrace{\hat{P} \hat{F}}_{ = \hat{P}} = \sum_{i,j} c_{ij} \hat{P}\ket{\{\sigma\}}_i \bra{\{\sigma '\}}_j \hat{P} = \hat{\mathcal{O}}
 \end{equation}
-Thus any operator on the singlet sector $\hat{\mathcal{O}}: \mathcal{H}_s \to \mathcal{H}_s$ must satisfy  Eq.~\eqref{operator}. The two most elementary observables which satisfy this condition are $\hat{X}_i$ and $\hat{Z}_i \hat{Z}_j$.   Such singlet-compatible quantum operators can then be mapped to their corresponding classical analogs.  
+Thus any operator defined on the singlet subspace $\hat{\mathcal{O}}: \mathcal{H}_s \to \mathcal{H}_s$ must satisfy  Eq.~\eqref{operator}. The two most elementary observables which satisfy this condition are $\hat{X}_i$ and $\hat{Z}_i \hat{Z}_j$.   Such singlet-compatible quantum operators can then be mapped to their corresponding classical analogs.  
 
 \subsection{Mapping quantum operators to classical observables}
 As always, the Hamiltonian with the singlet constraint is
@@ -646,7 +646,7 @@ Therefore, when we evaluate the matrix products Eq.~\eqref{matrixproducts}, we g
     & \mel{\mu_{l_0+1} \sigma^i_{l_0+1}}{e^{\Delta \tau \hat{X}_i} \hat{X}_i}{\lambda_{l_0} \sigma^i_{l_0}} = A e^{- K \mu_{l_0 + 1} \lambda_{l_0} \sigma^j_{l_0+1} \sigma^j_{l_0}}
     \label{1.6.19}
 \end{flalign}
-where $A = \sqrt{\frac{1}{2} \sinh(2J \Delta \tau)}$ and $K = \frac{1}{2} \ln\tanh(J \Delta \tau)$. It is the $\hat{X}$ operator that flips the sign of the factor in the exponential when $j = i, \: l = l_0$. This is key difference in the calculations when compared to $\mathcal{Z}$. Combining Eqs.~\eqref{matrixproducts} and~\eqref{1.6.19}, the matrix product term for the layer $l_0$ (with $\hat{X}_i$) can be simply written as
+where $A = \sqrt{\frac{1}{2} \sinh(2J \Delta \tau)}$ and $K = \frac{1}{2} \ln\tanh(J \Delta \tau)$. It is the $\hat{X}$ operator that flips the sign of the factor in the exponential when $j = i, \: l = l_0$. This is key difference in the calculations when compared to $\hat{Z}_i \hat{Z}_j$. Combining Eqs.~\eqref{matrixproducts} and~\eqref{1.6.19}, the matrix product term for the layer $l_0$ (with $\hat{X}_i$) can be simply written as
 
 \begin{gather}
     \mel{\{\mu_{l_0+1} \sigma _{l_0+1}\}}{e^{-\Delta \tau \hat{H}_T} \hat{X}_i}{\{\lambda_{l_0} \sigma _{l_0}\}} = A^{N_x} e^{-K(\mu_{l_0 + 1} \lambda_{l_0})\sigma^i_{l_0+1} \sigma^i_{l_0}} \prod_{j \neq i} e^{+ K(\mu_{l_0 + 1} \lambda_{l_0})\sigma^j_{l_0+1} \sigma^j_{l_0}} \nonumber \\
@@ -1106,7 +1106,7 @@ The simulations are performed in the low temperature limit of $\beta h = N_\tau 
 \begin{equation}
     \qty(\frac{J_c}{h_c})_\text{ED} = 0.937 \pm 0.021, \qquad \qty(\frac{J_c}{h_c})_\text{MC} = 0.935 \pm 0.039 
 \end{equation}
-However, since the magnetization operator is ill-defined on the singlet subspace, it is no longer an order parameter characterizing the phase transition. Moreover, since the $\mathbb{Z}_2$ flip operation is defined to be identity on the singlet subspace $\prod_i X_i = \mathds{1}$, the model doesn't exhibit any $\mathbb{Z}_2$ symmetry breaking phases (like the ferromagnetic order). Hence, the singlet Ising model, and consequently the $\mathbb{Z}_2$ lattice gauge theory, shows evidence for a \textit{second-order quantum phase transition in the absence symmetry breaking}, which is a special feature since it can't be described by the traditional Landau symmetry breaking paradigm of phase transitions. The $\langle Z_i Z_j\rangle$ correlation expectation value now acts like the new local order parameter. 
+However, since the magnetization operator is ill-defined on the singlet subspace, it is no longer an order parameter characterizing the phase transition. Moreover, since the $\mathbb{Z}_2$ flip operation is defined to be identity on the singlet subspace $\prod_i X_i = \mathds{1}$, the model doesn't exhibit any $\mathbb{Z}_2$ symmetry breaking phases (like the ferromagnetic order). Hence, the singlet Ising model, and consequently the $\mathbb{Z}_2$ lattice gauge theory, show evidence for a \textbf{second-order quantum phase transition in the absence of symmetry breaking}, which is a special feature since it can't be described by the traditional Landau symmetry breaking paradigm of phase transitions. The $\langle Z_i Z_j\rangle$ correlation expectation value now acts like the new local order parameter. 
 
 \section{Summary and future outlook}
 The $\mathbb{Z}_2$ lattice gauge theory model, which is dual to the singlet Ising model, is shown to exhibit a quantum phase transition in the absence of a global symmetry breaking. An interesting point to note is that the quantum critical point of this phase transition is very close to the theoretically predicted transition point of the standard transverse field Ising model (TFIM) $J_c/h_c = 1$. 

@@ -18,33 +18,27 @@
 
 
 \refsection{0}
-  \datalist[entry]{nty/global//global/global}
+  \datalist[entry]{none/global//global/global}
     \entry{Li_2014}{article}{}
       \name{author}{3}{}{%
-        {{hash=db0342e37abe2052f1aa3a9a75d424eb}{%
-           family={Li},
-           familyi={L\bibinitperiod},
-           given={P\bibnamedelima H\bibnamedelima Y},
-           giveni={P\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
-        {{hash=3a64d80d2d674c889f2b2360c93e9eb5}{%
-           family={Bishop},
-           familyi={B\bibinitperiod},
-           given={R\bibnamedelima F},
-           giveni={R\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
-        {{hash=c0534eec713053e35c1a2458000b5327}{%
-           family={Campbell},
-           familyi={C\bibinitperiod},
-           given={C\bibnamedelima E},
-           giveni={C\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=fe3ecd728277ae925d4297f109621bc4}{%
+           family={P.\bibnamedelimi H.\bibnamedelimi Y.\bibnamedelimi Li},
+           familyi={P\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim Y\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=989b0893ad0fcc100e17e2467c6bd2ee}{%
+           family={R.\bibnamedelimi F.\bibnamedelimi Bishop},
+           familyi={R\bibinitperiod\bibinitdelim F\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=1faf75549cc240c0dbaa285a3e2beeea}{%
+           family={C.\bibnamedelimi E.\bibnamedelimi Campbell},
+           familyi={C\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
       }
-      \strng{namehash}{effe337bfae44baa8432ef74940a2905}
-      \strng{fullhash}{effe337bfae44baa8432ef74940a2905}
-      \strng{bibnamehash}{effe337bfae44baa8432ef74940a2905}
-      \strng{authorbibnamehash}{effe337bfae44baa8432ef74940a2905}
-      \strng{authornamehash}{effe337bfae44baa8432ef74940a2905}
-      \strng{authorfullhash}{effe337bfae44baa8432ef74940a2905}
-      \field{sortinit}{L}
-      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \strng{namehash}{e0e0160809d47e9c74e8fc2532372290}
+      \strng{fullhash}{e0e0160809d47e9c74e8fc2532372290}
+      \strng{bibnamehash}{e0e0160809d47e9c74e8fc2532372290}
+      \strng{authorbibnamehash}{e0e0160809d47e9c74e8fc2532372290}
+      \strng{authornamehash}{e0e0160809d47e9c74e8fc2532372290}
+      \strng{authorfullhash}{e0e0160809d47e9c74e8fc2532372290}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Physics: Conference Series}
@@ -92,14 +86,14 @@
       \strng{authorbibnamehash}{7a5951df585288c6f476dc444016f522}
       \strng{authornamehash}{7a5951df585288c6f476dc444016f522}
       \strng{authorfullhash}{7a5951df585288c6f476dc444016f522}
-      \field{sortinit}{R}
-      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Physics: Condensed Matter}
       \field{month}{3}
       \field{number}{11}
-      \field{title}{Cluster mean-field theory study of J1-J2 Heisenberg model on a square lattice}
+      \field{title}{Cluster mean-field theory study of $J_1-J_2$ Heisenberg model on a square lattice}
       \field{volume}{26}
       \field{year}{2014}
       \field{pages}{115601}

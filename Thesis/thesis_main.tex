@@ -24,7 +24,7 @@
 \usepackage{standalone}
 \allsectionsfont{\sffamily}
 \setstretch{1.1}
-\definecolor{linkpurple}{RGB}{152,71,155}
+\definecolor{linkpurple}{RGB}{26,40,195}
 \definecolor{urlblue}{RGB}{20, 86, 128}
 \geometry{
   top=25mm,
@@ -117,6 +117,9 @@
       ([yshift=-3pt]chapname.north west) rectangle ++(\textwidth,-3pt);  
     \end{tikzpicture}%
   }
+
+
+  
 \titleformat{name=\chapter,numberless}[display]
   {\normalfont}
   {}
@@ -233,7 +236,7 @@
       
       \vspace{1cm}
       
-      \textbf{May 2, 2023}
+      \textbf{May 2023}
   \end{center}
 \end{titlepage}
   
@@ -283,6 +286,10 @@
 % Use Roman Page Numbering for first few pages.
 \pagenumbering{Roman}
 
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
 
 % Certificate of Examination.
 \begin{center}
@@ -308,6 +315,10 @@ Dr.~Sanjeev Kumar \hspace{1.5cm} Dr.~Abhishek Chaudhari \hspace{1.5cm}  Dr.~Yoge
 \end{flushright}
 
 \cleardoublepage
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
 
 % Declaration.
 \begin{center}
@@ -346,14 +357,36 @@ Dated: May 2, 2023
 
 \cleardoublepage
 
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
+
 % Acknowledgements.
 \begin{center}
 \textsf{\textbf{\Large Acknowledgements}} 
 \end{center}
 \vspace*{1em}
 
-Use this section to acknowledge the help/contribution of others.
+Scientific research is a challenging endeavor that is rarely pursued in a vacuum. Throughout the last five years, I have been fortunate enough to be associated with great people without whom this journey would not have been possible.
 
+First and foremost, I would like to express my deepest gratitude to my supervisor, Dr. Sanjeev Kumar, for his unwavering kindness, trust, and support throughout my Master's research project. He has always been more than patient in guiding me through the hurdles I've encountered over the last year. His doors have always been open for both academic and personal advice. I also thank him for being an inspiring teacher and introducing me to the field of condensed matter physics.
+
+I am thankful to my co-supervisor, Prof. Vijay B. Shenoy, for giving me the opportunity to work with his group for my Master's project and for hosting me at IISc, Bengaluru. This work wouldn't have been possible without access to his computational cluster, for which I'm immensely grateful. 
+
+I thank Nikhil Nair for being an incredibly supportive friend and colleague during my stay at IISc. During the last year, he has spent several hours listening to my questions patiently and helping me with every possible detail of my project. I am also thankful to him for teaching me the technique of Monte Carlo simulations, from the very basics to the most minor nuances. He was extremely welcoming and helpful during my stay, and I am indebted to his hospitability. He has also been a great friend, and I will forever cherish the night-long discussions with him, ranging from troubleshooting Monte Carlo codes to talking about our favorite mangas. 
+
+I thank my friend and my senior, Abhijeet Singh, an IISER-M alumnus and IISc student, for being a brotherly figure. He was my constant source of support and happiness when I had no friends in IISc, and he helped me settle in and made sure that I felt right at home. I also want to thank my batch friends and members of the IISER family, Abir, Jyoti, Nikita, Navjot, and Himanshu, for all the support and helping me deal with the academic pressure during my stay in Bengaluru.
+
+I owe a debt of thanks to my close friends, Dhananjay and Bhavik, who were always a phone call away, especially during the extremely hectic Ph.D. application season. Their unwavering academic and mental support through the last few difficult years has been crucial. I also thank my `moderators' group friends $-$ Akshay, Aabhas, Aalhad, and Dhruva$-$ for being great companions during my Physics major journey.
+
+I thank the Condensed Matter Theory group members at IISER Mohali $-$ Sourav, Akshay, Arka, Sourabh, and at IISc $-$ Nikhil, Hiranmay, Gurkirat, and Parasar, for the enlightening discussions and their contagious enthusiasm for physics. I am also extremely grateful to the members of the Discord Physics server for all the academic advice, hours of fruitful enthusiastic discussions and for making me fall in love with physics in the first place.
+
+I thank my school friends $-$ Gokul Sankar, Vinayak Bhardwaj, and Siddharth Bhaskar, for being a constant source of love and support, especially during the last year.
+
+I also thank the IISER Mohali library for its world-class facilities, valuable e-resources, and personalized services, which were immensely helpful throughout my BS-MS journey at IISER Mohali.
+
+Finally, I want to thank my family members $-$ my parents $-$ Mukesh and Sunita Verma, and my sisters $-$ Megha and Mili, for their invaluable contributions to this work. I thank them for always believing in me, encouraging me to pursue my academic goals, and always being invested in my education. I thank them for their love and encouragement, without which I would never have enjoyed so many opportunities.
 
 \newpage
 % Abstract of the Thesis
@@ -363,9 +396,17 @@ Use this section to acknowledge the help/contribution of others.
 \end{center}
 \vspace*{1em}
 
-Use this section to include an abstract of the thesis.
+The study of quantum phase transitions has been an active area of research in condensed matter physics for the last few decades, and it continues to offer exciting and novel insights into the critical behavior of matter at $T=0$. A detailed understanding of such quantum phase transitions is only possible via numerical methods since analytical treatment of the quantum many-body problem becomes almost intractable above a certain system size. This thesis discusses various flavors of quantum Monte Carlo simulations to study quantum phase transitions in spin models and gauge theories. 
+
+The first part of the thesis concerns the $J_1 - J_2$ Heisenberg model, a highly frustrated system exhibiting the spin liquid phase. We propose semi-classical Monte Carlo simulations on the $J_1 - J_2$ Heisenberg model, which decomposes the model into a combination of a classical $J_1 - J_2$ Ising model and semi-classical singlet dimers as a proxy for quantum fluctuations. The creation and annihilation of these semi-classical singlet dimers is introduced as an additional proposal in the Metropolis algorithm. This proposal aims to bypass the Quantum Monte Carlo procedure with a more efficient protocol that adds the quantum fluctuations on top of classical Monte Carlo simulations to reduce computational cost.
+
+In the second part, we study quantum phase transitions in the $\mathbb{Z}_2$ lattice gauge theory with the topology of a torus, which is dual to the quantum Ising model under the singlet constraint. We study the dual theory with the full machinery of Path Integral quantum Monte Carlo (PIQMC) simulaions. The quantum to classical correspondence further maps a $d-$dimensional quantum model to a $(d+1)-$dimensional classical model. This generalized classical spin model can then be simulated using the classical Metropolis Monte Carlo algorithm.
 
 \newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
+
 \restoregeometry
 
 % Creates a List of All Figures.
@@ -381,11 +422,13 @@ Use this section to include an abstract of the thesis.
 %%%%%%
 % \section{Introduction}
 %%%%%%
-
-\newpage
 \subfile{subfiles/monte_carlo.tex}\newpage
 \subfile{subfiles/j1j2.tex}\newpage
 \subfile{subfiles/z2_lgt.tex}\newpage
 \newpage
-\printbibliography
+\printbibliography[
+heading=bibintoc,
+title={References}
+]
+
 \end{document}

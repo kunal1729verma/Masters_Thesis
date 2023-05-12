@@ -117,7 +117,7 @@
       \verb https://link.aps.org/doi/10.1103/PhysRevD.94.085029
       \endverb
     \endentry
-    \entry{wegner2014duality}{misc}{}
+    \entry{wegner2014duality}{article}{}
       \name{author}{1}{}{%
         {{hash=068649ef5b0b9a4bfc324c64cbfb6723}{%
            family={Wegner},
@@ -135,12 +135,27 @@
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{eprintclass}{hep-lat}
-      \field{eprinttype}{arXiv}
-      \field{title}{Duality in generalized Ising models}
-      \field{year}{2014}
+      \field{abstract}{{It is shown that any Ising model with positive coupling constants is related to another Ising model by a duality transformation. We define a class of Ising models Mdn on d‐dimensional lattices characterized by a number n = 1, 2, … , d (n = 1 corresponds to the Ising model with two‐spin interaction). These models are related by two duality transformations. The models with 1 \\&lt; n \\&lt; d exhibit a phase transition without local order parameter. A nonanalyticity in the specific heat and a different qualitative behavior of certain spin correlation functions in the low and the high temperature phases indicate the existence of a phase transition. The Hamiltonian of the simple cubic dual model contains products of four Ising spin operators. Applying a star square transformation, one obtains an Ising model with competing interactions exhibiting a singularity in the specific heat but no long‐range order of the spins in the low temperature phase.}}
+      \field{issn}{0022-2488}
+      \field{journaltitle}{Journal of Mathematical Physics}
+      \field{month}{10}
+      \field{number}{10}
+      \field{title}{{Duality in Generalized Ising Models and Phase Transitions without Local Order Parameters}}
+      \field{volume}{12}
+      \field{year}{2003}
+      \field{pages}{2259\bibrangedash 2272}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1063/1.1665530
+      \endverb
       \verb{eprint}
-      \verb 1411.5815
+      \verb https://pubs.aip.org/aip/jmp/article-pdf/12/10/2259/10964602/2259\_1\_online.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1063/1.1665530
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1063/1.1665530
       \endverb
     \endentry
     \entry{gupta_pragati.}{thesis}{}
@@ -150,6 +165,9 @@
            familyi={G\bibinitperiod},
            given={Pragati},
            giveni={P\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Indian Institute of Science, Bengaluru}%
       }
       \strng{namehash}{0c1edfd21f95b2eae5107914e097a83d}
       \strng{fullhash}{0c1edfd21f95b2eae5107914e097a83d}
@@ -162,8 +180,8 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Ground State Phases of the Amorphous $\mathbb{Z}_2$ Gauge Theory}
-      \field{type}{phdthesis}
-      \field{year}{0AD}
+      \field{type}{Master's Thesis}
+      \field{year}{July 2021}
     \endentry
     \entry{JohnKogut_Intro_to_LGT}{article}{}
       \name{author}{1}{}{%
